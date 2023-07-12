@@ -1,5 +1,3 @@
-import 'package:hive/hive.dart';
-
 import '../../const/all_imports.dart';
 
 class UserDashboard extends StatefulWidget {
@@ -30,12 +28,39 @@ class _UserDashboardState extends State<UserDashboard> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [ Text('USER DASHBOARD'),_currentuser != null ? Text(_currentuser!):const CircularProgressIndicator()],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Column(
+            children: [
+              CustomCarousel(autoplay: true, durationInSeconds: 1, items: [
+                Image.asset(
+                "Assets/login1.png",
+              ),
+              Image.asset(
+                "Assets/login2.png",
+              ),
+              Image.asset(
+                "Assets/login3.png",
+              ),
+              Image.asset(
+                "Assets/login4.png",
+              ),
+              Image.asset(
+                "Assets/login5.png",
+              )
+              ]),
+              ListTile(
+                title: Text('Hello'),
+                tileColor: Colors.amber,
+                leading: Text('HI'),
+                shape: Border.all(width: AllDimensions.px10, style: BorderStyle.solid),
+                trailing: Text('Janith'),
+              )
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }

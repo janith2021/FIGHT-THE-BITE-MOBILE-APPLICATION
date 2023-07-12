@@ -1,9 +1,3 @@
-import 'dart:convert';
-
-import 'package:art_sweetalert/art_sweetalert.dart';
-import 'package:cloudinary/cloudinary.dart';
-import 'package:hive/hive.dart';
-
 import '../const/all_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart' as path_provider;

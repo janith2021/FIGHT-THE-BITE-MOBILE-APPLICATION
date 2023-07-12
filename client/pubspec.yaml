@@ -62,10 +62,10 @@ icons_launcher:
     android:
       enable: true
       image_path: "Assets/icon.png"
-      adaptive_background_color: '#ffd966'
+      adaptive_background_color: "#ffd966"
       # adaptive_background_image: "Assets/icon.png"
       adaptive_foreground_image: "Assets/icon.png"
-      adaptive_round_image: "Assets/icon.png"
+      # adaptive_round_image: "Assets/icon.png"
       adaptive_monochrome_image: "Assets/icon.png"
     ios:
       enable: true

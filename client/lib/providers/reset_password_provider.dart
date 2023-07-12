@@ -1,12 +1,4 @@
-import 'dart:convert';
 import 'package:path_provider/path_provider.dart' as path_provider;
-
-// import 'package:flutter/foundation.dart';
-
-import 'package:art_sweetalert/art_sweetalert.dart';
-import 'package:hive/hive.dart';
-// import 'package:localstorage/localstorage.dart';
-
 import '../const/all_imports.dart';
 import 'package:http/http.dart' as http;
 
