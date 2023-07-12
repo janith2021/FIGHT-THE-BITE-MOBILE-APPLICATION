@@ -1,8 +1,3 @@
-import 'dart:convert';
-
-import 'package:art_sweetalert/art_sweetalert.dart';
-import 'package:hive/hive.dart';
-
 import '../const/all_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -26,7 +21,7 @@ class LoginProvider extends ChangeNotifier {
   }
 
   formvalidation(BuildContext context) async {
-     WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
     final appDocumentDir =
         await path_provider.getApplicationDocumentsDirectory();
     Hive.init(appDocumentDir.path);
@@ -44,6 +39,7 @@ class LoginProvider extends ChangeNotifier {
       var response = await http.post(Uri.parse(fullurl),
           body: jsonEncode(data), headers: setHeaders());
       var body = await jsonDecode(response.body);
+      // print(body);
       if (body['type'] == 'success') {
         if (body['role'] == 'user') {
           // ignore: use_build_context_synchronously
@@ -101,7 +97,6 @@ class LoginProvider extends ChangeNotifier {
           notifyListeners();
         }
         // ignore: use_build_context_synchronously
-        
       } else {
         // ignore: use_build_context_synchronously
         ArtSweetAlert.show(

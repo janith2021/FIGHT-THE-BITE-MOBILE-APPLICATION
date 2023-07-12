@@ -1,8 +1,6 @@
 import 'dart:convert';
-
-import 'package:art_sweetalert/art_sweetalert.dart';
 import 'package:client/const/all_imports.dart';
-import 'package:hive/hive.dart';
+// import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
 class ChangePasswordProvider extends ChangeNotifier {
