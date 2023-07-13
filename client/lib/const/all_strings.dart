@@ -36,5 +36,8 @@ class AllStrings {
   static String addvehicle = "Add Vehicle";
   static String campaigns = "Campaigns";
   static String requestBloodCheck = "Blood Request";
-
+  static String yourrank = "Your Rank";
+  static String play = "Play";
+  static String informbanner = "Inform us if you or your family member is affected !";
+  static String informaffectivity = "Inform";
 }
