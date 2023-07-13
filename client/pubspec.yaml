@@ -56,6 +56,9 @@ dependencies:
   hive: ^2.2.3
   shared_preferences: ^2.2.0
 
+  # flutter_tawk: ^0.1.0
+
+
 icons_launcher:
   image_path: "Assets/icon.png"
   platforms:
