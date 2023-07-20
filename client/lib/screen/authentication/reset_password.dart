@@ -39,9 +39,10 @@ class ResetPassword extends StatelessWidget {
                         borderradius: AllDimensions.px10,
                         boxcolor: AppColors.green,
                         borderwidth: 3,
-                        fontcolor: AppColors.white,
-                        fontsize: AllDimensions.px20,
-                        text: AllStrings.resetPassword))
+                        btnWidth: MediaQuery.of(context).size.width * 0.9,
+                        styles: GoogleFonts.aldrich(color: AppColors.white,fontWeight: FontWeight.bold,fontSize: AllDimensions.px30,),
+                        text: AllStrings.resetPassword),
+                        )
               ],
             ),
           ),

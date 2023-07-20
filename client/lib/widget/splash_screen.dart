@@ -69,33 +69,33 @@ class _SplashState extends State<Splash> {
         width: MediaQuery.of(context).size.width,
         child: Image.asset('Assets/logo.png'),
       ),
-      defaultNextScreen: 
-      FutureBuilder(
-          future: getuser(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator(
-                backgroundColor: Colors.red,
-              );
-            } else {
-              if (snapshot.hasError) {
-                return Text(snapshot.error.toString());
-              } else {
-                if (snapshot.data == 'user') {
-                  // Navigator.pushReplacementNamed(context, "/user/dashboard");
-                  return const UserDashboard();
-                  // return const Login();
-                } else if (snapshot.data == 'Grama Niladhari') {
-                   return const GramaNiladhariDashBoard();
-                  // return const Login();
-                } else if (snapshot.data == 'PHI') {
-                  return const PHIDashBoard();
-                }
-                // }else if(snapshot.data.toString() == '')
-                return const Login();
-              }
-            }
-          }),
+      defaultNextScreen: Login()
+      // FutureBuilder(
+      //     future: getuser(),
+      //     builder: (BuildContext context, AsyncSnapshot snapshot) {
+      //       if (snapshot.connectionState == ConnectionState.waiting) {
+      //         return const CircularProgressIndicator(
+      //           backgroundColor: Colors.red,
+      //         );
+      //       } else {
+      //         if (snapshot.hasError) {
+      //           return Text(snapshot.error.toString());
+      //         } else {
+      //           if (snapshot.data == 'user') {
+      //             // Navigator.pushReplacementNamed(context, "/user/dashboard");
+      //             return const UserDashboard();
+      //             // return const Login();
+      //           } else if (snapshot.data == 'Grama Niladhari') {
+      //              return const GramaNiladhariDashBoard();
+      //             // return const Login();
+      //           } else if (snapshot.data == 'PHI') {
+      //             return const PHIDashBoard();
+      //           }
+      //           // }else if(snapshot.data.toString() == '')
+      //           return const Login();
+      //         }
+      //       }
+      //     }),
     );
   }
 }

@@ -26,9 +26,23 @@ class AllStrings {
   static String confirmpasswordvalidate = "Confirm Password is Required";
   static String passwordnotmatched =
       "Password and Confirm Password does not match";
-  static String get baseurl => "https://nodeapplication-8611eb651b54.herokuapp.com/api";
+  static String get baseurl =>
+      "https://nodeapplication-8611eb651b54.herokuapp.com/api";
   static String otpsent =
       "We have sent an OTP to Your Email and Your Registered Mobile Number";
   static String verifyotp = "Verify";
-  static String resetpasswordstring = "Please Enter Your New Password in the given field";
+  static String resetpasswordstring =
+      "Please Enter Your New Password in the given field";
+  static String requestBloodCheck = "Blood Request";
+  static String yourrank = "Your Rank";
+  static String play = "Play";
+  static String informbanner =
+      "Inform us if you or your family\nmember is affected !";
+  static String informaffectivity = "Inform";
+  static String labreports = "Lab Reports";
+  static String channeldoctors = "Channel Doctors";
+  static String campaigns = "Campaigns";
+  static String emergency = "Emergency Vehicles";
+  static String frequentlyused = "Frequently Used";
+  static String affectedrate = "Affected Rate";
 }

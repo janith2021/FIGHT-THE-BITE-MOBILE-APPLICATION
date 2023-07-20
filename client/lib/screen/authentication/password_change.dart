@@ -72,9 +72,10 @@ class ChangePassword extends StatelessWidget {
                           borderradius: 40,
                           boxcolor: Colors.red,
                           borderwidth: 3,
-                          fontcolor: Colors.white,
-                          fontsize: AllDimensions.px20,
-                          text: 'Reset'))
+                          btnWidth: MediaQuery.of(context).size.width * 0.9,
+                          styles: GoogleFonts.aldrich(color: AppColors.white,fontWeight: FontWeight.bold,fontSize: AllDimensions.px30,),
+                          text: 'Reset')
+                          )
                 ],
               ),
             ),
