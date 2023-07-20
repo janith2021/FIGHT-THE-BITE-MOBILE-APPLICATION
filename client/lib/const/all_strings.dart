@@ -33,11 +33,16 @@ class AllStrings {
   static String verifyotp = "Verify";
   static String resetpasswordstring =
       "Please Enter Your New Password in the given field";
-  static String addvehicle = "Add Vehicle";
-  static String campaigns = "Campaigns";
   static String requestBloodCheck = "Blood Request";
   static String yourrank = "Your Rank";
   static String play = "Play";
-  static String informbanner = "Inform us if you or your family member is affected !";
+  static String informbanner =
+      "Inform us if you or your family\nmember is affected !";
   static String informaffectivity = "Inform";
+  static String labreports = "Lab Reports";
+  static String channeldoctors = "Channel Doctors";
+  static String campaigns = "Campaigns";
+  static String emergency = "Emergency Vehicles";
+  static String frequentlyused = "Frequently Used";
+  static String affectedrate = "Affected Rate";
 }

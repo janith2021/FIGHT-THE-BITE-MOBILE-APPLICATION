@@ -29,6 +29,8 @@ class _UserDashboardState extends State<UserDashboard> {
     });
   }
 
+@override
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -93,6 +95,34 @@ class _UserDashboardState extends State<UserDashboard> {
                           ]),
                     ),
                     Padding(
+                      padding: EdgeInsets.all(AllDimensions.px8),
+                      child: Container(
+                        height: AllDimensions.px168,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(color: AppColors.white,borderRadius: BorderRadius.circular(AllDimensions.px10),boxShadow: [BoxShadow(blurRadius: AllDimensions.px10,color: AppColors.red)]),
+                        child: Stack(
+                          children: [
+                            Image.asset("Assets/affectedratebackground.png"),
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(child: Text(AllStrings.affectedrate,style: GoogleFonts.poppins(fontSize: AllDimensions.px18,fontWeight: FontWeight.bold),)),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('123',style: GoogleFonts.poppins(fontSize: AllDimensions.px60,color: AppColors.red,fontWeight: FontWeight.bold),),
+                                    Text('/1245',style: GoogleFonts.poppins(fontSize: AllDimensions.px25,color: AppColors.black,fontWeight: FontWeight.bold),)
+                                  ],
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         height: AllDimensions.px168,
@@ -114,28 +144,14 @@ class _UserDashboardState extends State<UserDashboard> {
                                       Image.asset("Assets/coin.png"),
                                       Column(
                                         children: [
-                                          Text(AllStrings.yourrank,style: GoogleFonts.poppins(fontSize: AllDimensions.px25,fontWeight: FontWeight.bold),),
+                                         Text(AllStrings.yourrank,style: GoogleFonts.poppins(fontSize: AllDimensions.px25,fontWeight: FontWeight.bold),),
                                          Text("278",style: GoogleFonts.poppins(fontSize: AllDimensions.px40, fontWeight: FontWeight.bold, color: AppColors.grey),)
                                         ],
                                       )
                                       
                                     ],
                                   ),
-                                  // MaterialButton(onPressed: (){},color: AppColors.red,minWidth: AllDimensions.px114,child: Text(AllStrings.play))
-                                  // AnimatedButton(animatedOn: AnimatedOn.onHover,height: AllDimensions.px30,width: AllDimensions.px114,text: AllStrings.play, onPress: (){},selectedTextColor: Colors.black,transitionType: TransitionType.TOP_TO_BOTTOM,textStyle: GoogleFonts.poppins(fontSize: AllDimensions.px20,fontWeight: FontWeight.bold,),backgroundColor: AppColors.red,borderRadius: AllDimensions.px10,animationDuration: Duration(minutes: 5),)
-                                  // MaterialButton(,onPressed: (){},child: Text(AllStrings.yourrank),color: AppColors.red,minWidth: AllDimensions.px114)
-                                  Container(
-                                    width: AllDimensions.px118,
-                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(AllDimensions.px10),color: AppColors.red),
-                                    child: Center(
-                                      child: Text(
-                                        AllStrings.play,
-                                        style: GoogleFonts.poppins(
-                                            fontSize: AllDimensions.px20,
-                                            color: AppColors.white),
-                                      ),
-                                    ),
-                                  )
+                                  CustomButton(bordercolor: AppColors.white, borderradius: AllDimensions.px50, boxcolor: AppColors.red, borderwidth: 0, text: AllStrings.play, styles: GoogleFonts.lato(fontSize: AllDimensions.px20,fontWeight: FontWeight.bold,color: AppColors.white),btnWidth: AllDimensions.px118,btnheight: AllDimensions.px34,)
                                 ],
                               ),
                             )
@@ -144,53 +160,93 @@ class _UserDashboardState extends State<UserDashboard> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(AllDimensions.px8),
                       child: Container(
-                        decoration: BoxDecoration(boxShadow: [BoxShadow(blurRadius: AllDimensions.px10, color: AppColors.red)]),
+                        // decoration: BoxDecoration(boxShadow: [BoxShadow(blurRadius: AllDimensions.px5)],),
+                        decoration: BoxDecoration(boxShadow: [BoxShadow(blurRadius: AllDimensions.px5,color: AppColors.red)]),
                         child: Stack(
                           children: [
-                            Image.asset("Assets/informaffectivity.png"),
-                            Column(
-                              children: [
-                                Text(AllStrings.informbanner,style: GoogleFonts.poppins(color: AppColors.black,fontSize: AllDimensions.px18,fontWeight: FontWeight.bold),),
-                                Container(
-                                  
-                                  decoration: BoxDecoration(color: AppColors.red),  
-                                  child: Text(AllStrings.informaffectivity,),                                  
-                                )        
-                              ],
-                            )
-                            
-                          ],
-                        ),
+                            ClipRRect(borderRadius: BorderRadius.circular(AllDimensions.px10),child: Image.asset("Assets/informaffectivity.png")),
+                            Padding(
+                              padding: EdgeInsets.only(left: AllDimensions.px40,top: AllDimensions.px10),
+                              child: Text(
+                                AllStrings.informbanner,
+                                style: GoogleFonts.poppins(
+                                  color: AppColors.black,
+                                  fontSize: AllDimensions.px14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left : AllDimensions.px40,top: AllDimensions.px70),
+                              child: Row(     
+                                children: [
+                                  CustomButton(
+                                    bordercolor: AppColors.white,
+                                    borderradius: AllDimensions.px50,
+                                    boxcolor: AppColors.red,
+                                    borderwidth: 0,
+                                    text: AllStrings.informaffectivity,
+                                    styles: GoogleFonts.lato(
+                                      fontSize: AllDimensions.px20,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.white,
+                                    ),
+                                    btnWidth: AllDimensions.px118,
+                                    btnheight: AllDimensions.px34,
+                                  ) 
+                                   
+                                ],
+                              ),
+                            ),
+                          ],                          
+                        ),                      
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: EdgeInsets.all(AllDimensions.px10),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
+                          Text(AllStrings.frequentlyused,style: GoogleFonts.poppins(fontWeight: FontWeight.bold,fontSize: AllDimensions.px18),),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(AllDimensions.px10),
+                      child: Row(                       
+                        children: [
+                          Container( 
+                            height: AllDimensions.px184,
+                            width: AllDimensions.px184,     
                             decoration: BoxDecoration(
                                 boxShadow: [
-                                  BoxShadow(blurRadius: AllDimensions.px10)
+                                  BoxShadow(blurRadius: AllDimensions.px10),
                                 ],
                                 borderRadius:
                                     BorderRadius.circular(AllDimensions.px10),
                                 color: AppColors.white),
-                            padding: EdgeInsets.all(AllDimensions.px50),
-                            child: Center(
-                                child: Text(
-                              AllStrings.addvehicle,
-                              style: TextStyle(
-                                  color: AppColors.red,
-                                  fontSize: AllDimensions.px15,
-                                  fontWeight: FontWeight.bold),
-                            )),
+                            padding: EdgeInsets.all(AllDimensions.px10),
+                            child: Column(
+                              children: [
+                                Image.asset("Assets/labicon.png"),
+                                Text(
+                                  AllStrings.labreports,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: AllDimensions.px15,
+                                      color: AppColors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(
                             width: AllDimensions.px10,
                           ),
                           Container(
+                            height: AllDimensions.px184,
+                            width: AllDimensions.px184,   
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(blurRadius: AllDimensions.px10)
@@ -198,15 +254,16 @@ class _UserDashboardState extends State<UserDashboard> {
                                 borderRadius:
                                     BorderRadius.circular(AllDimensions.px10),
                                 color: AppColors.white),
-                            padding: EdgeInsets.all(AllDimensions.px50),
-                            child: Center(
-                                child: Text(
-                              AllStrings.campaigns,
-                              style: TextStyle(
-                                  color: AppColors.red,
-                                  fontSize: AllDimensions.px15,
-                                  fontWeight: FontWeight.bold),
-                            )),
+                            padding: EdgeInsets.all(AllDimensions.px10),
+                            child: Column(
+                              children: [
+                                 Image.asset("Assets/channeldoctoricon.png"),
+                                Text(
+                                  AllStrings.channeldoctors,
+                                  style: GoogleFonts.poppins(fontSize: AllDimensions.px15,color: AppColors.black,fontWeight: FontWeight.bold)
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
@@ -216,6 +273,8 @@ class _UserDashboardState extends State<UserDashboard> {
                       child: Row(
                         children: [
                           Container(
+                            height: AllDimensions.px184,
+                            width: AllDimensions.px184,   
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(blurRadius: AllDimensions.px10)
@@ -224,36 +283,45 @@ class _UserDashboardState extends State<UserDashboard> {
                                   BorderRadius.circular(AllDimensions.px10),
                               color: AppColors.white,
                             ),
-                            padding: EdgeInsets.all(AllDimensions.px50),
-                            child: Center(
-                                child: Text(
-                              AllStrings.requestBloodCheck,
-                              style: TextStyle(
-                                  color: AppColors.red,
-                                  fontSize: AllDimensions.px15,
-                                  fontWeight: FontWeight.bold),
-                            )),
+                            padding: EdgeInsets.all(AllDimensions.px10),
+                            child: Column(
+                              children: [
+                                Image.asset("Assets/campaignicon.png"),
+                                Text(
+                                  AllStrings.campaigns,
+                                 style: GoogleFonts.poppins(
+                                      fontSize: AllDimensions.px15,
+                                      color: AppColors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           ),
     
-                          // SizedBox(
-                          //   width: AllDimensions.px10,
-                          // ),
-                          // Container(
-                          //   width: MediaQuery.of(context).size.width * 0.5,
-                          //   decoration: BoxDecoration(
-                          //       borderRadius:
-                          //           BorderRadius.circular(AllDimensions.px10),
-                          //       color: AppColors.white),
-                          //   padding: EdgeInsets.all(AllDimensions.px50),
-                          //   child: Center(
-                          //       child: Text(
-                          //     AllStrings.addvehicle,
-                          //     style: TextStyle(
-                          //         color: AppColors.red,
-                          //         fontSize: AllDimensions.px15,
-                          //         fontWeight: FontWeight.bold),
-                          //   )),
-                          // )
+                          SizedBox(
+                            width: AllDimensions.px10,
+                          ),
+                          Container(
+                            height: AllDimensions.px184,
+                            width: AllDimensions.px184,   
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.circular(AllDimensions.px10),
+                                color: AppColors.white, boxShadow: [BoxShadow(blurRadius: AllDimensions.px10)]),
+                            padding: EdgeInsets.all(AllDimensions.px10),
+                            child: Column(
+                              children: [
+                                Image.asset("Assets/emergencyvehicleicon.png"),
+                                Text(
+                                  AllStrings.emergency,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: AllDimensions.px15,
+                                      color: AppColors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          )
                          
                         ],
                       ),
