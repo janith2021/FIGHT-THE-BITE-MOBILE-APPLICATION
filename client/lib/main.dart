@@ -6,6 +6,8 @@ import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.
 import 'package:client/screen/officer/PHI/phi_dashboard.dart';
 import 'package:client/screen/user/user_dashboard.dart';
 import 'package:client/widget/splash_screen.dart';
+import 'package:splash_view/source/presentation/pages/pages.dart';
+import 'package:splash_view/source/presentation/presentation.dart';
 
 import 'const/all_imports.dart';
 
@@ -28,8 +30,9 @@ class Myapp extends StatelessWidget {
         ChangeNotifierProvider(create: (_)=>ChangePasswordProvider()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: Snackbar.scaffoldMessengerKey,
-        initialRoute: Splash.routename,
+        // initialRoute: Splash.routename,
         // initialRoute: OtpScreen.routename,
         routes: {
           Splash.routename : (_) => const Splash(),
@@ -42,7 +45,7 @@ class Myapp extends StatelessWidget {
           GramaNiladhariDashBoard.routename : (_) => const GramaNiladhariDashBoard(),
           PHIDashBoard.routename : (_) => const PHIDashBoard(),
         },
-        home: const Splash()
+        home: SplashView(gradient: LinearGradient(colors: [AppColors.yellow,AppColors.orange]),loadingIndicator: CircularProgressIndicator(backgroundColor: AppColors.red,color: AppColors.green),logo: Image.asset("Assets/logo.png"),done: Done(Login()),)
       ),
     );
   }
