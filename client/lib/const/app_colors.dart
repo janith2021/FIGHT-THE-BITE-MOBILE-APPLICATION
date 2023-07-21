@@ -8,6 +8,8 @@ class AppColors {
   static Color lightgrey = _colorFromHex("D3D3D3");
   static Color grey = _colorFromHex("A098AE");
   static Color black = _colorFromHex("000000");
+  static Color yellow = _colorFromHex("f1c40f");
+  static Color orange = _colorFromHex("e67e22");
 
   static Color _colorFromHex(String value) {
     return Color(int.parse("FF$value", radix: 16));

@@ -56,6 +56,8 @@ dependencies:
   hive: ^2.2.3
   shared_preferences: ^2.2.0
   flutter_animated_button: ^2.0.3
+  auto_size_text: ^3.0.0
+  splash_view: ^2.0.1
 
   # flutter_tawk: ^0.1.0
 
