@@ -16,7 +16,7 @@ class ResetPassword extends StatelessWidget {
             child: Column(
               children: [
                 Image.asset(
-                  "Assets/reset.png",
+                  "Assets/Reset_Password/reset.png",
                   width: MediaQuery.of(context).size.width,
                 ),
                 SizeBox().sizedBox10,

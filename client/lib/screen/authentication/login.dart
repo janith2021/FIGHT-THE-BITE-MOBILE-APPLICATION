@@ -21,19 +21,19 @@ class Login extends StatelessWidget {
                 children: [
                   CustomCarousel(autoplay: true, durationInSeconds: 1, items: [
                     Image.asset(
-                      "Assets/login1.png",
+                      "Assets/Login/login1.png",
                     ),
                     Image.asset(
-                      "Assets/login2.png",
+                      "Assets/Login/login2.png",
                     ),
                     Image.asset(
-                      "Assets/login3.png",
+                      "Assets/Login/login3.png",
                     ),
                     Image.asset(
-                      "Assets/login4.png",
+                      "Assets/Login/login4.png",
                     ),
                     Image.asset(
-                      "Assets/login5.png",
+                      "Assets/Login/login5.png",
                     )
                   ]),
                   CustomTextField(

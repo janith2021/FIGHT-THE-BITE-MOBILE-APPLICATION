@@ -2,11 +2,11 @@ import 'package:client/providers/change_password_provider.dart';
 import 'package:client/providers/otp_provider.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
-import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
-import 'package:client/screen/officer/PHI/phi_dashboard.dart';
-import 'package:client/screen/user/user_dashboard.dart';
+// import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
+// import 'package:client/screen/officer/PHI/phi_dashboard.dart';
+// import 'package:client/screen/user/user_dashboard.dart';
 import 'package:client/widget/splash_screen.dart';
-import 'package:splash_view/source/presentation/pages/pages.dart';
+// import 'package:splash_view/source/presentation/pages/pages.dart';
 import 'package:splash_view/source/presentation/presentation.dart';
 
 import 'const/all_imports.dart';
@@ -45,7 +45,7 @@ class Myapp extends StatelessWidget {
           GramaNiladhariDashBoard.routename : (_) => const GramaNiladhariDashBoard(),
           PHIDashBoard.routename : (_) => const PHIDashBoard(),
         },
-        home: SplashView(gradient: LinearGradient(colors: [AppColors.yellow,AppColors.orange]),loadingIndicator: CircularProgressIndicator(backgroundColor: AppColors.red,color: AppColors.green),logo: Image.asset("Assets/logo.png"),done: Done(Login()),)
+        home: SplashView(gradient: LinearGradient(colors: [AppColors.yellow,AppColors.orange]),loadingIndicator: CircularProgressIndicator(backgroundColor: AppColors.red,color: AppColors.green),logo: Image.asset("Assets/splash_screen/logo.png"),done: Done(Login()),)
       ),
     );
   }
