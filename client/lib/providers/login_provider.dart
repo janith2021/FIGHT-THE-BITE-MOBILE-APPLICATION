@@ -17,7 +17,7 @@ class LoginProvider extends ChangeNotifier {
 
   updateobscureText() {
     _obscureText = !_obscureText;
-    notifyListeners();
+     notifyListeners();
   }
 
   formvalidation(BuildContext context) async {
@@ -76,7 +76,7 @@ class LoginProvider extends ChangeNotifier {
           emailController.text = "";
           passwordController.text = "";
 
-          notifyListeners();
+          // notifyListeners();
         } else {
           // ignore: use_build_context_synchronously
           Navigator.pushNamed(context, "/officer/phi/dashboard");
@@ -94,7 +94,7 @@ class LoginProvider extends ChangeNotifier {
           emailController.text = "";
           passwordController.text = "";
 
-          notifyListeners();
+          // notifyListeners();
         }
         // ignore: use_build_context_synchronously
       } else {
