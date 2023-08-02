@@ -23,18 +23,18 @@ class _LoginState extends State<Login> {
     }
 
     Future<List<Carousel>> CarouselImages() async {
-      var res = await http.get(Uri.parse("http://192.168.8.183:5000/api/carousel"));
+      var url = "${AllStrings.baseurl}/carousel";
+      var res = await http.get(Uri.parse(url));
       Map result = await jsonDecode(res.body);
       List<dynamic> images = result["image"];
       for (var img in images) {
         var image = img["image"];
         var caption = img["caption"];
         var status = img["status"];
-        if(img["status"] == "login"){
+        if (img["status"] == "login") {
           Carousel carousel = Carousel(image, caption, status);
           imagelist.add(carousel);
         }
-        
       }
       return imagelist;
     }
@@ -59,8 +59,16 @@ class _LoginState extends State<Login> {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return Padding(
-                            padding:  EdgeInsets.all(8.0),
-                            child: CustomCarousel(autoplay: false, durationInSeconds: 0, items: [Center(child: CircularProgressIndicator(color: AppColors.red,))]),
+                            padding: EdgeInsets.all(8.0),
+                            child: CustomCarousel(
+                                autoplay: false,
+                                durationInSeconds: 0,
+                                items: [
+                                  Center(
+                                      child: CircularProgressIndicator(
+                                    color: AppColors.red,
+                                  ))
+                                ]),
                           );
                         } else {
                           final imglist = imagelist
