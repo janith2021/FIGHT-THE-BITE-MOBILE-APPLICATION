@@ -14,7 +14,6 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    List<Carousel> imagelist = [];
     TextEditingController passwordcontrol = TextEditingController();
     bool obscuretext = false;
     void hello() {
@@ -27,6 +26,7 @@ class _LoginState extends State<Login> {
       var res = await http.get(Uri.parse(url));
       Map result = await jsonDecode(res.body);
       List<dynamic> images = result["image"];
+      List<Carousel> imagelist = [];
       for (var img in images) {
         var image = img["image"];
         var caption = img["caption"];
@@ -38,6 +38,24 @@ class _LoginState extends State<Login> {
       }
       return imagelist;
     }
+
+    // Stream<List<Carousel>> CarouselImages() async {
+    //   var url = "${AllStrings.baseurl}/carousel";
+    //   var res = await http.get(Uri.parse(url));
+    //   Map result = jsonDecode(res.body);
+    //   List<dynamic> images = result["image"];
+    //   List<Carousel> imglist = [];
+    //   for (var img in images) {
+    //     var image = img["image"];
+    //     var caption = img["caption"];
+    //     var status = img["status"];
+    //     if (img["status"] == "login") {
+    //       Carousel carousel = Carousel(image, caption, status);
+    //       imglist.add(carousel);
+    //     }
+    //   }
+    //   yield imglist;
+    // }
 
     return Consumer<LoginProvider>(builder: (context, provider, _) {
       return Scaffold(
@@ -71,7 +89,8 @@ class _LoginState extends State<Login> {
                                 ]),
                           );
                         } else {
-                          final imglist = imagelist
+                          final list = snapshot.data;
+                          final imglist = list!
                                   .map((item) => (Image.network(item.image)))
                                   .toList() ??
                               [];

@@ -1,7 +1,9 @@
 import 'package:client/providers/change_password_provider.dart';
 import 'package:client/providers/otp_provider.dart';
+import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
+import 'package:client/screen/organization/createCampaign.dart';
 // import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
 // import 'package:client/screen/officer/PHI/phi_dashboard.dart';
 // import 'package:client/screen/user/user_dashboard.dart';
@@ -44,6 +46,8 @@ class Myapp extends StatelessWidget {
           UserDashboard.routename : (_) => const UserDashboard(),
           GramaNiladhariDashBoard.routename : (_) => const GramaNiladhariDashBoard(),
           PHIDashBoard.routename : (_) => const PHIDashBoard(),
+          OrganizationDashboard.routename : (_) => const OrganizationDashboard(),
+          CreateCampaign.routename : (_) => const CreateCampaign(),
         },
         home: SplashView(gradient: LinearGradient(colors: [AppColors.yellow,AppColors.orange]),loadingIndicator: CircularProgressIndicator(backgroundColor: AppColors.red,color: AppColors.green),logo: Image.asset("Assets/splash_screen/logo.png"),done: Done(Login()),)
       ),

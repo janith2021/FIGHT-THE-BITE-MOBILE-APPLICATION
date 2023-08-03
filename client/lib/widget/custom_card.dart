@@ -38,7 +38,7 @@ class CustomCard extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            Image.asset(imageicon),
+            Image.asset(imageicon,width: AllDimensions.px100,height: AllDimensions.px100,),
             Text(
               cardname,
               textAlign: textalign,

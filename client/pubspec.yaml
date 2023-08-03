@@ -58,6 +58,9 @@ dependencies:
   flutter_animated_button: ^2.0.3
   auto_size_text: ^3.0.0
   splash_view: ^2.0.1
+  user_profile_avatar: ^0.1.2
+  circular_profile_avatar: ^2.0.5
+  one_clock: ^1.0.9
 
   # flutter_tawk: ^0.1.0
 
@@ -152,6 +155,7 @@ flutter:
     - Assets/Login/
     - Assets/Reset_Password/
     - Assets/splash_screen/
+    - Assets/organization/dashboard/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -45,4 +45,7 @@ class AllStrings {
   static String emergency = "Emergency Vehicles";
   static String frequentlyused = "Frequently Used";
   static String affectedrate = "Affected Rate";
+  static String createcampaign = "Create Campaign";
+  static String sponsorcampaign = "Sponsor For Campaign";
+  static String ongoingcampaign = "View Ongoing Campaign";
 }
