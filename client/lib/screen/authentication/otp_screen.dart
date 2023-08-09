@@ -20,7 +20,7 @@ class _OtpScreenState extends State<OtpScreen> {
         body: Stack(
           children: [
             Image.asset(
-              'Assets/otp.jpg',
+              'Assets/Reset_Password/otp.jpg',
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,

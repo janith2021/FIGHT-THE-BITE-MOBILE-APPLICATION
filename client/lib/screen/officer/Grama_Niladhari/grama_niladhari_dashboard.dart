@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// import 'package:hive/hive.dart';
+>>>>>>> 0bc2f4106f552948dcb7808a20da2b7ec718a5f5
 
 import '../../../const/all_imports.dart';
 
@@ -16,7 +20,7 @@ class _GramaNiladhariDashBoardState extends State<GramaNiladhariDashBoard> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     openBox();
   }
@@ -28,7 +32,10 @@ class _GramaNiladhariDashBoardState extends State<GramaNiladhariDashBoard> {
       _user = _userbox!.get('user');
     });
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0bc2f4106f552948dcb7808a20da2b7ec718a5f5
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +43,7 @@ class _GramaNiladhariDashBoardState extends State<GramaNiladhariDashBoard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Grama Niladhari Dashboard'),
+             Text('Grama Niladhari Dashboard',style: TextStyle(color: AppColors.green)),
             _user != null
                 ? Text(_user!)
                 : CircularProgressIndicator(

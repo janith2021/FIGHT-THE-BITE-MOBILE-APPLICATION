@@ -1,5 +1,6 @@
 class AllDimensions {
   // static double px0 = 0;
+  static double px2 = 2;
   static double px5 = 5;
   static double px8 = 8;
   static double px10 = 10;
