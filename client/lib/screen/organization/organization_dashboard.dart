@@ -53,58 +53,58 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        FutureBuilder(
-                            future: getuser(),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<Map<dynamic, dynamic>> snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.waiting) {
-                                return Container();
-                              } else {
-                                if (snapshot.hasError) {
-                                  return Text(
-                                      "There is an error : ${snapshot.error}");
-                                }
-                                final data = snapshot.data!["user"];
-                                print(data);
-                                // print(data);
-                                return Stack(
-                                  alignment: Alignment.centerLeft,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                          left: AllDimensions.px70),
-                                      width: MediaQuery.of(context).size.width *
-                                          0.6,
-                                      height: AllDimensions.px30,
-                                      decoration: BoxDecoration(
-                                          color: AppColors.red,
-                                          borderRadius: BorderRadius.circular(
-                                              AllDimensions.px50)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Text(
-                                            data["name"] ??
-                                                CircularProgressIndicator
-                                                    .adaptive(),
-                                            style: GoogleFonts.aBeeZee(
-                                              color: AppColors.white,
-                                              fontSize: AllDimensions.px20,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                            maxLines: 2,
-                                            overflow: TextOverflow.visible),
-                                      ),
-                                    ),
-                                    CircularProfileAvatar(
-                                      data["image"] ??
-                                          CircularProgressIndicator.adaptive(),
-                                      imageFit: BoxFit.contain,
-                                    ),
-                                  ],
-                                );
-                              }
-                            })
+                        // FutureBuilder(
+                        //     future: getuser(),
+                        //     builder: (BuildContext context,
+                        //         AsyncSnapshot<Map<dynamic, dynamic>> snapshot) {
+                        //       if (snapshot.connectionState ==
+                        //           ConnectionState.waiting) {
+                        //         return Container();
+                        //       } else {
+                        //         if (snapshot.hasError) {
+                        //           return Text(
+                        //               "There is an error : ${snapshot.error}");
+                        //         }
+                        //         final data = snapshot.data!["user"];
+                        //         print(data);
+                        //         // print(data);
+                        //         return Stack(
+                        //           alignment: Alignment.centerLeft,
+                        //           children: [
+                        //             Container(
+                        //               margin: EdgeInsets.only(
+                        //                   left: AllDimensions.px70),
+                        //               width: MediaQuery.of(context).size.width *
+                        //                   0.6,
+                        //               height: AllDimensions.px30,
+                        //               decoration: BoxDecoration(
+                        //                   color: AppColors.red,
+                        //                   borderRadius: BorderRadius.circular(
+                        //                       AllDimensions.px50)),
+                        //               child: Padding(
+                        //                 padding: const EdgeInsets.all(5.0),
+                        //                 child: Text(
+                        //                     data["name"] ??
+                        //                         CircularProgressIndicator
+                        //                             .adaptive(),
+                        //                     style: GoogleFonts.aBeeZee(
+                        //                       color: AppColors.white,
+                        //                       fontSize: AllDimensions.px20,
+                        //                     ),
+                        //                     textAlign: TextAlign.center,
+                        //                     maxLines: 2,
+                        //                     overflow: TextOverflow.visible),
+                        //               ),
+                        //             ),
+                        //             CircularProfileAvatar(
+                        //               data["image"] ??
+                        //                   CircularProgressIndicator.adaptive(),
+                        //               imageFit: BoxFit.contain,
+                        //             ),
+                        //           ],
+                        //         );
+                        //       }
+                        //     })
                       ],
                     ),
                   ),
