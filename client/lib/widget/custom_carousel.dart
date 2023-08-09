@@ -20,6 +20,7 @@ class CustomCarousel extends StatelessWidget {
     return CarouselSlider(
         items: items,
         options: CarouselOptions(
+            viewportFraction: 1,
             autoPlay: autoplay,
             height: height,
             autoPlayAnimationDuration: Duration(seconds: durationInSeconds)));
