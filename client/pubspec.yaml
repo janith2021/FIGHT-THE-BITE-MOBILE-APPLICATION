@@ -55,34 +55,49 @@ dependencies:
   localstorage: ^4.0.1+4
   hive: ^2.2.3
   shared_preferences: ^2.2.0
+  flutter_animated_button: ^2.0.3
+  auto_size_text: ^3.0.0
+  splash_view: ^2.0.1
+  user_profile_avatar: ^0.1.2
+  circular_profile_avatar: ^2.0.5
+  one_clock: ^1.0.9
+  shortid: ^0.1.2
+  flutter_dotenv: ^5.1.0
+  syncfusion_flutter_calendar: ^22.2.7
+  event_schedule_calendar: ^1.1.1
+  cr_calendar: ^1.2.1
+  flutter_neat_and_clean_calendar: ^0.3.14+32
+
+  # flutter_tawk: ^0.1.0
+
 
 icons_launcher:
-  image_path: "Assets/icon.png"
+  image_path: "Assets/launcher_icon/icon.png"
   platforms:
     android:
       enable: true
-      image_path: "Assets/icon.png"
+      image_path: "Assets/launcher_icon/icon.png"
       adaptive_background_color: "#ffd966"
       # adaptive_background_image: "Assets/icon.png"
-      adaptive_foreground_image: "Assets/icon.png"
+      adaptive_foreground_image: "Assets/launcher_icon/icon.png"
       # adaptive_round_image: "Assets/icon.png"
-      adaptive_monochrome_image: "Assets/icon.png"
+      adaptive_monochrome_image: "Assets/launcher_icon/icon.png"
     ios:
       enable: true
-      image_path: "Assets/icon.png"
+      image_path: "Assets/launcher_icon/icon.png"
     web:
       enable: true
-      image_path: "Assets/icon.png"
-      favicon_path: "Assets/icon.png"
+      image_path: "Assets/launcher_icon/icon.png"
+      favicon_path: "Assets/launcher_icon/icon.png"
     macos:
       enable: false
-      image_path: "Assets/icon.png"
+      image_path: "Assets/launcher_icon/icon.png"
     windows:
       enable: false
-      image_path: "Assets/icon.png"
+      image_path: "Assets/launcher_icon/icon.png"
     linux:
       enable: false
-      image_path: "Assets/icon.png"
+      image_path: "Assets/launcher_icon/icon.png"
 
 flutter_rename_app_plus:
   application_name: Fight The Bite
@@ -95,20 +110,20 @@ flutter_rename_app_plus:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "Assets/icon.png"
+  image_path: "Assets/launcher_icon/icon.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "Assets/icon.png"
+    image_path: "Assets/launcher_icon/icon.png"
     background_color: "#hexcode"
     theme_color: "#hexcode"
   windows:
     generate: true
-    image_path: "Assets/icon.png"
+    image_path: "Assets/launcher_icon/icon.png"
     icon_size: 48 # min:48, max:256, default: 48
   macos:
     generate: true
-    image_path: "Assets/icon.png"
+    image_path: "Assets/launcher_icon/icon.png"
 
 flutter_native_splash:
   android: true
@@ -142,6 +157,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - Assets/
+    - Assets/villagers/dashboard/
+    - Assets/Login/
+    - Assets/Reset_Password/
+    - Assets/splash_screen/
+    - Assets/organization/dashboard/
+    # - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

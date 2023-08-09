@@ -1,3 +1,6 @@
+// import 'dart:html';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:shortid/shortid.dart';
 import '../const/all_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -52,8 +55,9 @@ class SignupProvider extends ChangeNotifier {
         _passworderror == "" &&
         _confirmpassworderror == "" &&
         _mobileerror == "") {
-      var body = await signup();
-      debugPrint(body);
+      // ignore: use_build_context_synchronously
+      var body = await signup(context);
+      debugPrint(body.toString());
       if (body == 'error') {
         // ignore: use_build_context_synchronously
         ArtSweetAlert.show(
@@ -87,37 +91,63 @@ class SignupProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  signup() async {
+  signup(BuildContext context) async {
     setHeaders() =>
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
     // const cloud = "dbmtgupsy";
     // if (selectedfile.isNull) {
-    final cloudinary = Cloudinary.unsignedConfig(cloudName: "dbmtgupsy");
-    final response1 = await cloudinary.unsignedUpload(
-      uploadPreset: "fightthebite",
-      fileBytes: selectedfile!.readAsBytesSync(),
-      folder: 'FIGHT_THE_BITE/Users',
-      resourceType: CloudinaryResourceType.image,
-      fileName: 'FIGHT${controllername.text}_${controlleremail.text}_FIGHTTHEBITEUSERS',
-    );
-    debugPrint(response1.secureUrl);
-    var data = {
-      'name': controllername.text,
-      'email': controlleremail.text,
-      'password': controllerpassword.text,
-      'mobile': controllermobile.text,
-      'image': response1.secureUrl
-    };
-    var fullurl = '${AllStrings.baseurl}/register';
-    var response2 = await http.post(
-      Uri.parse(fullurl),
-      body: jsonEncode(data),
-      headers: setHeaders(),
-    );
-    var body = await jsonDecode(response2.body);
-    _snackbarmessage = body['message'];
-    notifyListeners();
-    return body['type'];
+    try {
+      var id = shortid.generate();
+      var date = DateTime.now();
+      final cloudinary =
+          Cloudinary.unsignedConfig(cloudName: dotenv.get("CLOUDNAME"));
+      final response1 = await cloudinary.unsignedUpload(
+        uploadPreset: "fightthebite",
+        fileBytes: selectedfile!.readAsBytesSync(),
+        folder: 'FIGHT_THE_BITE/Users',
+        resourceType: CloudinaryResourceType.image,
+        fileName:
+            'FIGHT${controllername.text}_${controlleremail.text}_${id}__${date}_FIGHTTHEBITEUSERS',
+      );
+      debugPrint(response1.secureUrl);
+      // CircularProgressIndicator();
+      if (response1.secureUrl != null) {
+        var data = {
+          'name': controllername.text,
+          'email': controlleremail.text,
+          'password': controllerpassword.text,
+          'mobile': controllermobile.text,
+          'image': response1.secureUrl,
+          'role': "villager",
+        };
+        var fullurl = '${AllStrings.baseurl}/villager/register';
+        // var fullurl = 'http://10.22.164.217:5000/api/villager/register';
+        var response2 = await http.post(
+          Uri.parse(fullurl),
+          body: jsonEncode(data),
+          headers: setHeaders(),
+        );
+        var body = await jsonDecode(response2.body);
+        _snackbarmessage = body['message'];
+        debugPrint(_snackbarmessage);
+        notifyListeners();
+        return body['type'];
+      } else {
+        // ignore: use_build_context_synchronously
+        ArtSweetAlert.show(
+            context: context,
+            artDialogArgs: ArtDialogArgs(
+                title: 'Error',
+                type: ArtSweetAlertType.danger,
+                text:
+                    "There is an Error while uploading the image. Please Try again Later."));
+      }
+    } catch (e) {
+      debugPrint('hello');
+      debugPrint(e.toString());
+    }
+
+    // debugPrint(response1.secureUrl);
 
     // var message2 = await jsonDecode(response2.body);
 

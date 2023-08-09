@@ -7,4 +7,8 @@ class SizeBox {
   SizedBox sizedBox10 = SizedBox(
     height: AllDimensions.px10,
   );
+
+  SizedBox sizedBox20 = SizedBox(
+    height: AllDimensions.px20,
+  );
 }

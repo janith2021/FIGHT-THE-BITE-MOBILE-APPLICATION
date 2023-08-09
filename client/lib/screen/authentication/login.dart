@@ -1,11 +1,62 @@
-import '../../const/all_imports.dart';
+import 'package:client/models/Carousel.dart';
 
-class Login extends StatelessWidget {
+import '../../const/all_imports.dart';
+import 'package:http/http.dart' as http;
+
+class Login extends StatefulWidget {
   static String get routeName => "/login";
   const Login({super.key});
 
   @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  @override
   Widget build(BuildContext context) {
+    // TextEditingController passwordcontrol = TextEditingController();
+    // bool obscuretext = false;
+    // void hello() {
+    //   passwordcontrol.text = "";
+    //   // setState(() {});
+    // }
+
+    Future<List<Carousel>> CarouselImages() async {
+      var url = "${AllStrings.baseurl}/carousel";
+      var res = await http.get(Uri.parse(url));
+      Map result = await jsonDecode(res.body);
+      List<dynamic> images = result["image"];
+      List<Carousel> imagelist = [];
+      for (var img in images) {
+        var image = img["image"];
+        var caption = img["caption"];
+        var status = img["status"];
+        if (img["status"] == "login") {
+          Carousel carousel = Carousel(image, caption, status);
+          imagelist.add(carousel);
+        }
+      }
+      return imagelist;
+    }
+
+    // Stream<List<Carousel>> CarouselImages() async {
+    //   var url = "${AllStrings.baseurl}/carousel";
+    //   var res = await http.get(Uri.parse(url));
+    //   Map result = jsonDecode(res.body);
+    //   List<dynamic> images = result["image"];
+    //   List<Carousel> imglist = [];
+    //   for (var img in images) {
+    //     var image = img["image"];
+    //     var caption = img["caption"];
+    //     var status = img["status"];
+    //     if (img["status"] == "login") {
+    //       Carousel carousel = Carousel(image, caption, status);
+    //       imglist.add(carousel);
+    //     }
+    //   }
+    //   yield imglist;
+    // }
+
     return Consumer<LoginProvider>(builder: (context, provider, _) {
       return Scaffold(
         backgroundColor: AppColors.white,
@@ -19,23 +70,40 @@ class Login extends StatelessWidget {
                   top: AllDimensions.px10),
               child: Column(
                 children: [
-                  CustomCarousel(autoplay: true, durationInSeconds: 1, items: [
-                    Image.asset(
-                      "Assets/login1.png",
-                    ),
-                    Image.asset(
-                      "Assets/login2.png",
-                    ),
-                    Image.asset(
-                      "Assets/login3.png",
-                    ),
-                    Image.asset(
-                      "Assets/login4.png",
-                    ),
-                    Image.asset(
-                      "Assets/login5.png",
-                    )
-                  ]),
+                  FutureBuilder(
+                      future: CarouselImages(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<Carousel>> snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: CustomCarousel(
+                                autoplay: false,
+                                durationInSeconds: 0,
+                                items: [
+                                  Center(
+                                      child: CircularProgressIndicator(
+                                    color: AppColors.red,
+                                  ))
+                                ]),
+                          );
+                        } else {
+                          final list = snapshot.data;
+                          // debugPrint(list.toString());
+                          final imglist = list!
+                              .map((item) => (Image.network(item.image)))
+                              .toList();
+                          print(imglist);
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CustomCarousel(
+                                autoplay: true,
+                                durationInSeconds: 1,
+                                items: imglist),
+                          );
+                        }
+                      }),
                   CustomTextField(
                     controller: provider.emailController,
                     hintText: AllStrings.emailHint,
@@ -62,7 +130,7 @@ class Login extends StatelessWidget {
                   ),
                   SizeBox().sizedBox10,
                   InkWell(
-                    onTap: () async{
+                    onTap: () async {
                       await provider.formvalidation(context);
                     },
                     child: CustomButton(
@@ -70,8 +138,13 @@ class Login extends StatelessWidget {
                         borderradius: AllDimensions.px30,
                         boxcolor: AppColors.red,
                         borderwidth: 3,
-                        fontcolor: AppColors.white,
-                        fontsize: AllDimensions.px30,
+                        btnWidth: MediaQuery.of(context).size.width * 0.9,
+                        btnheight: AllDimensions.px50,
+                        styles: GoogleFonts.aldrich(
+                          color: AppColors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: AllDimensions.px30,
+                        ),
                         text: AllStrings.login),
                   ),
                   SizeBox().sizedBox10,

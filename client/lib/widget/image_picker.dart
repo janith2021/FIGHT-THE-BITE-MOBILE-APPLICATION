@@ -20,7 +20,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
 
   _backgroundImage() {
     return selectedfile == null
-        ? const AssetImage('Assets/profile.png')
+        ?  const NetworkImage("https://img.freepik.com/premium-vector/businessman-avatar-cartoon-character-profile_18591-50581.jpg?w=740")//const AssetImage('Assets/profile.png')
         : FileImage(selectedfile!);
   }
 
@@ -41,6 +41,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
           ),
           onPressed: () {
             showModalBottomSheet(
+                useSafeArea: true, 
                 context: context,
                 builder: (_) {
                   return SizedBox(
@@ -51,17 +52,36 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                           onTap: () {
                             _pickImage(ImageSource.camera);
                           },
-                          title: Center(child: Text(AllStrings.camera)),
+                          title: Center(
+                            child: Row(
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // mainAxisSize: MainAxisSize.max,
+                              // crossAxisAlignment: CrossAxisAlignment.baseline,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Icon(Icons.camera),
+                                Text(AllStrings.camera),
+                              ],
+                            ),
+                          ),
                         ),
-                        const Divider(
+                        Divider(
+                          color: Colors.amber,
+                          thickness: AllDimensions.px2,
                           height: 20,
                         ),
                         ListTile(
                           onTap: () {
                             _pickImage(ImageSource.gallery);
                           },
-                          title: Center(
-                            child: Text(AllStrings.gallery),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.image),
+                              Text(AllStrings.gallery),
+                            ],
                           ),
                         ),
                       ],
