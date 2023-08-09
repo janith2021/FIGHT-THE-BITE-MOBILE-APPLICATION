@@ -1,4 +1,3 @@
-import 'package:flutter_animated_button/flutter_animated_button.dart';
 
 import '../../const/all_imports.dart';
 

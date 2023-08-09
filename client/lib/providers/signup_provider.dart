@@ -98,15 +98,16 @@ class SignupProvider extends ChangeNotifier {
       fileBytes: selectedfile!.readAsBytesSync(),
       folder: 'FIGHT_THE_BITE/Users',
       resourceType: CloudinaryResourceType.image,
-      fileName: 'FIGHT${controllername.text}_${controlleremail.text}_FIGHTTHEBITEUSERS',
+      fileName:
+          'FIGHT${controllername.text}_${controlleremail.text}_FIGHTTHEBITEUSERS',
     );
-    debugPrint(response1.secureUrl);
+    // debugPrint(response1.secureUrl);
     var data = {
       'name': controllername.text,
       'email': controlleremail.text,
       'password': controllerpassword.text,
       'mobile': controllermobile.text,
-      'image': response1.secureUrl
+      'image': 'hello',
     };
     var fullurl = '${AllStrings.baseurl}/register';
     var response2 = await http.post(

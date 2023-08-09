@@ -69,7 +69,7 @@ class _SplashState extends State<Splash> {
         width: MediaQuery.of(context).size.width,
         child: Image.asset('Assets/logo.png'),
       ),
-      defaultNextScreen: Login()
+      defaultNextScreen: const Login()
       // FutureBuilder(
       //     future: getuser(),
       //     builder: (BuildContext context, AsyncSnapshot snapshot) {
