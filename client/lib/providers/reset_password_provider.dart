@@ -19,7 +19,7 @@ class ResetPasswordProvider extends ChangeNotifier {
 
     if (_emailError == "") {
       var response = await sendotp();
-      debugPrint(response);
+      //  debugPrint(response);
       if (response == 'error') {
         // ignore: use_build_context_synchronously
         ArtSweetAlert.show(
@@ -61,6 +61,7 @@ class ResetPasswordProvider extends ChangeNotifier {
     var res = await http.post(Uri.parse(fullUrl),
         body: jsonEncode(data), headers: setHeaders());
     var body = await jsonDecode(res.body);
+    debugPrint(body.toString());
     sweetalertmessage = body['message'];
     debugPrint(body['otp']);
     // debugPrint(body['token']);

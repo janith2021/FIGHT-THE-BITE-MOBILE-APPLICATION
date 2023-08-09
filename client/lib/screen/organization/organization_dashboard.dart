@@ -1,3 +1,6 @@
+// import 'dart:ffi';
+// import 'dart:html';
+
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:client/const/all_imports.dart';
 import 'package:client/widget/custom_card.dart';
@@ -6,17 +9,22 @@ import 'package:one_clock/one_clock.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:circula';
 
-class OrganizationDashboard extends StatelessWidget {
+class OrganizationDashboard extends StatefulWidget {
   static String get routename => "/organization/dashboard";
   const OrganizationDashboard({super.key});
 
+  @override
+  State<OrganizationDashboard> createState() => _OrganizationDashboardState();
+}
+
+class _OrganizationDashboardState extends State<OrganizationDashboard> {
   Future<Map<dynamic, dynamic>> getuser() async {
     // var box = Hive.box('users');
     // var email = box.get('user');
     // print(email);
     SharedPreferences prefer = await SharedPreferences.getInstance();
     final String? email = prefer.getString('user');
-    var url = '${AllStrings.baseurl}/api/user';
+    var url = '${AllStrings.baseurl}/organization/view';
     var data = {
       "email": email,
     };
@@ -27,6 +35,7 @@ class OrganizationDashboard extends StatelessWidget {
     var res = await http.post(Uri.parse("${AllStrings.baseurl}/user"),
         body: jsonEncode(data), headers: setHeaders());
     Map users = await jsonDecode(res.body);
+    prefer.setString("userid", users["user"]["_id"]);
     return users;
   }
 
@@ -116,14 +125,18 @@ class OrganizationDashboard extends StatelessWidget {
                   SizeBox().sizedBox20,
                   CustomCarousel(autoplay: true, durationInSeconds: 1, items: [
                     Container(
-                        child: Image.network(
-                      "https://img.freepik.com/free-vector/business-people-entrepreneur_24877-63439.jpg?w=740&t=st=1691012089~exp=1691012689~hmac=e19ad348a23ac51ef8429a0af30001f0c07d1d322092645e05f57f5abe1ad12b",
+                        child: Image.asset(
+                      // "https://img.freepik.com/free-vector/business-people-entrepreneur_24877-63439.jpg?w=740&t=st=1691012089~exp=1691012689~hmac=e19ad348a23ac51ef8429a0af30001f0c07d1d322092645e05f57f5abe1ad12b",
+                      "Assets/Login/login1.png",
                       fit: BoxFit.fill,
+
                       width: MediaQuery.of(context).size.width,
                     )),
                     Container(
-                        child: Image.network(
-                      "https://img.freepik.com/free-vector/businesspeople-office-with-e-mail-marketing-icons_24877-51302.jpg?w=740&t=st=1691012135~exp=1691012735~hmac=cb3dbf696cb8e486d33e45d4acd72cd9cc6b3230102fbf4c305fb8dcf2a50771",
+                        child: Image.asset(
+                      "Assets/Login/login2.png",
+                      // "https://img.freepik.com/free-vector/businesspeople-office-with-e-mail-marketing-icons_24877-51302.jpg?w=740&t=st=1691012135~exp=1691012735~hmac=cb3dbf696cb8e486d33e45d4acd72cd9cc6b3230102fbf4c305fb8dcf2a50771",
+                      // "https://img.freepik.com/free-vector/lazy-unorganized-office-people-causing-mess-problems-funny-chaotic-characters-computer-desks-flat-vector-illustration-conflict-chaos-workplace-organization-concept-banner_74855-24289.jpg?w=1060&t=st=1691492380~exp=1691492980~hmac=73faa2dc5173a9bb2f9870442d4c73675c84952ac059b33391c939b94fb29d45",
                       fit: BoxFit.fill,
                       width: MediaQuery.of(context).size.width,
                     )),

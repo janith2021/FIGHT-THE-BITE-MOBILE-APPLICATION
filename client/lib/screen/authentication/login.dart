@@ -14,12 +14,12 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController passwordcontrol = TextEditingController();
-    bool obscuretext = false;
-    void hello() {
-      passwordcontrol.text = "";
-      // setState(() {});
-    }
+    // TextEditingController passwordcontrol = TextEditingController();
+    // bool obscuretext = false;
+    // void hello() {
+    //   passwordcontrol.text = "";
+    //   // setState(() {});
+    // }
 
     Future<List<Carousel>> CarouselImages() async {
       var url = "${AllStrings.baseurl}/carousel";
@@ -90,11 +90,11 @@ class _LoginState extends State<Login> {
                           );
                         } else {
                           final list = snapshot.data;
+                          // debugPrint(list.toString());
                           final imglist = list!
-                                  .map((item) => (Image.network(item.image)))
-                                  .toList() ??
-                              [];
-                          // print(imglist);
+                              .map((item) => (Image.network(item.image)))
+                              .toList();
+                          print(imglist);
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: CustomCarousel(

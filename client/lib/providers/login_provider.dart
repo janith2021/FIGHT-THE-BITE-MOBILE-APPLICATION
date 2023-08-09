@@ -46,7 +46,7 @@ class LoginProvider extends ChangeNotifier {
       // print(body);
       if (body['type'] == 'success') {
         print(body['role']);
-        if (body['role'] == 'user') {
+        if (body['role'] == 'Villager') {
           // ignore: use_build_context_synchronously
           Navigator.pushNamed(context, "/user/dashboard");
           // ignore: use_build_context_synchronously
@@ -85,7 +85,7 @@ class LoginProvider extends ChangeNotifier {
           // notifyListeners();
         } else {
           // ignore: use_build_context_synchronously
-          Navigator.pushNamed(context, "/officer/phi/dashboard");
+          Navigator.pushNamed(context, "/user/dashboard");
           // ignore: use_build_context_synchronously
           ArtSweetAlert.show(
               context: context,

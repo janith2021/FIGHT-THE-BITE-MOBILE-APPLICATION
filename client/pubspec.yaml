@@ -61,6 +61,12 @@ dependencies:
   user_profile_avatar: ^0.1.2
   circular_profile_avatar: ^2.0.5
   one_clock: ^1.0.9
+  shortid: ^0.1.2
+  flutter_dotenv: ^5.1.0
+  syncfusion_flutter_calendar: ^22.2.7
+  event_schedule_calendar: ^1.1.1
+  cr_calendar: ^1.2.1
+  flutter_neat_and_clean_calendar: ^0.3.14+32
 
   # flutter_tawk: ^0.1.0
 
@@ -156,6 +162,7 @@ flutter:
     - Assets/Reset_Password/
     - Assets/splash_screen/
     - Assets/organization/dashboard/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

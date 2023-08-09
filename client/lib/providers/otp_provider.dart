@@ -34,6 +34,7 @@ class OtpProvider extends ChangeNotifier {
           'Authorization': 'Bearer $jwttoken'
         };
     var fullurl = '${AllStrings.baseurl}/verifyotp';
+    // var fullurl = 'http://192.168.141.183:5000/api/verifyotp';
     var res = await http.post(Uri.parse(fullurl),
         body: jsonEncode(OTP), headers: setHeaders());
     var body = await jsonDecode(res.body);
