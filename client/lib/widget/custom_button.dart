@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
   final TextStyle styles;
   final double btnWidth;
   final double? btnheight;
+  final double? shadow;
 
   const CustomButton(
       {super.key,
@@ -21,7 +22,8 @@ class CustomButton extends StatelessWidget {
       required this.text,
       required this.styles,
       required this.btnWidth,
-      this.btnheight
+      this.btnheight,
+      this.shadow,
       });
 
   @override
@@ -36,7 +38,7 @@ class CustomButton extends StatelessWidget {
           border: Border.all(
             color: bordercolor,
             width: borderwidth,
-          )),
+          ),boxShadow: [BoxShadow(blurRadius: shadow ?? AllDimensions.px10)]),
       child: Center(
           child: Text(
         text,

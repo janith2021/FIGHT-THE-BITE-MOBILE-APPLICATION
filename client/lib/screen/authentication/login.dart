@@ -1,4 +1,5 @@
 import 'package:client/models/Carousel.dart';
+import 'package:constrained_scroll_view/constrained_scroll_view.dart';
 
 import '../../const/all_imports.dart';
 import 'package:http/http.dart' as http;
@@ -62,12 +63,12 @@ class _LoginState extends State<Login> {
         backgroundColor: AppColors.white,
         resizeToAvoidBottomInset: false,
         body: SafeArea(
-          child: SingleChildScrollView(
+          child: ConstrainedScrollView(
             child: Padding(
               padding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width * 0.05,
                   right: MediaQuery.of(context).size.width * 0.05,
-                  top: AllDimensions.px10),
+                  top: AllDimensions.px40),
               child: Column(
                 children: [
                   FutureBuilder(
@@ -89,21 +90,25 @@ class _LoginState extends State<Login> {
                                 ]),
                           );
                         } else {
+                          if (snapshot.hasError) {
+                            return CustomCarousel(
+                                autoplay: false,
+                                durationInSeconds: 0,
+                                items: [Center(child: Text("Images Not Found! Please Ensure that You have a valid Internet Connectivity.",style: GoogleFonts.poppins(color: AppColors.red,fontWeight: FontWeight.bold,fontSize: AllDimensions.px20),))]);
+                          }
                           final list = snapshot.data;
                           // debugPrint(list.toString());
                           final imglist = list!
-                              .map((item) => (Image.network(item.image)))
+                              .map((item) => (Container(child: Image.network(item.image,fit: BoxFit.fill,),width: MediaQuery.of(context).size.width,)))
                               .toList();
                           print(imglist);
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: CustomCarousel(
-                                autoplay: true,
-                                durationInSeconds: 1,
-                                items: imglist),
-                          );
+                          return CustomCarousel(
+                              autoplay: true,
+                              durationInSeconds: 1,
+                              items: imglist);
                         }
                       }),
+                  SizeBox().sizedBox20,    
                   CustomTextField(
                     controller: provider.emailController,
                     hintText: AllStrings.emailHint,
@@ -128,26 +133,45 @@ class _LoginState extends State<Login> {
                     label: AllStrings.password,
                     errorText: provider.passwordError,
                   ),
-                  SizeBox().sizedBox10,
+                  Padding(
+                    padding: EdgeInsets.only(right:  AllDimensions.px20),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                         TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, "/reset");
+                            },
+                            child: Text(
+                              AllStrings.resetPassword,
+                              style: TextStyle(
+                                  fontSize: AllDimensions.px20,
+                                  color: AppColors.red),
+                            ))
+                      ],
+                    ),
+                  ),
+                  SizeBox().sizedBox20,
                   InkWell(
                     onTap: () async {
                       await provider.formvalidation(context);
                     },
                     child: CustomButton(
-                        bordercolor: Colors.black,
-                        borderradius: AllDimensions.px30,
-                        boxcolor: AppColors.red,
+                        bordercolor: AppColors.lightred,
+                        borderradius: AllDimensions.px50,
+                        boxcolor: AppColors.lightred,
                         borderwidth: 3,
                         btnWidth: MediaQuery.of(context).size.width * 0.9,
-                        btnheight: AllDimensions.px50,
-                        styles: GoogleFonts.aldrich(
+                        btnheight: AllDimensions.px39,
+                        styles: GoogleFonts.lato(
                           color: AppColors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: AllDimensions.px30,
+                          fontSize: AllDimensions.px20,
                         ),
-                        text: AllStrings.login),
+                        text: AllStrings.login,shadow: AllDimensions.px10),
                   ),
-                  SizeBox().sizedBox10,
+                  SizeBox().sizedBox20,
                   InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, "/register");
@@ -167,15 +191,7 @@ class _LoginState extends State<Login> {
                           ]),
                     ),
                   ),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/reset");
-                      },
-                      child: Text(
-                        AllStrings.resetPassword,
-                        style: TextStyle(
-                            fontSize: AllDimensions.px20, color: AppColors.red),
-                      ))
+                 
                 ],
               ),
             ),
