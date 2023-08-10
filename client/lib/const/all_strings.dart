@@ -7,7 +7,7 @@ class AllStrings {
   static String dontHaveAccount = "Don't Have an Account? ";
   static String signUp = "Sign Up";
   static String login = "Login";
-  static String resetPassword = "Reset Password";
+  static String resetPassword = "Forgot Password?";
   static String register = "Register";
   static String haveanaccount = "Already Have an Account? ";
   static String name = "Name";

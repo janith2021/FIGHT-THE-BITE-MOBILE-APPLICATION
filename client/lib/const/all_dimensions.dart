@@ -13,6 +13,7 @@ class AllDimensions {
   static double px25 = 25;
   static double px30 = 30;
   static double px34 = 34;
+  static double px39 = 39;
   static double px40 = 40;
   static double px50 = 50;
   static double px60 = 60;

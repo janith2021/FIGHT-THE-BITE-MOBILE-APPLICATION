@@ -177,6 +177,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.1"
+  constrained_scroll_view:
+    dependency: "direct main"
+    description:
+      name: constrained_scroll_view
+      sha256: a3e1d2f0a0284fde3a3aea3db5e4a68cac27f62f856f27162e96be72e6e03b8c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   convert:
     dependency: transitive
     description:
