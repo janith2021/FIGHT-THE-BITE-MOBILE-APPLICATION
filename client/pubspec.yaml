@@ -67,6 +67,7 @@ dependencies:
   event_schedule_calendar: ^1.1.1
   cr_calendar: ^1.2.1
   flutter_neat_and_clean_calendar: ^0.3.14+32
+  constrained_scroll_view: ^0.1.0
 
   # flutter_tawk: ^0.1.0
 
@@ -162,7 +163,7 @@ flutter:
     - Assets/Reset_Password/
     - Assets/splash_screen/
     - Assets/organization/dashboard/
-    # - .env
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

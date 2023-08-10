@@ -1,6 +1,9 @@
+<<<<<<< HEAD
+=======
 import 'package:client/widget/custom_card.dart';
 import 'package:client/widget/custom_dialog_box.dart';
 // import 'package:flutter_animated_button/flutter_animated_button.dart';
+>>>>>>> 0bc2f4106f552948dcb7808a20da2b7ec718a5f5
 
 import '../../const/all_imports.dart';
 

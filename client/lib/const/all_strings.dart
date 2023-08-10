@@ -7,7 +7,7 @@ class AllStrings {
   static String dontHaveAccount = "Don't Have an Account? ";
   static String signUp = "Sign Up";
   static String login = "Login";
-  static String resetPassword = "Reset Password";
+  static String resetPassword = "Forgot Password?";
   static String register = "Register";
   static String haveanaccount = "Already Have an Account? ";
   static String name = "Name";
@@ -28,7 +28,7 @@ class AllStrings {
       "Password and Confirm Password does not match";
   static String get baseurl =>
       "https://nodeapplication-8611eb651b54.herokuapp.com/api";
-  // static String get baseurl => "http://10.22.164.217:5000/api";
+  // static String get baseurl => "http://192.168.8.100:5000/api";
   static String otpsent =
       "We have sent an OTP to Your Email and Your Registered Mobile Number";
   static String verifyotp = "Verify";
@@ -49,4 +49,6 @@ class AllStrings {
   static String createcampaign = "Create Campaign";
   static String sponsorcampaign = "Sponsor For Campaign";
   static String ongoingcampaign = "View Ongoing Campaign";
+  static String imageurl =
+      "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-855.jpg?w=740&t=st=1691606622~exp=1691607222~hmac=2dd7d07952822c438a91a4bcf35b737c7386a4f7e735d11ca818b39222759d13";
 }
