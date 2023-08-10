@@ -3,6 +3,7 @@ import 'package:client/providers/otp_provider.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
+import 'package:client/screen/organization/addCampaign.dart';
 import 'package:client/screen/organization/createCampaign.dart';
 // import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
 // import 'package:client/screen/officer/PHI/phi_dashboard.dart';
@@ -14,8 +15,8 @@ import 'package:splash_view/source/presentation/presentation.dart';
 
 import 'const/all_imports.dart';
 
-Future main() async{
-  await dotenv.load(fileName: ".env");
+Future main() async {
+  // await dotenv.load(fileName: ".env");
   runApp(const Myapp());
 }
 
@@ -50,7 +51,8 @@ class Myapp extends StatelessWidget {
             PHIDashBoard.routename: (_) => const PHIDashBoard(),
             OrganizationDashboard.routename: (_) =>
                 const OrganizationDashboard(),
-            CreateCampaign.routename: (_) =>  const CreateCampaign(),
+            CreateCampaign.routename: (_) => const CreateCampaign(),
+            MyForm.routename: (_) => MyForm(),
           },
           home: SplashView(
             gradient:
