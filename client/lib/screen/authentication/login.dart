@@ -89,6 +89,12 @@ class _LoginState extends State<Login> {
                                 ]),
                           );
                         } else {
+                          if (snapshot.hasError) {
+                            return CustomCarousel(
+                                autoplay: false,
+                                durationInSeconds: 0,
+                                items: [Center(child: Text("Images Not Found! Please Ensure that You have a valid Internet Connectivity.",style: GoogleFonts.poppins(color: AppColors.red,fontWeight: FontWeight.bold,fontSize: AllDimensions.px20),))]);
+                          }
                           final list = snapshot.data;
                           // debugPrint(list.toString());
                           final imglist = list!
