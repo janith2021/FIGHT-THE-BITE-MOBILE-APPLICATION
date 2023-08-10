@@ -3,9 +3,13 @@ import 'package:client/providers/otp_provider.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
-<<<<<<< HEAD
+
+import 'package:client/screen/organization/addCampaign.dart';
+
+
 import 'package:client/widget/splash_screen.dart';
-=======
+
+
 import 'package:client/screen/organization/createCampaign.dart';
 // import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
 // import 'package:client/screen/officer/PHI/phi_dashboard.dart';
@@ -13,13 +17,12 @@ import 'package:client/screen/organization/createCampaign.dart';
 import 'package:client/widget/splash_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 // import 'package:splash_view/source/presentation/pages/pages.dart';
->>>>>>> 0bc2f4106f552948dcb7808a20da2b7ec718a5f5
 import 'package:splash_view/source/presentation/presentation.dart';
 
 import 'const/all_imports.dart';
 
-Future main() async{
-  await dotenv.load(fileName: ".env");
+Future main() async {
+  // await dotenv.load(fileName: ".env");
   runApp(const Myapp());
 }
 
@@ -37,7 +40,7 @@ class Myapp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ChangePasswordProvider()),
       ],
       child: MaterialApp(
-<<<<<<< HEAD
+
         debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: Snackbar.scaffoldMessengerKey,
         // initialRoute: Splash.routename,
@@ -55,7 +58,7 @@ class Myapp extends StatelessWidget {
         },
         home: SplashView(gradient: LinearGradient(colors: [AppColors.yellow,AppColors.orange]),loadingIndicator: CircularProgressIndicator(backgroundColor: AppColors.red,color: AppColors.green),logo: Image.asset("Assets/logo.png"),done: Done(const Login()),)
       ),
-=======
+
           debugShowCheckedModeBanner: false,
           scaffoldMessengerKey: Snackbar.scaffoldMessengerKey,
           // initialRoute: Splash.routename,
@@ -73,7 +76,8 @@ class Myapp extends StatelessWidget {
             PHIDashBoard.routename: (_) => const PHIDashBoard(),
             OrganizationDashboard.routename: (_) =>
                 const OrganizationDashboard(),
-            CreateCampaign.routename: (_) =>  const CreateCampaign(),
+            CreateCampaign.routename: (_) => const CreateCampaign(),
+            MyForm.routename: (_) => MyForm(),
           },
           home: SplashView(
             gradient:
@@ -83,7 +87,7 @@ class Myapp extends StatelessWidget {
             logo: Image.asset("Assets/splash_screen/logo.png"),
             done: Done(const Login()),
           )),
->>>>>>> 0bc2f4106f552948dcb7808a20da2b7ec718a5f5
+
     );
   }
 }
