@@ -5,6 +5,7 @@ import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
 import 'package:client/screen/organization/addCampaign.dart';
 import 'package:client/screen/organization/createCampaign.dart';
+import 'package:client/screen/organization/Ongoing.dart';
 // import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
 // import 'package:client/screen/officer/PHI/phi_dashboard.dart';
 // import 'package:client/screen/user/user_dashboard.dart';
@@ -53,6 +54,7 @@ class Myapp extends StatelessWidget {
                 const OrganizationDashboard(),
             CreateCampaign.routename: (_) => const CreateCampaign(),
             MyForm.routename: (_) => MyForm(),
+            CardWithButtonsPage.routename: (_) => CardWithButtonsPage(),
           },
           home: SplashView(
             gradient:
