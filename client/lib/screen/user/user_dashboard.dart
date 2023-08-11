@@ -112,7 +112,8 @@ class _UserDashboardState extends State<UserDashboard> {
                             ]),
                         child: Stack(
                           children: [
-                            Image.asset("Assets/villagers/dashboard/affectedratebackground.png"),
+                            Image.asset(
+                                "Assets/villagers/dashboard/affectedratebackground.png"),
                             Column(
                               children: [
                                 Padding(
@@ -169,8 +170,10 @@ class _UserDashboardState extends State<UserDashboard> {
                           children: [
                             Stack(
                               children: [
-                                Image.asset("Assets/villagers/dashboard/medalclothes.png"),
-                                Image.asset("Assets/villagers/dashboard/competition.png")
+                                Image.asset(
+                                    "Assets/villagers/dashboard/medalclothes.png"),
+                                Image.asset(
+                                    "Assets/villagers/dashboard/competition.png")
                               ],
                             ),
                             Padding(
@@ -179,7 +182,8 @@ class _UserDashboardState extends State<UserDashboard> {
                                 children: [
                                   Stack(
                                     children: [
-                                      Image.asset("Assets/villagers/dashboard/coin.png"),
+                                      Image.asset(
+                                          "Assets/villagers/dashboard/coin.png"),
                                       Column(
                                         children: [
                                           Text(
@@ -294,8 +298,24 @@ class _UserDashboardState extends State<UserDashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        CustomCard(imageicon: "Assets/villagers/dashboard/labicon.png", cardname: AllStrings.labreports, textalign: TextAlign.center, maxline: 2, textstyle: GoogleFonts.poppins(fontSize: AllDimensions.px15),blurradius: AllDimensions.px10),
-                        CustomCard(imageicon: "Assets/villagers/dashboard/channeldoctoricon.png", cardname: AllStrings.channeldoctors, textalign: TextAlign.center, maxline: 2, textstyle: GoogleFonts.poppins(fontSize: AllDimensions.px15),blurradius: AllDimensions.px10,)
+                        CustomCard(
+                            imageicon: "Assets/villagers/dashboard/labicon.png",
+                            cardname: AllStrings.labreports,
+                            textalign: TextAlign.center,
+                            maxline: 2,
+                            textstyle: GoogleFonts.poppins(
+                                fontSize: AllDimensions.px15),
+                            blurradius: AllDimensions.px10),
+                        CustomCard(
+                          imageicon:
+                              "Assets/villagers/dashboard/channeldoctoricon.png",
+                          cardname: AllStrings.channeldoctors,
+                          textalign: TextAlign.center,
+                          maxline: 2,
+                          textstyle:
+                              GoogleFonts.poppins(fontSize: AllDimensions.px15),
+                          blurradius: AllDimensions.px10,
+                        )
                       ],
                     ),
                     SizedBox(
@@ -305,21 +325,46 @@ class _UserDashboardState extends State<UserDashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        CustomCard(imageicon: "Assets/villagers/dashboard/campaignicon.png", cardname: AllStrings.campaigns, textalign: TextAlign.center, maxline: 2, textstyle: GoogleFonts.poppins(fontSize: AllDimensions.px15),blurradius: AllDimensions.px10,),
+                        CustomCard(
+                          imageicon:
+                              "Assets/villagers/dashboard/campaignicon.png",
+                          cardname: AllStrings.campaigns,
+                          textalign: TextAlign.center,
+                          maxline: 2,
+                          textstyle:
+                              GoogleFonts.poppins(fontSize: AllDimensions.px15),
+                          blurradius: AllDimensions.px10,
+                        ),
                         InkWell(
                           onTap: () {
                             showDialog(
                                 context: context,
                                 builder: (context) => CustomDialogBox(
-                                    dialogtitle: "Add Emergency Vehicles",
-                                    controller1: vehicleNumberController,
-                                    hintText1: "Enter Vehicle Name",
-                                    iconData1: Icons.airport_shuttle,
-                                    label1: "Vehicle Name",
-                                    errorText1: "Please Enter Vehicle Name",submitBtnText: "Submit",cancelBtnText: "Cancel",submitbtncolor: AppColors.green,cancelbtncolor: AppColors.red,btntextstyle: GoogleFonts.poppins(color: AppColors.black,fontSize: AllDimensions.px20),));
+                                      dialogtitle: "Add Emergency Vehicles",
+                                      controller1: vehicleNumberController,
+                                      hintText1: "Enter Vehicle Name",
+                                      iconData1: Icons.airport_shuttle,
+                                      label1: "Vehicle Name",
+                                      errorText1: "Please Enter Vehicle Name",
+                                      submitBtnText: "Submit",
+                                      cancelBtnText: "Cancel",
+                                      submitbtncolor: AppColors.green,
+                                      cancelbtncolor: AppColors.red,
+                                      btntextstyle: GoogleFonts.poppins(
+                                          color: AppColors.black,
+                                          fontSize: AllDimensions.px20),
+                                    ));
                           },
-                          child: CustomCard(imageicon: "Assets/villagers/dashboard/emergencyvehicleicon.png", cardname: AllStrings.emergency, textalign: TextAlign.center, maxline: 2, textstyle: GoogleFonts.poppins(fontSize: AllDimensions.px15,),blurradius: AllDimensions.px10),
-                          
+                          child: CustomCard(
+                              imageicon:
+                                  "Assets/villagers/dashboard/emergencyvehicleicon.png",
+                              cardname: AllStrings.emergency,
+                              textalign: TextAlign.center,
+                              maxline: 2,
+                              textstyle: GoogleFonts.poppins(
+                                fontSize: AllDimensions.px15,
+                              ),
+                              blurradius: AllDimensions.px10),
                         )
                       ],
                     ),
@@ -331,5 +376,3 @@ class _UserDashboardState extends State<UserDashboard> {
     );
   }
 }
-
-

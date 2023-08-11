@@ -17,7 +17,6 @@ class _GramaNiladhariDashBoardState extends State<GramaNiladhariDashBoard> {
 
   @override
   void initState() {
-
     super.initState();
     openBox();
   }
@@ -29,6 +28,7 @@ class _GramaNiladhariDashBoardState extends State<GramaNiladhariDashBoard> {
       _user = _userbox!.get('user');
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,8 @@ class _GramaNiladhariDashBoardState extends State<GramaNiladhariDashBoard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             Text('Grama Niladhari Dashboard',style: TextStyle(color: AppColors.green)),
+            Text('Grama Niladhari Dashboard',
+                style: TextStyle(color: AppColors.green)),
             _user != null
                 ? Text(_user!)
                 : CircularProgressIndicator(
