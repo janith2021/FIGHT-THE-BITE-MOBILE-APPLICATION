@@ -103,12 +103,15 @@ class _LoginState extends State<Login> {
                               .toList();
                           print(imglist);
                           return CustomCarousel(
+                              // height: 300,
                               autoplay: true,
                               durationInSeconds: 1,
                               items: imglist);
                         }
                       }),
-                  SizeBox().sizedBox20,    
+                  SizedBox(
+                    height: AllDimensions.px80,
+                  ),    
                   CustomTextField(
                     controller: provider.emailController,
                     hintText: AllStrings.emailHint,

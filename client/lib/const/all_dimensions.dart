@@ -25,4 +25,6 @@ class AllDimensions {
   static double px118 = 118;
   static double px168 = 168;
   static double px184 = 184;
+  static double px200 = 200;
+  static double px280 = 280;
 }

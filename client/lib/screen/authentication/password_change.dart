@@ -10,7 +10,7 @@ class ChangePassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ChangePasswordProvider>(builder: (context, provider, _) {
       return Scaffold(
-        backgroundColor: Colors.amber,
+        // backgroundColor: Colors.amber,
         resizeToAvoidBottomInset: false,
         body: Stack(children: [
           // Image.asset(
@@ -21,14 +21,16 @@ class ChangePassword extends StatelessWidget {
           // ),
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(AllDimensions.px20),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                // mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text(
-                    'Please Enter Your New Password in the Given Field',
-                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  Image.asset("Assets/Reset_Password/changepassword.png",height: AllDimensions.px200,),
+                  SizedBox(height: AllDimensions.px50,),
+                  Text(
+                    AllStrings.enternewpassword,
+                    style: TextStyle(color: AppColors.black, fontSize: AllDimensions.px20),
                   ),
                   SizeBox().sizedBox10,
                   SizeBox().sizedBox10,
@@ -62,19 +64,19 @@ class ChangePassword extends StatelessWidget {
                       icon: const Icon(null),
                     ),
                   ),
-                  SizeBox().sizedBox10,
+                  SizeBox().sizedBox20,
                   InkWell(
                       onTap: () {
                         provider.validatechangepassword(context);
                       },
                       child: CustomButton(
-                          bordercolor: Colors.black,
+                          bordercolor: AppColors.lightred,
                           borderradius: 40,
-                          boxcolor: Colors.red,
+                          boxcolor: AppColors.lightred,
                           borderwidth: 3,
                           btnWidth: MediaQuery.of(context).size.width * 0.9,
-                          styles: GoogleFonts.aldrich(color: AppColors.white,fontWeight: FontWeight.bold,fontSize: AllDimensions.px30,),
-                          text: 'Reset')
+                          styles: GoogleFonts.aldrich(color: AppColors.white,fontWeight: FontWeight.bold,fontSize: AllDimensions.px20,),
+                          text: AllStrings.resetPassword,btnheight: AllDimensions.px39,)
                           )
                 ],
               ),

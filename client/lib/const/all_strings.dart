@@ -51,4 +51,8 @@ class AllStrings {
   static String ongoingcampaign = "View Ongoing Campaign";
   static String imageurl =
       "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-855.jpg?w=740&t=st=1691606622~exp=1691607222~hmac=2dd7d07952822c438a91a4bcf35b737c7386a4f7e735d11ca818b39222759d13";
+  static String notifications = "Notifications";
+  static String emailverify = "Reset Password";
+  static String enternewpassword =
+      "Please Enter Your New Password in the given Field";
 }
