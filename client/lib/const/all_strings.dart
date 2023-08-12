@@ -43,7 +43,7 @@ class AllStrings {
   static String labreports = "Lab Reports";
   static String channeldoctors = "Channel Doctors";
   static String campaigns = "Campaigns";
-  static String emergency = "Emergency Vehicles";
+  static String patientdetails = "Patient Details";
   static String frequentlyused = "Frequently Used";
   static String affectedrate = "Affected Rate";
   static String createcampaign = "Create Campaign";
@@ -63,4 +63,12 @@ class AllStrings {
   static String onlinebooking = "Online Booking";
   static String inthelab = "In The Lab";
   static String makeappointment = "Make Appointment";
+  static String notificationtitle = "Notifications";
+  static String meetingdetails =
+      "We're excited to confirm your appointment. Your appointment is scheduled at 11.15 AM. We kindly request your presence a little ahead of time to facilitate a timely consultation.https://us06web.zoom.us/j/81134569838?pwd=SUtqNkIrWFJ3VlFjdWRWSTllRm1yUT09";
+  static String seemore = "See More";
+  static String totalvillagers = "Total Number of Villagers";
+  static String totalaffectedvillagers = "Total Number of Affected Villagers";
+  static String numberofdeaths = "Number of Deaths";
+  static String growinggraph = "Number of patients growing monthly";
 }

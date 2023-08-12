@@ -57,11 +57,12 @@ class _UserDashboardState extends State<UserDashboard> {
                               children: [
                                 Padding(
                                   padding: EdgeInsets.only(
-                                      left:
-                                          MediaQuery.of(context).size.width * 0.1,
+                                      left: MediaQuery.of(context).size.width *
+                                          0.1,
                                       top: AllDimensions.px25),
                                   child: Container(
-                                    width: MediaQuery.of(context).size.width * 0.6,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
                                     decoration: BoxDecoration(
                                         color: AppColors.red,
                                         borderRadius: BorderRadius.circular(
@@ -77,12 +78,15 @@ class _UserDashboardState extends State<UserDashboard> {
                                   ),
                                 ),
                                 CircularProfileAvatar(
-                                    "https://img.icons8.com/?size=512&id=NkdlSUR5LFuw&format=png",radius: AllDimensions.px40,)
+                                  "https://img.icons8.com/?size=512&id=NkdlSUR5LFuw&format=png",
+                                  radius: AllDimensions.px40,
+                                )
                               ],
                             ),
                           ),
                           Padding(
-                              padding: EdgeInsets.only(left: AllDimensions.px20),
+                              padding:
+                                  EdgeInsets.only(left: AllDimensions.px20),
                               child: IconBadge(
                                 icon: Icon(
                                   Icons.notifications_rounded,
@@ -94,41 +98,8 @@ class _UserDashboardState extends State<UserDashboard> {
                                 itemColor: Colors.white,
                                 badgeColor: AppColors.black,
                                 onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                            backgroundColor: AppColors.lightpink,
-                                            title: Center(
-                                                child: Text(
-                                              AllStrings.notifications,
-                                              style: GoogleFonts.poppins(
-                                                  color: AppColors.black,
-                                                  fontWeight: FontWeight.bold),
-                                            )),
-                                            content: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              // crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-                                                Card(
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              AllDimensions
-                                                                  .px10)),
-                                                  child: RoundedExpansionTile(
-                                                    shape: RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                AllDimensions
-                                                                    .px10)),
-                                                    title: Text(
-                                                        "Ekamuthu Campaign will be Held on 12 th of November 2023"),
-                                                    children: [Column()],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ));
+                                  Navigator.pushNamed(
+                                      context, "villager/notification");
                                 },
                               ))
                         ],
@@ -187,7 +158,7 @@ class _UserDashboardState extends State<UserDashboard> {
                         ]),
                     SizeBox().sizedBox20,
                     Container(
-                      height: AllDimensions.px168,
+                      height: AllDimensions.px200,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           color: AppColors.white,
@@ -232,6 +203,26 @@ class _UserDashboardState extends State<UserDashboard> {
                                         fontWeight: FontWeight.bold),
                                   )
                                 ],
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, "villager/affectivity");
+                                },
+                                child: CustomButton(
+                                  bordercolor: AppColors.white,
+                                  borderradius: AllDimensions.px50,
+                                  boxcolor: AppColors.red,
+                                  borderwidth: 0,
+                                  text: AllStrings.seemore,
+                                  styles: GoogleFonts.lato(
+                                    fontSize: AllDimensions.px20,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.white,
+                                  ),
+                                  btnWidth: AllDimensions.px118,
+                                  btnheight: AllDimensions.px34,
+                                ),
                               )
                             ],
                           )
@@ -288,18 +279,24 @@ class _UserDashboardState extends State<UserDashboard> {
                                   )
                                 ],
                               ),
-                              CustomButton(
-                                bordercolor: AppColors.white,
-                                borderradius: AllDimensions.px50,
-                                boxcolor: AppColors.red,
-                                borderwidth: 0,
-                                text: AllStrings.play,
-                                styles: GoogleFonts.lato(
-                                    fontSize: AllDimensions.px20,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.white),
-                                btnWidth: AllDimensions.px118,
-                                btnheight: AllDimensions.px34,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, "villager/leaderboard");
+                                },
+                                child: CustomButton(
+                                  bordercolor: AppColors.white,
+                                  borderradius: AllDimensions.px50,
+                                  boxcolor: AppColors.red,
+                                  borderwidth: 0,
+                                  text: AllStrings.play,
+                                  styles: GoogleFonts.lato(
+                                      fontSize: AllDimensions.px20,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.white),
+                                  btnWidth: AllDimensions.px118,
+                                  btnheight: AllDimensions.px34,
+                                ),
                               )
                             ],
                           )
@@ -448,7 +445,7 @@ class _UserDashboardState extends State<UserDashboard> {
                           child: CustomCard(
                             imageicon:
                                 "Assets/villagers/dashboard/patientdetails.png",
-                            cardname: AllStrings.emergency,
+                            cardname: AllStrings.patientdetails,
                             textalign: TextAlign.center,
                             maxline: 2,
                             textstyle: GoogleFonts.poppins(

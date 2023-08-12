@@ -4,9 +4,13 @@ import 'package:client/providers/otp_provider.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
+import 'package:client/screen/organization/CreateCampaignForm.dart';
 import 'package:client/screen/organization/createCampaign.dart';
+import 'package:client/screen/user/affectivity.dart';
 import 'package:client/screen/user/laboratoryReport.dart';
 import 'package:client/screen/user/laboratorybooking.dart';
+import 'package:client/screen/user/leaderboard.dart';
+import 'package:client/screen/user/notification.dart';
 // import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
 // import 'package:client/screen/officer/PHI/phi_dashboard.dart';
 // import 'package:client/screen/user/user_dashboard.dart';
@@ -57,6 +61,10 @@ class Myapp extends StatelessWidget {
             CreateCampaign.routename: (_) =>  const CreateCampaign(),
             Laboratory.routename : (_) => const Laboratory(),
             LaboratoryBooking.routename : (_) => const LaboratoryBooking(),
+            NotificationPage.routename : (_) => const NotificationPage(),
+            Affectivity.routename : (_) => const Affectivity(),
+            LeaderBoard.routename : (_) => const LeaderBoard(),
+            MyForm.routename : (_) =>  MyForm(),
           },
           home: SplashView(
             gradient:

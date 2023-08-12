@@ -30,9 +30,13 @@ class AllDimensions {
   static double px172 = 172;
   static double px184 = 184;
   static double px200 = 200;
+  static double px219 = 219;
   static double px280 = 280;
+  static double px300 = 300;
   static double px344 = 344;
   static double px388 = 388;
   static double px700 = 700;
   static double px716 = 716;
+  static double px795 = 795;
+  static double px800 = 800;
 }

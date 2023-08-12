@@ -142,6 +142,9 @@ class Laboratory extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(
+                height: AllDimensions.px20,
+              ),
             ],
           ),
         ),

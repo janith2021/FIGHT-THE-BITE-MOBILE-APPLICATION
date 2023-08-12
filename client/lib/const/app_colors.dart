@@ -16,6 +16,9 @@ class AppColors {
   static Color lightorange = _colorFromHex("FFE1C6");
   static Color lightgreen = _colorFromHex("4CBC9A");
   static Color lightblue = _colorFromHex("5A96E3");
+  static Color lightyellow = _colorFromHex("FFFFB2");
+  static Color darkyellow = _colorFromHex("FECC5C");
+  static Color darkred = _colorFromHex("BD0026");
   static Color _colorFromHex(String value) {
     return Color(int.parse("FF$value", radix: 16));
   }

@@ -56,8 +56,8 @@ class LoginProvider extends ChangeNotifier {
                   type: ArtSweetAlertType.success,
                   title: "Success",
                   text: body['message']));
-          var box1 = await Hive.openBox('users');
-          await box1.put('user', emailController.text);
+          // var box1 = await Hive.openBox('users');
+          // await box1.put('user', emailController.text);
           // debugPrint('hi');
           // await shared.setString('email', emailController.text);
           emailController.text = "";
