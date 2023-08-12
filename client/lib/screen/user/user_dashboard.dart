@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import 'package:client/widget/custom_card.dart';
-import 'package:client/widget/custom_dialog_box.dart';
-// import 'package:flutter_animated_button/flutter_animated_button.dart';
-
-=======
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:client/widget/custom_card.dart';
 import 'package:client/widget/custom_dialog_box.dart';
@@ -11,7 +5,6 @@ import 'package:flutter_app_rename/context.dart';
 import 'package:icon_badge/icon_badge.dart';
 import 'package:rounded_expansion_tile/rounded_expansion_tile.dart';
 // import 'package:flutter_animated_button/flutter_animated_button.dart'
->>>>>>> 0ee854fbabffd409bd271421a829afcf4c9606b7
 import '../../const/all_imports.dart';
 
 class UserDashboard extends StatefulWidget {
