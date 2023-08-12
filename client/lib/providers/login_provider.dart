@@ -43,7 +43,7 @@ class LoginProvider extends ChangeNotifier {
       var response = await http.post(Uri.parse(fullurl),
           body: jsonEncode(data), headers: setHeaders());
       var body = await jsonDecode(response.body);
-      // print(body);
+      print(body);
       if (body['type'] == 'success') {
         print(body['role']);
         if (body['role'] == 'Villager') {
