@@ -1,3 +1,5 @@
+import 'package:client/const/all_imports.dart';
+
 class AllDimensions {
   // static double px0 = 0;
   static double px2 = 2;
@@ -23,8 +25,14 @@ class AllDimensions {
   static double px100 = 100;
   static double px114 = 114;
   static double px118 = 118;
+  static double px150 = 150;
   static double px168 = 168;
+  static double px172 = 172;
   static double px184 = 184;
   static double px200 = 200;
   static double px280 = 280;
+  static double px344 = 344;
+  static double px388 = 388;
+  static double px700 = 700;
+  static double px716 = 716;
 }

@@ -55,4 +55,12 @@ class AllStrings {
   static String emailverify = "Reset Password";
   static String enternewpassword =
       "Please Enter Your New Password in the given Field";
+  static String appointmentdetails = "Appointment Details";
+  static String fullname = "Full Name";
+  static String appointmentdate = "Appointment Date";
+  static String appointmenttime = "Appointment Time";
+  static String testmethod = "Test Method";
+  static String onlinebooking = "Online Booking";
+  static String inthelab = "In The Lab";
+  static String makeappointment = "Make Appointment";
 }

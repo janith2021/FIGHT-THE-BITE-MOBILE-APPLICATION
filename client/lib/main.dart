@@ -1,10 +1,12 @@
 import 'package:client/providers/change_password_provider.dart';
+import 'package:client/providers/laboratorybooking_provider.dart';
 import 'package:client/providers/otp_provider.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
 import 'package:client/screen/organization/createCampaign.dart';
 import 'package:client/screen/user/laboratoryReport.dart';
+import 'package:client/screen/user/laboratorybooking.dart';
 // import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
 // import 'package:client/screen/officer/PHI/phi_dashboard.dart';
 // import 'package:client/screen/user/user_dashboard.dart';
@@ -32,6 +34,7 @@ class Myapp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ResetPasswordProvider()),
         ChangeNotifierProvider(create: (_) => OtpProvider()),
         ChangeNotifierProvider(create: (_) => ChangePasswordProvider()),
+        ChangeNotifierProvider(create: (_) => LaboratoryBookingProvider()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -53,6 +56,7 @@ class Myapp extends StatelessWidget {
                 const OrganizationDashboard(),
             CreateCampaign.routename: (_) =>  const CreateCampaign(),
             Laboratory.routename : (_) => const Laboratory(),
+            LaboratoryBooking.routename : (_) => const LaboratoryBooking(),
           },
           home: SplashView(
             gradient:

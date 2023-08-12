@@ -47,92 +47,97 @@ class _UserDashboardState extends State<UserDashboard> {
                 padding: EdgeInsets.all(AllDimensions.px10),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Stack(
-                          alignment: Alignment.topLeft,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * 0.20,
-                                  top: AllDimensions.px40),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                decoration: BoxDecoration(
-                                    color: AppColors.yellow,
-                                    borderRadius: BorderRadius.circular(
-                                        AllDimensions.px10)),
-                                child: Center(
-                                    child: Text(
-                                  "Janith Heshara",
-                                  style: GoogleFonts.poppins(
-                                      color: AppColors.white,
-                                      fontSize: AllDimensions.px20,
-                                      fontWeight: FontWeight.bold),
-                                )),
-                              ),
+                    Padding(
+                      padding: EdgeInsets.all(AllDimensions.px10),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Stack(
+                              alignment: Alignment.topLeft,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left:
+                                          MediaQuery.of(context).size.width * 0.1,
+                                      top: AllDimensions.px25),
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width * 0.6,
+                                    decoration: BoxDecoration(
+                                        color: AppColors.red,
+                                        borderRadius: BorderRadius.circular(
+                                            AllDimensions.px10)),
+                                    child: Center(
+                                        child: Text(
+                                      "Janith",
+                                      style: GoogleFonts.poppins(
+                                          color: AppColors.white,
+                                          fontSize: AllDimensions.px20,
+                                          fontWeight: FontWeight.bold),
+                                    )),
+                                  ),
+                                ),
+                                CircularProfileAvatar(
+                                    "https://img.icons8.com/?size=512&id=NkdlSUR5LFuw&format=png",radius: AllDimensions.px40,)
+                              ],
                             ),
-                            CircularProfileAvatar(
-                                "https://img.icons8.com/?size=512&id=NkdlSUR5LFuw&format=png")
-                          ],
-                        ),
-                        Padding(
-                            padding: EdgeInsets.only(left: AllDimensions.px20),
-                            child: IconBadge(
-                              icon: Icon(
-                                Icons.notifications_rounded,
-                                size: AllDimensions.px50,
-                                color: AppColors.red,
-                              ),
-                              itemCount: 5,
-                              hideZero: true,
-                              itemColor: Colors.white,
-                              badgeColor: AppColors.black,
-                              onTap: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) => AlertDialog(
-                                          backgroundColor: AppColors.lightpink,
-                                          title: Center(
-                                              child: Text(
-                                            AllStrings.notifications,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.black,
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                          content: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            // crossAxisAlignment: CrossAxisAlignment.center,
-                                            children: [
-                                              Card(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            AllDimensions
-                                                                .px10)),
-                                                child: RoundedExpansionTile(
+                          ),
+                          Padding(
+                              padding: EdgeInsets.only(left: AllDimensions.px20),
+                              child: IconBadge(
+                                icon: Icon(
+                                  Icons.notifications_rounded,
+                                  size: AllDimensions.px50,
+                                  color: AppColors.red,
+                                ),
+                                itemCount: 5,
+                                hideZero: true,
+                                itemColor: Colors.white,
+                                badgeColor: AppColors.black,
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                            backgroundColor: AppColors.lightpink,
+                                            title: Center(
+                                                child: Text(
+                                              AllStrings.notifications,
+                                              style: GoogleFonts.poppins(
+                                                  color: AppColors.black,
+                                                  fontWeight: FontWeight.bold),
+                                            )),
+                                            content: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              // crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Card(
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               AllDimensions
                                                                   .px10)),
-                                                  title: Text(
-                                                      "Ekamuthu Campaign will be Held on 12 th of November 2023"),
-                                                  children: [Column()],
+                                                  child: RoundedExpansionTile(
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                AllDimensions
+                                                                    .px10)),
+                                                    title: Text(
+                                                        "Ekamuthu Campaign will be Held on 12 th of November 2023"),
+                                                    children: [Column()],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ));
-                              },
-                            ))
-                      ],
+                                              ],
+                                            ),
+                                          ));
+                                },
+                              ))
+                        ],
+                      ),
                     ),
                     SizeBox().sizedBox20,
                     CustomCarousel(
                         autoplay: true,
-                        height: MediaQuery.of(context).size.height * 0.3,
+                        height: MediaQuery.of(context).size.height * 0.25,
                         durationInSeconds: 1,
                         items: [
                           Container(
@@ -387,7 +392,7 @@ class _UserDashboardState extends State<UserDashboard> {
                               textstyle: GoogleFonts.poppins(
                                   fontSize: AllDimensions.px15),
                               blurradius: AllDimensions.px10,
-                              boxcolor: Colors.amber),
+                              boxcolor: AppColors.white),
                         ),
                         CustomCard(
                           imageicon:
@@ -398,7 +403,7 @@ class _UserDashboardState extends State<UserDashboard> {
                           textstyle:
                               GoogleFonts.poppins(fontSize: AllDimensions.px15),
                           blurradius: AllDimensions.px10,
-                          boxcolor: Colors.amber,
+                          boxcolor: AppColors.white,
                         )
                       ],
                     ),
@@ -418,7 +423,7 @@ class _UserDashboardState extends State<UserDashboard> {
                           textstyle:
                               GoogleFonts.poppins(fontSize: AllDimensions.px15),
                           blurradius: AllDimensions.px10,
-                          boxcolor: Colors.amber,
+                          boxcolor: AppColors.white,
                         ),
                         InkWell(
                           onTap: () {
@@ -450,7 +455,7 @@ class _UserDashboardState extends State<UserDashboard> {
                               fontSize: AllDimensions.px15,
                             ),
                             blurradius: AllDimensions.px10,
-                            boxcolor: Colors.amber,
+                            boxcolor: AppColors.white,
                           ),
                         )
                       ],
