@@ -50,24 +50,6 @@ class Myapp extends StatelessWidget {
         // initialRoute: Splash.routename,
         // initialRoute: OtpScreen.routename,
         routes: {
-          Splash.routename : (_) => const Splash(),
-          Login.routeName  : (_)=>const Login(),
-          SignUp.routename : (_) => const SignUp(),
-          ResetPassword.routeName : (_) => const ResetPassword(),
-          OtpScreen.routename : (_) => const OtpScreen(),
-          ChangePassword.routename : (_) => const ChangePassword(),
-          UserDashboard.routename : (_) => const UserDashboard(),
-          GramaNiladhariDashBoard.routename : (_) => const GramaNiladhariDashBoard(),
-          PHIDashBoard.routename : (_) => const PHIDashBoard(),
-        },
-        home: SplashView(gradient: LinearGradient(colors: [AppColors.yellow,AppColors.orange]),loadingIndicator: CircularProgressIndicator(backgroundColor: AppColors.red,color: AppColors.green),logo: Image.asset("Assets/logo.png"),done: Done(const Login()),)
-      ),
-
-          debugShowCheckedModeBanner: false,
-          scaffoldMessengerKey: Snackbar.scaffoldMessengerKey,
-          // initialRoute: Splash.routename,
-          // initialRoute: OtpScreen.routename,
-          routes: {
             Splash.routename: (_) => const Splash(),
             Login.routeName: (_) => const Login(),
             SignUp.routename: (_) => const SignUp(),
@@ -95,7 +77,8 @@ class Myapp extends StatelessWidget {
             logo: Image.asset("Assets/splash_screen/logo.png"),
             done: Done(const Login()),
           )),
-
+        
+      ),
     );
   }
 }
