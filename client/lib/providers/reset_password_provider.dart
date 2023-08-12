@@ -62,8 +62,8 @@ class ResetPasswordProvider extends ChangeNotifier {
         body: jsonEncode(data), headers: setHeaders());
     var body = await jsonDecode(res.body);
     debugPrint(body.toString());
-    sweetalertmessage = body['message'];
-    debugPrint(body['otp']);
+    sweetalertmessage = body['message'].toString();
+    // debugPrint(body['otp']);
     // debugPrint(body['token']);
     notifyListeners();
     if (body['type'] == 'success') {

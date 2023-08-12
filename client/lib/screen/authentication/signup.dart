@@ -93,15 +93,18 @@ class _SignUpState extends State<SignUp> {
                       } 
                     },
                     child: CustomButton(
-                        bordercolor: Colors.black,
-                        borderradius: AllDimensions.px40,
-                        boxcolor: AppColors.red,
+                        bordercolor: AppColors.lightred,
+                        borderradius: AllDimensions.px50,
+                        boxcolor: AppColors.lightred,
                         borderwidth: 3,
-                        btnWidth: MediaQuery.of(context).size.width*0.9,
-                        btnheight: AllDimensions.px50,
-                        text: AllStrings.signUp,
-                        styles: GoogleFonts.aldrich(color: AppColors.white,fontWeight: FontWeight.bold,fontSize: AllDimensions.px30,),
+                        btnWidth: MediaQuery.of(context).size.width * 0.9,
+                        btnheight: AllDimensions.px39,
+                        styles: GoogleFonts.lato(
+                          color: AppColors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: AllDimensions.px20,
                         ),
+                        text: AllStrings.register,shadow: AllDimensions.px10),
                   ),
                   SizeBox().sizedBox10,
                   InkWell(
