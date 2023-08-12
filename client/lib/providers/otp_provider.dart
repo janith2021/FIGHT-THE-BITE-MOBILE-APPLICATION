@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class OtpProvider extends ChangeNotifier {
   String Otp = "";
-  String _otperror = "";
+  final String _otperror = "";
   String get otperror => _otperror;
 
   // String get otp => _otp;

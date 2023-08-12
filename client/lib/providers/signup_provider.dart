@@ -101,6 +101,35 @@ class SignupProvider extends ChangeNotifier {
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
     // const cloud = "dbmtgupsy";
     // if (selectedfile.isNull) {
+<<<<<<< HEAD
+    final cloudinary = Cloudinary.unsignedConfig(cloudName: "dbmtgupsy");
+    final response1 = await cloudinary.unsignedUpload(
+      uploadPreset: "fightthebite",
+      fileBytes: selectedfile!.readAsBytesSync(),
+      folder: 'FIGHT_THE_BITE/Users',
+      resourceType: CloudinaryResourceType.image,
+      fileName:
+          'FIGHT${controllername.text}_${controlleremail.text}_FIGHTTHEBITEUSERS',
+    );
+    // debugPrint(response1.secureUrl);
+    var data = {
+      'name': controllername.text,
+      'email': controlleremail.text,
+      'password': controllerpassword.text,
+      'mobile': controllermobile.text,
+      'image': 'hello',
+    };
+    var fullurl = '${AllStrings.baseurl}/register';
+    var response2 = await http.post(
+      Uri.parse(fullurl),
+      body: jsonEncode(data),
+      headers: setHeaders(),
+    );
+    var body = await jsonDecode(response2.body);
+    _snackbarmessage = body['message'];
+    notifyListeners();
+    return body['type'];
+=======
     try {
       var id = shortid.generate();
       var date = DateTime.now();
@@ -164,6 +193,7 @@ class SignupProvider extends ChangeNotifier {
     }
 
     // debugPrint(response1.secureUrl);
+>>>>>>> 0bc2f4106f552948dcb7808a20da2b7ec718a5f5
 
     // var message2 = await jsonDecode(response2.body);
 
