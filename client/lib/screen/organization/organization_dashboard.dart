@@ -55,6 +55,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+
                         // FutureBuilder(
                         //     future: getuser(),
                         //     builder: (BuildContext context,
@@ -140,10 +141,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                                         padding: const EdgeInsets.all(5.0),
                                         child: Text(
                                             data["name"] ??
-                                                CircularProgressIndicator(
-                                                  color: AppColors.red,
-                                                  strokeWidth: 2,
-                                                ),
+                                                CircularProgressIndicator(color: AppColors.red,strokeWidth: 2,),
                                             style: GoogleFonts.aBeeZee(
                                               color: AppColors.white,
                                               fontSize: AllDimensions.px20,
@@ -162,6 +160,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                                 );
                               }
                             })
+
                       ],
                     ),
                   ),
@@ -185,6 +184,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                         child: Image.network(
                       "https://www.redcross.lk/wp-content/uploads/2016/09/14445219_1510250195668566_5057702115071510652_o.jpg",
                       fit: BoxFit.fill,
+
                       width: MediaQuery.of(context).size.width,
                     )),
                     Container(
@@ -197,17 +197,11 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                     )),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      child: Image.network(
-                        "https://alt.army.lk/sfkilinochchi/sites/default/files/1695_1_.jpg",
-                        fit: BoxFit.fill,
-                      ),
+                      child: Image.network("https://alt.army.lk/sfkilinochchi/sites/default/files/1695_1_.jpg",fit: BoxFit.fill,),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      child: Image.network(
-                        "https://selangorjournal.my/wp-content/uploads/2022/06/PSX_20220103_204917-1024x683-1-960x640.jpg",
-                        fit: BoxFit.fill,
-                      ),
+                      child: Image.network("https://selangorjournal.my/wp-content/uploads/2022/06/PSX_20220103_204917-1024x683-1-960x640.jpg",fit: BoxFit.fill,),
                     ),
                   ]),
                   SizeBox().sizedBox20,
@@ -232,23 +226,17 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                           boxcolor: AppColors.yellow,
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(
-                              context, "/organization/inform/ongoing");
-                        },
-                        child: CustomCard(
-                          imageicon:
-                              "Assets/organization/dashboard/ongoingcampaign.png",
-                          cardname: AllStrings.ongoingcampaign,
-                          textalign: TextAlign.center,
-                          maxline: 3,
-                          textstyle: GoogleFonts.aBeeZee(
-                              fontSize: AllDimensions.px20,
-                              fontWeight: FontWeight.bold),
-                          boxcolor: AppColors.yellow,
-                          blurradius: AllDimensions.px10,
-                        ),
+                      CustomCard(
+                        imageicon:
+                            "Assets/organization/dashboard/ongoingcampaign.png",
+                        cardname: AllStrings.ongoingcampaign,
+                        textalign: TextAlign.center,
+                        maxline: 3,
+                        textstyle: GoogleFonts.aBeeZee(
+                            fontSize: AllDimensions.px20,
+                            fontWeight: FontWeight.bold),
+                        boxcolor: AppColors.yellow,
+                        blurradius: AllDimensions.px10,
                       )
                     ],
                   ),

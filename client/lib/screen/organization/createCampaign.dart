@@ -29,6 +29,7 @@ class CreateCampaign extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AllDimensions.px10)),
                 padding: EdgeInsets.all(AllDimensions.px20),
                 child: SfCalendar(
+                  
                   allowAppointmentResize: true,
                   firstDayOfWeek: 1,
                   backgroundColor: AppColors.yellow,
@@ -53,6 +54,7 @@ class CreateCampaign extends StatelessWidget {
                     CalendarView.month,
                     CalendarView.schedule
                   ],
+                
                 ),
               ),
               SizedBox(height: AllDimensions.px20,),

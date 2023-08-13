@@ -7,8 +7,6 @@ import '../../const/all_imports.dart';
 import '../../providers/create_campaign_provider.dart';
 
 class MyApp extends StatelessWidget {
-  static var routename;
-
   const MyApp({super.key});
 
   @override
@@ -132,7 +130,8 @@ class _MyFormState extends State<MyForm> {
                       ),
                     ),
                     onTap: () async {
-                      provider.getDivision(context);
+                      // provider.getDivision(context);
+                      // provider.getCampignDate(context);
                       DateTime? pickedDate = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
@@ -151,6 +150,27 @@ class _MyFormState extends State<MyForm> {
 
                       // debugPrint(Date.fromDateTime(pickedDate).toString());
                     },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: provider.campaigntimecontroller,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter campaign time';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Campaign Time',
+                      labelStyle: GoogleFonts.poppins(),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: provider.campaigndatecontroller.text.isEmpty
+                              ? Colors.red
+                              : Colors.red,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
@@ -174,6 +194,7 @@ class _MyFormState extends State<MyForm> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 20),
 
                   Row(
                     children: [
@@ -199,6 +220,9 @@ class _MyFormState extends State<MyForm> {
                     // Center the button
                     child: ElevatedButton(
                       onPressed: () {
+
+                        // provider.getCampignDate(context);
+                        // provider.(context);
                         if(_formKey.currentState!.validate()){
                           provider.submitform(context);
                         }
@@ -232,5 +256,3 @@ class _MyFormState extends State<MyForm> {
     });
   }
 }
-
-

@@ -1,3 +1,7 @@
+// import 'dart:js';
+
+import 'package:client/models/campaign.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../const/all_imports.dart';
@@ -8,6 +12,7 @@ class CreateCampaignProvider extends ChangeNotifier {
   TextEditingController campaignnamecontroller = TextEditingController();
   TextEditingController campaigndatecontroller = TextEditingController();
   TextEditingController campaignlocationcontroller = TextEditingController();
+  TextEditingController campaigntimecontroller = TextEditingController();
 // final SharedPreferences prefer = await SharedPreferences.getInstance();
 
   List<DateTime> ongoingCampaignDates = []; // Replace with actual data
@@ -24,7 +29,7 @@ class CreateCampaignProvider extends ChangeNotifier {
 
     // var fullurl = '${AllStrings.baseurl}/organization/view?email=$email';
     var fullurl = '${AllStrings.baseurl}/organization/view';
-    debugPrint(fullurl);
+    // debugPrint(fullurl);
     setHeaders() =>
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
 
@@ -34,20 +39,71 @@ class CreateCampaignProvider extends ChangeNotifier {
       // debugPrint("Hi ${response.toString()}");
       if (response.statusCode == 200) {
         var body = await jsonDecode(response.body);
-        debugPrint(body.toString());
+        // debugPrint(body.toString());
         // print(response.statusCode);
-        var Detail = body['user'];
-        debugPrint(Detail['name']);
-        await prefer.setString('id', Detail['_id']);
+        var detail = body['user'];
+        // debugPrint(detail['name']);
+        await prefer.setString('id', detail['_id']);
 
         // debugPrint(body['user']);
-        // debugPrint(Detail['division']);
+        // debugPrint(detail['division']);
         // return body;
+        return detail['division'];
       }
     } catch (e) {
-      // print(e);
+      print(e);
     }
   }
+
+  // get all campaign date in division
+
+  getCampignDate(BuildContext context) async {
+    var divition = await getDivision(context);
+    List<Campaign> campaigns = [];
+    // debugPrint(divition);
+
+    var fullurl = '${AllStrings.baseurl}/organization/getallcampaigns';
+    debugPrint(fullurl);
+    setHeaders() =>
+        {'Content-Type': 'application/json', 'Accept': 'application/json'};
+
+    var divisionData = {'division': divition};
+
+    try {
+      var response = await http.post(Uri.parse(fullurl),
+          body: jsonEncode(divisionData), headers: setHeaders());
+
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+
+        var allData = data['message'];
+        for (var date in allData) {
+          DateTime Data = DateTime.parse(date['date']);
+
+          DateTime pickdate = DateTime(Data.year, Data.month, Data.day);
+          String formatdate = DateFormat('M/d/y').format(pickdate);
+          debugPrint(formatdate);
+          var name = date['name'];
+          var Campaigndate = formatdate;
+          var time = date['time'];
+          var status = date['status'];
+          var location = date['location'];
+
+          Campaign campaign =
+              Campaign(name, Campaigndate, time, status, location);
+
+          campaigns.add(campaign);
+        }
+        return campaigns;
+
+        // debugPrint(dates['']);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // create campaign
 
   submitform(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -57,6 +113,7 @@ class CreateCampaignProvider extends ChangeNotifier {
       'date': campaigndatecontroller.text,
       'location': campaignlocationcontroller.text,
       'organizationid': prefs.getString('id'),
+      'campaigntime' : campaigntimecontroller.text,
     };
     var fullurl = '${AllStrings.baseurl}/organization/campaign/create';
     setHeaders() =>
@@ -76,7 +133,6 @@ class CreateCampaignProvider extends ChangeNotifier {
               type: ArtSweetAlertType.success,
               text: result['message']));
       // ignore: use_build_context_synchronously
-      
     } else {
       // ignore: use_build_context_synchronously
       ArtSweetAlert.show(
@@ -84,32 +140,9 @@ class CreateCampaignProvider extends ChangeNotifier {
           artDialogArgs: ArtDialogArgs(
               title: "Error",
               type: ArtSweetAlertType.danger,
-              text: result['body']['message']));
+              text: result['message']));
     }
   }
-
-  // get all campaign date in division
-
-  //  getCampignDate(String divition) async{
-
-  //     var fullurl = '${AllStrings.baseurl}/organization/getallcampaigns';
-  //     debugPrint(fullurl);
-  //     setHeaders() =>
-  //         {'Content-Type': 'application/json', 'Accept': 'application/json'};
-
-  //     try {
-  //       var response = await http.post(Uri.parse(fullurl),
-  //       body: jsonEncode(divition),
-  //       headers: setHeaders());
-
-  //       if (response.statusCode == 200) {
-  //         var data = jsonDecode(response.body);
-
-  //       }
-  //     } catch (e) {
-  //       print(e);
-  //     }
-  //  }
 
   // Future<void> _selectDate(BuildContext context) async {
   //   final DateTime? pickedDate = await showDatePicker(
