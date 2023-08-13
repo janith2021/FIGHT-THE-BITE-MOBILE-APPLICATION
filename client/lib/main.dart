@@ -5,7 +5,11 @@ import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
+import 'package:client/screen/organization/addCampaign.dart';
 import 'package:client/screen/organization/createCampaign.dart';
+
+import 'package:client/screen/user/affected1.dart';
+import 'package:client/screen/user/affected2.dart';
 import 'package:client/screen/user/affectivity.dart';
 import 'package:client/screen/user/laboratoryReport.dart';
 import 'package:client/screen/user/laboratorybooking.dart';
@@ -63,7 +67,11 @@ class Myapp extends StatelessWidget {
           NotificationPage.routename: (_) => const NotificationPage(),
           Affectivity.routename: (_) => const Affectivity(),
           LeaderBoard.routename: (_) => const LeaderBoard(),
-          MyForm.routename: (_) => MyForm(),
+          Affect.routename:(_) => Affect(),
+          AffectPerson.routename:(_) => AffectPerson(),
+          Add.routename:(_) => Add(),
+          MyApp.routename:(_) => const MyApp(),
+         
         },
         home: SplashView(
           gradient:

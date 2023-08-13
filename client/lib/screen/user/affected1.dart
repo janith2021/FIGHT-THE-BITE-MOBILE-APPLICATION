@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-
-
-
-class MyApp extends StatelessWidget {
+class Affect extends StatelessWidget {
+  static String get routename => "/villager/inform/affected1";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -92,7 +90,8 @@ class _SelectionScreenState extends State<SelectionScreen> {
                 alignment: Alignment.centerLeft,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Add your logic here for the 'Next' button
+                    Navigator.pushNamed(context, "/villager/inform/affected2");
+                    
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red,

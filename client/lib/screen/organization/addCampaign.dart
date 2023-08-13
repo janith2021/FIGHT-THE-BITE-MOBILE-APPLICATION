@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MyApp extends StatelessWidget {
+class Add extends StatelessWidget {
   
+  static String get routename => "/organization/inform/addCampaign";
 
   @override
   

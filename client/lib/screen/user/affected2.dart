@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 
-class MyApp extends StatelessWidget {
+class AffectPerson extends StatelessWidget {
+  static String get routename => "/villager/inform/affected2";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

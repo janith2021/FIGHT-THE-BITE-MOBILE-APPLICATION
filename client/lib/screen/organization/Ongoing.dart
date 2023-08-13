@@ -1,7 +1,8 @@
 import 'package:client/const/all_imports.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  static String get routename => "/organization/inform/ongoing";
+
 
   @override
   Widget build(BuildContext context) {

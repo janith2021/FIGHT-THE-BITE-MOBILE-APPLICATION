@@ -336,19 +336,25 @@ class _UserDashboardState extends State<UserDashboard> {
                                 top: AllDimensions.px70),
                             child: Row(
                               children: [
-                                CustomButton(
-                                  bordercolor: AppColors.white,
-                                  borderradius: AllDimensions.px50,
-                                  boxcolor: AppColors.red,
-                                  borderwidth: 0,
-                                  text: AllStrings.informaffectivity,
-                                  styles: GoogleFonts.lato(
-                                    fontSize: AllDimensions.px20,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.white,
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, "/villager/inform/affected1");
+                                  },
+                                  child: CustomButton(
+                                    bordercolor: AppColors.white,
+                                    borderradius: AllDimensions.px50,
+                                    boxcolor: AppColors.red,
+                                    borderwidth: 0,
+                                    text: AllStrings.informaffectivity,
+                                    styles: GoogleFonts.lato(
+                                      fontSize: AllDimensions.px20,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.white,
+                                    ),
+                                    btnWidth: AllDimensions.px118,
+                                    btnheight: AllDimensions.px34,
                                   ),
-                                  btnWidth: AllDimensions.px118,
-                                  btnheight: AllDimensions.px34,
                                 )
                               ],
                             ),
