@@ -50,6 +50,7 @@ class Myapp extends StatelessWidget {
         // initialRoute: Splash.routename,
         // initialRoute: OtpScreen.routename,
         routes: {
+
           Splash.routename: (_) => const Splash(),
           Login.routeName: (_) => const Login(),
           SignUp.routename: (_) => const SignUp(),
@@ -81,5 +82,6 @@ class Myapp extends StatelessWidget {
           logo: Image.asset("Assets/splash_screen/logo.png"),
           done: Done(const Login()),
         )));
+
   }
 }
