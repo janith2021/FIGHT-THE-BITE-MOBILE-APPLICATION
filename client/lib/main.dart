@@ -70,7 +70,7 @@ class Myapp extends StatelessWidget {
           Affect.routename:(_) => Affect(),
           AffectPerson.routename:(_) => AffectPerson(),
           Add.routename:(_) => Add(),
-          MyApp.routename:(_) => const MyApp(),
+          MyApp.routename:(_) => const MyApp()
          
         },
         home: SplashView(

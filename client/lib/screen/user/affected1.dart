@@ -4,7 +4,7 @@ class Affect extends StatelessWidget {
   static String get routename => "/villager/inform/affected1";
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: SelectionScreen(),
     );
   }
@@ -32,9 +32,21 @@ class _SelectionScreenState extends State<SelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(70.0),
+          padding: const EdgeInsets.all(30.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -43,7 +55,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
                 child: Text(
                   'Select the person who is affected:',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -76,7 +88,8 @@ class _SelectionScreenState extends State<SelectionScreen> {
                         const SizedBox(width: 10),
                         Text(
                           affectedPersons[index],
-                          style: TextStyle(
+                          
+                          style: const TextStyle(
                             fontSize: 20,
                           ),
                         ),
@@ -85,23 +98,24 @@ class _SelectionScreenState extends State<SelectionScreen> {
                   }),
                 ),
               ),
-              SizedBox(height: 50),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/villager/inform/affected2");
-                    
-                  },
+              const SizedBox(height: 50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                     Navigator.pushNamed(context, "/villager/inform/affected2");
+                    },
+              
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red,
                     padding:
-                        EdgeInsets.symmetric(horizontal: 110, vertical: 12),
+                        const EdgeInsets.symmetric(horizontal: 110, vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Next',
                     style: TextStyle(
                       color: Colors.white,
@@ -109,11 +123,12 @@ class _SelectionScreenState extends State<SelectionScreen> {
                     ),
                   ),
                 ),
+                ],
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Expanded(
                 child: Image.asset(
-                  'assets/symptoms.png',
+                  'Assets/villagers/symptoms.png',
                   width: 1500, // Set the desired width
                   height: 1000,
                 ),
