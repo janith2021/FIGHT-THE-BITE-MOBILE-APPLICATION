@@ -101,7 +101,7 @@ class SignupProvider extends ChangeNotifier {
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
     // const cloud = "dbmtgupsy";
     // if (selectedfile.isNull) {
-<<<<<<< HEAD
+
     final cloudinary = Cloudinary.unsignedConfig(cloudName: "dbmtgupsy");
     final response1 = await cloudinary.unsignedUpload(
       uploadPreset: "fightthebite",
@@ -129,7 +129,7 @@ class SignupProvider extends ChangeNotifier {
     _snackbarmessage = body['message'];
     notifyListeners();
     return body['type'];
-=======
+
     try {
       var id = shortid.generate();
       var date = DateTime.now();
@@ -193,7 +193,7 @@ class SignupProvider extends ChangeNotifier {
     }
 
     // debugPrint(response1.secureUrl);
->>>>>>> 0bc2f4106f552948dcb7808a20da2b7ec718a5f5
+
 
     // var message2 = await jsonDecode(response2.body);
 

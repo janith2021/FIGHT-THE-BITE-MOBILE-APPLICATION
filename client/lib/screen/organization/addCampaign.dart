@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyApp extends StatelessWidget {
+  
+
   @override
+  
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MyForm(),
@@ -10,7 +14,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyForm extends StatefulWidget {
-  static String get routename => "/createCampaign";
+  const MyForm({super.key});
+
   @override
   _MyFormState createState() => _MyFormState();
 }
@@ -60,16 +65,23 @@ class _MyFormState extends State<MyForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ADD CAMPAIGN'),
+        title: Text(
+          'ADD CAMPAIGN',
+          style: GoogleFonts.poppins(),
+        ),
         backgroundColor: Colors.red,
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(25.0),
         child: Form(
           key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                  height:
+                      20), // Increase the gap between app bar and text fields
               TextFormField(
                 controller: _nameController,
                 validator: (value) {
@@ -80,9 +92,13 @@ class _MyFormState extends State<MyForm> {
                 },
                 decoration: InputDecoration(
                   labelText: 'Campaign Name',
-                  focusColor: Colors.red,
+                  labelStyle: GoogleFonts.poppins(),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
+                    borderSide: BorderSide(
+                      color: _nameController.text.isEmpty
+                          ? Colors.red
+                          : Colors.red,
+                    ),
                   ),
                 ),
               ),
@@ -98,8 +114,13 @@ class _MyFormState extends State<MyForm> {
                 },
                 decoration: InputDecoration(
                   labelText: 'Campaign Date',
+                  labelStyle: GoogleFonts.poppins(),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
+                    borderSide: BorderSide(
+                      color: _dateController.text.isEmpty
+                          ? Colors.red
+                          : Colors.red,
+                    ),
                   ),
                 ),
               ),
@@ -114,27 +135,17 @@ class _MyFormState extends State<MyForm> {
                 },
                 decoration: InputDecoration(
                   labelText: 'Location',
+                  labelStyle: GoogleFonts.poppins(),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
+                    borderSide: BorderSide(
+                      color: _locationController.text.isEmpty
+                          ? Colors.red
+                          : Colors.red,
+                    ),
                   ),
                 ),
               ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  Text('Do you expect a sponsorship?'),
-                  Radio(
-                    value: true,
-                    groupValue: _sponsorship,
-                    onChanged: (value) {
-                      setState(() {
-                        _sponsorship = value as bool;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
+
               Row(
                 children: [
                   Checkbox(
@@ -144,16 +155,35 @@ class _MyFormState extends State<MyForm> {
                         _agreedToGuidelines = value!;
                       });
                     },
+                    activeColor: Colors.red,
                   ),
-                  Text('I have read and agree to the guidelines'),
+                  Text(
+                    'I have read and agree to the guidelines',
+                    style: GoogleFonts.poppins(fontSize: 17),
+                  ),
                 ],
               ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _submitForm,
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.green)),
-                child: Text('Create'),
+              SizedBox(height: 32),
+              Center(
+                // Center the button
+                child: ElevatedButton(
+                  onPressed: _submitForm,
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                    minimumSize: MaterialStateProperty.all(
+                        Size(300, 50)), // Increase the width and height
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(25.0), // Add border radius
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    'Create',
+                    style: GoogleFonts.poppins(fontSize: 18),
+                  ),
+                ),
               ),
             ],
           ),

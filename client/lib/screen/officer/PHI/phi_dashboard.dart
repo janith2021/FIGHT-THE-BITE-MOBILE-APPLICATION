@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-=======
+
 // import 'package:hive/hive.dart';
->>>>>>> 0bc2f4106f552948dcb7808a20da2b7ec718a5f5
+
 
 import '../../../const/all_imports.dart';
 
