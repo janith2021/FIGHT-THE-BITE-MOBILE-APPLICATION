@@ -72,6 +72,8 @@ dependencies:
   rounded_expansion_tile: ^0.0.13
   buttons_tabbar: ^1.3.7+1
   profile_photo: ^1.0.3
+  date_only_field: ^0.0.14
+  intl: ^0.18.1
 
   # flutter_tawk: ^0.1.0
 

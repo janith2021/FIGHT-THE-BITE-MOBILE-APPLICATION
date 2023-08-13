@@ -27,8 +27,8 @@ class AllStrings {
   static String passwordnotmatched =
       "Password and Confirm Password does not match";
   // static String get baseurl =>
-      // "https://nodeapplication-8611eb651b54.herokuapp.com/api";
-  static String get baseurl => "http://192.168.8.102:5000/api";
+  //     "https://nodeapplication-8611eb651b54.herokuapp.com/api";
+  static String get baseurl => "http://192.168.8.100:5000/api";
   static String otpsent =
       "We have sent an OTP to Your Email and Your Registered Mobile Number";
   static String verifyotp = "Verify";
@@ -65,7 +65,7 @@ class AllStrings {
   static String makeappointment = "Make Appointment";
   static String notificationtitle = "Notifications";
   static String meetingdetails =
-      "We're excited to confirm your appointment. Your appointment is scheduled at 11.15 AM. We kindly request your presence a little ahead of time to facilitate a timely consultation.https://us06web.zoom.us/j/81134569838?pwd=SUtqNkIrWFJ3VlFjdWRWSTllRm1yUT09";
+      "We're excited to confirm your appointment. Your appointment is scheduled at 11.15 AM. We kindly request your presence a little ahead of time to facilitate a timely consultation.\n\nhttps://us06web.zoom.us/j/81134569838?pwd=SUtqNkIrWFJ3VlFjdWRWSTllRm1yUT09";
   static String seemore = "See More";
   static String totalvillagers = "Total Number of Villagers";
   static String totalaffectedvillagers = "Total Number of Affected Villagers";

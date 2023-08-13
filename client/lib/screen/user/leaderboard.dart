@@ -1,3 +1,5 @@
+// import 'package:profile_photo/profile_photo.dart';
+
 import 'package:profile_photo/profile_photo.dart';
 
 import '../../const/all_imports.dart';
@@ -14,6 +16,17 @@ class LeaderBoard extends StatelessWidget {
         padding: EdgeInsets.all(AllDimensions.px30),
         child:  Column(
           children: [
+            // Row(
+            //   children: [
+            //      ProfilePhoto(
+            //       image: const NetworkImage(
+            //           "https://img.freepik.com/free-vector/teenage-boy-with-black-hair-cartoon-character_1308-133556.jpg?w=360&t=st=1691846618~exp=1691847218~hmac=b5a1fdabab14200b3b27b316332aac1c2dcec2280c866e33d7b4f1a4cb4867c5"),
+            //       totalWidth: AllDimensions.px200,
+            //       color: Colors.blue,
+            //       cornerRadius: AllDimensions.px25,
+            //     ),  
+            //   ],
+            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -26,18 +39,20 @@ class LeaderBoard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CircleAvatar(             
-                  backgroundImage: NetworkImage(
+                CircleAvatar(   
+
+                  backgroundImage: const NetworkImage(
                     "https://img.freepik.com/free-vector/teenage-boy-with-black-hair-cartoon-character_1308-133556.jpg?w=360&t=st=1691846618~exp=1691847218~hmac=b5a1fdabab14200b3b27b316332aac1c2dcec2280c866e33d7b4f1a4cb4867c5",
                   ),
                   radius: AllDimensions.px50,
                 ),
                 CircleAvatar(
-                  backgroundImage: NetworkImage(
+                  backgroundImage: const NetworkImage(
                     "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-855.jpg?w=740&t=st=1691850330~exp=1691850930~hmac=a2370590d0a0198a3d8922244e6c091e86eaa5f03f345eb69ed1a01e596a4a9b",
                   ),
                   radius: AllDimensions.px50,
                 ),
+
               ],
             ),
           ],
