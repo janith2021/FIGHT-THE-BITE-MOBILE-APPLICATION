@@ -101,10 +101,6 @@ class SignupProvider extends ChangeNotifier {
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
     // const cloud = "dbmtgupsy";
     // if (selectedfile.isNull) {
-<<<<<<< HEAD
-
-=======
->>>>>>> 0ee854fbabffd409bd271421a829afcf4c9606b7
     final cloudinary = Cloudinary.unsignedConfig(cloudName: "dbmtgupsy");
     final response1 = await cloudinary.unsignedUpload(
       uploadPreset: "fightthebite",
