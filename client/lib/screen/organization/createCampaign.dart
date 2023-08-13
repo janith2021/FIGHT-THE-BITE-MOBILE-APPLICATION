@@ -4,6 +4,8 @@ import 'package:client/const/all_imports.dart';
 // import 'package:flutter/widgets.dart';
 // import 'package:flutter_neat_and_clean_calendar/flutter_neat_and_clean_calendar.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+
+import '../../widget/custom_card.dart';
 // import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class CreateCampaign extends StatelessWidget {
@@ -13,6 +15,7 @@ class CreateCampaign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.lightgrey,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(AllDimensions.px20),
@@ -52,13 +55,21 @@ class CreateCampaign extends StatelessWidget {
                   ],
                 ),
               ),
-              GestureDetector(
+              SizedBox(height: AllDimensions.px20,),
+              InkWell(
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, "/createCampaign");
+                  Navigator.pushNamed(context, "/organization/create/form");
                 },
-                child: Container(
-                  child: Text("Hello"),
-                ),
+                child: CustomCard(
+                    boxcolor: AppColors.white,
+                    imageicon:
+                        "Assets/organization/createcampaign/createform.jpg",
+                    cardname: AllStrings.createcampaign,
+                    textalign: TextAlign.center,
+                    maxline: 2,
+                    textstyle: GoogleFonts.poppins(
+                        fontSize: AllDimensions.px18,
+                        fontWeight: FontWeight.bold),width: MediaQuery.of(context).size.width,),
               )
             ],
           ),

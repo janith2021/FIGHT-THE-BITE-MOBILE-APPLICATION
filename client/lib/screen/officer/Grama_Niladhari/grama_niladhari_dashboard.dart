@@ -1,7 +1,4 @@
 
-// import 'package:hive/hive.dart';
-
-
 import '../../../const/all_imports.dart';
 
 class GramaNiladhariDashBoard extends StatefulWidget {
@@ -31,8 +28,6 @@ class _GramaNiladhariDashBoardState extends State<GramaNiladhariDashBoard> {
       _user = _userbox!.get('user');
     });
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

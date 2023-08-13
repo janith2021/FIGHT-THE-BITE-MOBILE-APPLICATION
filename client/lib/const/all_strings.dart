@@ -43,7 +43,7 @@ class AllStrings {
   static String labreports = "Lab Reports";
   static String channeldoctors = "Channel Doctors";
   static String campaigns = "Campaigns";
-  static String emergency = "Emergency Vehicles";
+  static String patientdetails = "Patient Details";
   static String frequentlyused = "Frequently Used";
   static String affectedrate = "Affected Rate";
   static String createcampaign = "Create Campaign";
@@ -51,4 +51,24 @@ class AllStrings {
   static String ongoingcampaign = "View Ongoing Campaign";
   static String imageurl =
       "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-855.jpg?w=740&t=st=1691606622~exp=1691607222~hmac=2dd7d07952822c438a91a4bcf35b737c7386a4f7e735d11ca818b39222759d13";
+  static String notifications = "Notifications";
+  static String emailverify = "Reset Password";
+  static String enternewpassword =
+      "Please Enter Your New Password in the given Field";
+  static String appointmentdetails = "Appointment Details";
+  static String fullname = "Full Name";
+  static String appointmentdate = "Appointment Date";
+  static String appointmenttime = "Appointment Time";
+  static String testmethod = "Test Method";
+  static String onlinebooking = "Online Booking";
+  static String inthelab = "In The Lab";
+  static String makeappointment = "Make Appointment";
+  static String notificationtitle = "Notifications";
+  static String meetingdetails =
+      "We're excited to confirm your appointment. Your appointment is scheduled at 11.15 AM. We kindly request your presence a little ahead of time to facilitate a timely consultation.https://us06web.zoom.us/j/81134569838?pwd=SUtqNkIrWFJ3VlFjdWRWSTllRm1yUT09";
+  static String seemore = "See More";
+  static String totalvillagers = "Total Number of Villagers";
+  static String totalaffectedvillagers = "Total Number of Affected Villagers";
+  static String numberofdeaths = "Number of Deaths";
+  static String growinggraph = "Number of patients growing monthly";
 }
