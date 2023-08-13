@@ -87,6 +87,7 @@ class SignupProvider extends ChangeNotifier {
         _snackbarmessage = "";
         // return true;
       } else {
+        // ignore: use_build_context_synchronously
         ArtSweetAlert.show(context: context, artDialogArgs: ArtDialogArgs(
           type: ArtSweetAlertType.danger,
           title: "Registration Failed",

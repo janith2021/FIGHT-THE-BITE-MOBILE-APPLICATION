@@ -241,6 +241,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  date_only_field:
+    dependency: "direct main"
+    description:
+      name: date_only_field
+      sha256: "97b5eef9df029bed6cf679d1b5dcd3805de906ff66163cb261ea4bab0e87270a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.14"
   dio:
     dependency: transitive
     description:
@@ -545,7 +553,7 @@ packages:
     source: hosted
     version: "0.2.1"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
