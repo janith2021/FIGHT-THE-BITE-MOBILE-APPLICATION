@@ -26,7 +26,6 @@ class _SelectionScreenState extends State<SelectionScreen> {
     'Jagath Perera',
     'Nayomi Lakshi',
   ];
-
   List<bool> selectedPersons = [false, false, false, false, false];
 
   @override
@@ -35,7 +34,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
       appBar: AppBar(
         backgroundColor: Colors.red,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
@@ -88,7 +87,6 @@ class _SelectionScreenState extends State<SelectionScreen> {
                         const SizedBox(width: 10),
                         Text(
                           affectedPersons[index],
-                          
                           style: const TextStyle(
                             fontSize: 20,
                           ),
@@ -104,31 +102,31 @@ class _SelectionScreenState extends State<SelectionScreen> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                     Navigator.pushNamed(context, "/villager/inform/affected2");
+                      Navigator.pushNamed(
+                          context, "/villager/inform/affected2");
                     },
-              
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 110, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 110, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: const Text(
+                      'Next',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
                     ),
                   ),
-                  child: const Text(
-                    'Next',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
-                  ),
-                ),
                 ],
               ),
               const SizedBox(height: 40),
               Expanded(
                 child: Image.asset(
-                  'Assets/villagers/symptoms.png',
+                  'assets/symptoms.png',
                   width: 1500, // Set the desired width
                   height: 1000,
                 ),

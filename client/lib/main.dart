@@ -1,4 +1,5 @@
 import 'package:client/providers/change_password_provider.dart';
+import 'package:client/providers/create_campaign_provider.dart';
 import 'package:client/providers/laboratorybooking_provider.dart';
 import 'package:client/providers/otp_provider.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
@@ -43,6 +44,7 @@ class Myapp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => OtpProvider()),
           ChangeNotifierProvider(create: (_) => ChangePasswordProvider()),
           ChangeNotifierProvider(create: (_) => LaboratoryBookingProvider()),
+          ChangeNotifierProvider(create: (_) => CreateCampaignProvider()),
         ],
         child: MaterialApp(
         debugShowCheckedModeBanner: false,
