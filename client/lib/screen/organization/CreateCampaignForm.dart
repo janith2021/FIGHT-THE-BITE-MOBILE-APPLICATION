@@ -152,6 +152,29 @@ class _MyFormState extends State<MyForm> {
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
+                    controller: provider.campaigntimecontroller,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter campaign time';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Campaign Time',
+                      labelStyle: GoogleFonts.poppins(),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: provider.campaigndatecontroller.text.isEmpty
+                              ? Colors.red
+                              : Colors.red,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: AllDimensions.px15,
+                  ),
+                  TextFormField(
                     controller: provider.campaignlocationcontroller,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -184,6 +207,7 @@ class _MyFormState extends State<MyForm> {
                         },
                         activeColor: Colors.red,
                       ),
+                      SizedBox(height: AllDimensions.px100,),
                       Expanded(
                         child: Text(
                           'I have read and agree to the guidelines',

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-class Affect extends StatelessWidget {
-  static String get routename => "/villager/inform/affected1";
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SelectionScreen(),
-    );
-  }
-}
+// class Affect extends StatelessWidget {
+//   static String get routename => "/villager/inform/affected1";
+//   @override
+//   // Widget build(BuildContext context) {
+//   //   return MaterialApp(
+//   //     home: SelectionScreen(),
+//   //   );
+//   // }
+// };
 
 class SelectionScreen extends StatefulWidget {
+  static String get routename => "/villager/inform/affected1";
   const SelectionScreen({super.key});
 
   @override
@@ -91,10 +92,9 @@ class _SelectionScreenState extends State<SelectionScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, "/villager/inform/affected2");
-                    
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
+                    backgroundColor: Colors.red,
                     padding:
                         EdgeInsets.symmetric(horizontal: 110, vertical: 12),
                     shape: RoundedRectangleBorder(
@@ -113,7 +113,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
               SizedBox(height: 40),
               Expanded(
                 child: Image.asset(
-                  'assets/symptoms.png',
+                  'Assets/villagers/inform/symptoms.png',
                   width: 1500, // Set the desired width
                   height: 1000,
                 ),
