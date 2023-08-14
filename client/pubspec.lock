@@ -81,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  buttons_tabbar:
+    dependency: "direct main"
+    description:
+      name: buttons_tabbar
+      sha256: "781128180f3e76cf93c093183f10395c664983dbee20bc4da2025be70085c2da"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.7+1"
   cached_network_image:
     dependency: transitive
     description:
@@ -233,6 +241,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  date_only_field:
+    dependency: "direct main"
+    description:
+      name: date_only_field
+      sha256: "97b5eef9df029bed6cf679d1b5dcd3805de906ff66163cb261ea4bab0e87270a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.14"
   dio:
     dependency: transitive
     description:
@@ -448,6 +464,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  icon_badge:
+    dependency: "direct main"
+    description:
+      name: icon_badge
+      sha256: "44d659765cc891705a7e93f36590fd795ecf3a1201aff67d4c5061d2b610c20f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   icons_launcher:
     dependency: "direct main"
     description:
@@ -529,7 +553,7 @@ packages:
     source: hosted
     version: "0.2.1"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
@@ -768,6 +792,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.0"
+  profile_photo:
+    dependency: "direct main"
+    description:
+      name: profile_photo
+      sha256: "8cb2d1e4af2525343c9f27ca23b07489f676cd1474a03be6446d45dc0f359f4f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   provider:
     dependency: "direct main"
     description:
@@ -800,6 +832,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  rounded_expansion_tile:
+    dependency: "direct main"
+    description:
+      name: rounded_expansion_tile
+      sha256: "1431357a66112026b1799c8c87ab2ec20f86f9b4db9a4b500795d681719bbe54"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.13"
   rxdart:
     dependency: transitive
     description:

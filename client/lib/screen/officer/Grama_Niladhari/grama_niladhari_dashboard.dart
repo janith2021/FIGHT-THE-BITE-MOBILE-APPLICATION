@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // import 'package:hive/hive.dart';
+=======
+>>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
 
 import '../../../const/all_imports.dart';
 
@@ -28,7 +31,10 @@ class _GramaNiladhariDashBoardState extends State<GramaNiladhariDashBoard> {
       _user = _userbox!.get('user');
     });
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
   @override
   Widget build(BuildContext context) {
     return Scaffold(

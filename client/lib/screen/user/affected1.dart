@@ -4,7 +4,11 @@ class Affect extends StatelessWidget {
   static String get routename => "/villager/inform/affected1";
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return const MaterialApp(
+=======
+    return MaterialApp(
+>>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
       home: SelectionScreen(),
     );
   }
@@ -26,11 +30,16 @@ class _SelectionScreenState extends State<SelectionScreen> {
     'Jagath Perera',
     'Nayomi Lakshi',
   ];
+<<<<<<< HEAD
+=======
+
+>>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
   List<bool> selectedPersons = [false, false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(
         backgroundColor: Colors.red,
         leading: IconButton(
@@ -46,6 +55,11 @@ class _SelectionScreenState extends State<SelectionScreen> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(30.0),
+=======
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(70.0),
+>>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -54,7 +68,11 @@ class _SelectionScreenState extends State<SelectionScreen> {
                 child: Text(
                   'Select the person who is affected:',
                   style: TextStyle(
+<<<<<<< HEAD
                     fontSize: 22,
+=======
+                    fontSize: 25,
+>>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -87,7 +105,11 @@ class _SelectionScreenState extends State<SelectionScreen> {
                         const SizedBox(width: 10),
                         Text(
                           affectedPersons[index],
+<<<<<<< HEAD
                           style: const TextStyle(
+=======
+                          style: TextStyle(
+>>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                             fontSize: 20,
                           ),
                         ),
@@ -96,6 +118,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
                   }),
                 ),
               ),
+<<<<<<< HEAD
               const SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -124,6 +147,34 @@ class _SelectionScreenState extends State<SelectionScreen> {
                 ],
               ),
               const SizedBox(height: 40),
+=======
+              SizedBox(height: 50),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/villager/inform/affected2");
+                    
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 110, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  child: Text(
+                    'Next',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 40),
+>>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
               Expanded(
                 child: Image.asset(
                   'assets/symptoms.png',

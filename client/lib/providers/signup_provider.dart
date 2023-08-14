@@ -87,12 +87,11 @@ class SignupProvider extends ChangeNotifier {
         _snackbarmessage = "";
         // return true;
       } else {
-        ArtSweetAlert.show(
-            context: context,
-            artDialogArgs: ArtDialogArgs(
-              type: ArtSweetAlertType.danger,
-              title: "Registration Failed",
-            ));
+        // ignore: use_build_context_synchronously
+        ArtSweetAlert.show(context: context, artDialogArgs: ArtDialogArgs(
+          type: ArtSweetAlertType.danger,
+          title: "Registration Failed",
+        ));
       }
     }
     notifyListeners();
@@ -103,7 +102,6 @@ class SignupProvider extends ChangeNotifier {
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
     // const cloud = "dbmtgupsy";
     // if (selectedfile.isNull) {
-
     final cloudinary = Cloudinary.unsignedConfig(cloudName: "dbmtgupsy");
     final response1 = await cloudinary.unsignedUpload(
       uploadPreset: "fightthebite",
@@ -131,70 +129,6 @@ class SignupProvider extends ChangeNotifier {
     _snackbarmessage = body['message'];
     notifyListeners();
     return body['type'];
-
-    try {
-      var id = shortid.generate();
-      var date = DateTime.now();
-      var url;
-      if (selectedfile != null) {
-        final cloudinary =
-            Cloudinary.unsignedConfig(cloudName: dotenv.get("CLOUDNAME"));
-        final response1 = await cloudinary.unsignedUpload(
-          uploadPreset: "fightthebite",
-          fileBytes: selectedfile!.readAsBytesSync(),
-          folder: 'FIGHT_THE_BITE/Users',
-          resourceType: CloudinaryResourceType.image,
-          fileName:
-              'FIGHT${controllername.text}_${controlleremail.text}_${id}__${date}_FIGHTTHEBITEUSERS',
-        );
-        // debugPrint(response1.secureUrl);
-        // CircularProgressIndicator();
-        // response1.secureUrl ?? AllStrings.imageurl;
-        url = response1.secureUrl;
-      } else {
-        url = AllStrings.imageurl;
-      }
-      // debugPrint(response1.secureUrl);
-      debugPrint(url);
-      if (url.toString() != null) {
-        debugPrint('Inside Function');
-        var data = {
-          'name': controllername.text,
-          'email': controlleremail.text,
-          'password': controllerpassword.text,
-          'mobile': controllermobile.text,
-          'image': url,
-          'role': "villager",
-        };
-        var fullurl = '${AllStrings.baseurl}/villager/register';
-        // var fullurl = 'http://10.22.164.217:5000/api/villager/register';
-        var response2 = await http.post(
-          Uri.parse(fullurl),
-          body: jsonEncode(data),
-          headers: setHeaders(),
-        );
-        var body = await jsonDecode(response2.body);
-        debugPrint(body.toString());
-        _snackbarmessage = body['message'];
-        debugPrint(_snackbarmessage);
-        notifyListeners();
-        return body['type'];
-      } else {
-        // ignore: use_build_context_synchronously
-        ArtSweetAlert.show(
-            context: context,
-            artDialogArgs: ArtDialogArgs(
-                title: 'Error',
-                type: ArtSweetAlertType.danger,
-                text:
-                    "There is an Error while uploading the image. Please Try again Later."));
-      }
-    } catch (e) {
-      debugPrint('hello');
-      debugPrint(e.toString());
-    }
-
-    // debugPrint(response1.secureUrl);
 
     // var message2 = await jsonDecode(response2.body);
 
