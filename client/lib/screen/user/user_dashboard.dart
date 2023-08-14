@@ -279,10 +279,10 @@ class _UserDashboardState extends State<UserDashboard> {
                                 ],
                               ),
                               InkWell(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, "villager/leaderboard");
-                                },
+                                // onTap: () {
+                                //   Navigator.pushNamed(
+                                //       context, "villager/leaderboard");
+                                // },
                                 child: CustomButton(
                                   bordercolor: AppColors.white,
                                   borderradius: AllDimensions.px50,
@@ -336,19 +336,25 @@ class _UserDashboardState extends State<UserDashboard> {
                                 top: AllDimensions.px70),
                             child: Row(
                               children: [
-                                CustomButton(
-                                  bordercolor: AppColors.white,
-                                  borderradius: AllDimensions.px50,
-                                  boxcolor: AppColors.red,
-                                  borderwidth: 0,
-                                  text: AllStrings.informaffectivity,
-                                  styles: GoogleFonts.lato(
-                                    fontSize: AllDimensions.px20,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.white,
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, "/villager/inform/affected1");
+                                  },
+                                  child: CustomButton(
+                                    bordercolor: AppColors.white,
+                                    borderradius: AllDimensions.px50,
+                                    boxcolor: AppColors.red,
+                                    borderwidth: 0,
+                                    text: AllStrings.informaffectivity,
+                                    styles: GoogleFonts.lato(
+                                      fontSize: AllDimensions.px20,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.white,
+                                    ),
+                                    btnWidth: AllDimensions.px118,
+                                    btnheight: AllDimensions.px34,
                                   ),
-                                  btnWidth: AllDimensions.px118,
-                                  btnheight: AllDimensions.px34,
                                 )
                               ],
                             ),
@@ -410,37 +416,42 @@ class _UserDashboardState extends State<UserDashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        CustomCard(
-                          imageicon:
-                              "Assets/villagers/dashboard/campaignicon.png",
-                          cardname: AllStrings.campaigns,
-                          textalign: TextAlign.center,
-                          maxline: 2,
-                          textstyle:
-                              GoogleFonts.poppins(fontSize: AllDimensions.px15),
-                          blurradius: AllDimensions.px10,
-                          boxcolor: AppColors.white,
-                        ),
                         InkWell(
                           onTap: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) => CustomDialogBox(
-                                      dialogtitle: "Add Emergency Vehicles",
-                                      controller1: vehicleNumberController,
-                                      hintText1: "Enter Vehicle Name",
-                                      iconData1: Icons.airport_shuttle,
-                                      label1: "Vehicle Name",
-                                      errorText1: "Please Enter Vehicle Name",
-                                      submitBtnText: "Submit",
-                                      cancelBtnText: "Cancel",
-                                      submitbtncolor: AppColors.green,
-                                      cancelbtncolor: AppColors.red,
-                                      btntextstyle: GoogleFonts.poppins(
-                                          color: AppColors.black,
-                                          fontSize: AllDimensions.px20),
-                                    ));
+                            Navigator.pushNamed(context, "/villager/campaigns");
                           },
+                          child: CustomCard(
+                            imageicon:
+                                "Assets/villagers/dashboard/campaignicon.png",
+                            cardname: AllStrings.campaigns,
+                            textalign: TextAlign.center,
+                            maxline: 2,
+                            textstyle: GoogleFonts.poppins(
+                                fontSize: AllDimensions.px15),
+                            blurradius: AllDimensions.px10,
+                            boxcolor: AppColors.white,
+                          ),
+                        ),
+                        InkWell(
+                          // onTap: () {
+                          //   showDialog(
+                          //       context: context,
+                          //       builder: (context) => CustomDialogBox(
+                          //             dialogtitle: "Add Emergency Vehicles",
+                          //             controller1: vehicleNumberController,
+                          //             hintText1: "Enter Vehicle Name",
+                          //             iconData1: Icons.airport_shuttle,
+                          //             label1: "Vehicle Name",
+                          //             errorText1: "Please Enter Vehicle Name",
+                          //             submitBtnText: "Submit",
+                          //             cancelBtnText: "Cancel",
+                          //             submitbtncolor: AppColors.green,
+                          //             cancelbtncolor: AppColors.red,
+                          //             btntextstyle: GoogleFonts.poppins(
+                          //                 color: AppColors.black,
+                          //                 fontSize: AllDimensions.px20),
+                          //           ));
+                          // },
                           child: CustomCard(
                             imageicon:
                                 "Assets/villagers/dashboard/patientdetails.png",

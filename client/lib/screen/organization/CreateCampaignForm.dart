@@ -172,7 +172,9 @@ class _MyFormState extends State<MyForm> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: AllDimensions.px15,
+                  ),
                   TextFormField(
                     controller: provider.campaignlocationcontroller,
                     validator: (value) {
@@ -207,6 +209,7 @@ class _MyFormState extends State<MyForm> {
                         },
                         activeColor: Colors.red,
                       ),
+                      SizedBox(height: AllDimensions.px100,),
                       Expanded(
                         child: Text(
                           'I have read and agree to the guidelines',

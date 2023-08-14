@@ -1,12 +1,11 @@
-// import 'dart:js';
-
-import 'package:client/models/campaign.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../const/all_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart' as path_provider;
+
+import '../models/campaign.dart';
 
 class CreateCampaignProvider extends ChangeNotifier {
   TextEditingController campaignnamecontroller = TextEditingController();
@@ -107,13 +106,16 @@ class CreateCampaignProvider extends ChangeNotifier {
 
   submitform(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    debugPrint(campaignnamecontroller.text);
+    // String formatdate =
+    //     DateFormat('M/d/y').format(DateTime.parse(campaigndatecontroller.text));
+    // debugPrint(formatdate);
+    // debugPrint(campaignnamecontroller.text);
     var body = {
       'name': campaignnamecontroller.text,
       'date': campaigndatecontroller.text,
       'location': campaignlocationcontroller.text,
       'organizationid': prefs.getString('id'),
-      'campaigntime' : campaigntimecontroller.text,
+      'campaigntime': campaigntimecontroller.text
     };
     var fullurl = '${AllStrings.baseurl}/organization/campaign/create';
     setHeaders() =>
@@ -132,6 +134,12 @@ class CreateCampaignProvider extends ChangeNotifier {
               title: "Success",
               type: ArtSweetAlertType.success,
               text: result['message']));
+      campaigndatecontroller.text = "";
+      campaigndatecontroller.text = "";
+      campaignnamecontroller.text = "";
+      campaigntimecontroller.text = "";
+      campaignlocationcontroller.text = "";
+      notifyListeners();
       // ignore: use_build_context_synchronously
     } else {
       // ignore: use_build_context_synchronously
