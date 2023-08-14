@@ -7,6 +7,8 @@ import '../../const/all_imports.dart';
 import '../../providers/create_campaign_provider.dart';
 
 class MyApp extends StatelessWidget {
+  static var routename;
+
   const MyApp({super.key});
 
   @override

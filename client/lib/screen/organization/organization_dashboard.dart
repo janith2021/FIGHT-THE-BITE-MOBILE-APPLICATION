@@ -232,17 +232,23 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                           boxcolor: AppColors.yellow,
                         ),
                       ),
-                      CustomCard(
-                        imageicon:
-                            "Assets/organization/dashboard/ongoingcampaign.png",
-                        cardname: AllStrings.ongoingcampaign,
-                        textalign: TextAlign.center,
-                        maxline: 3,
-                        textstyle: GoogleFonts.aBeeZee(
-                            fontSize: AllDimensions.px20,
-                            fontWeight: FontWeight.bold),
-                        boxcolor: AppColors.yellow,
-                        blurradius: AllDimensions.px10,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, "/organization/inform/ongoing");
+                        },
+                        child: CustomCard(
+                          imageicon:
+                              "Assets/organization/dashboard/ongoingcampaign.png",
+                          cardname: AllStrings.ongoingcampaign,
+                          textalign: TextAlign.center,
+                          maxline: 3,
+                          textstyle: GoogleFonts.aBeeZee(
+                              fontSize: AllDimensions.px20,
+                              fontWeight: FontWeight.bold),
+                          boxcolor: AppColors.yellow,
+                          blurradius: AllDimensions.px10,
+                        ),
                       )
                     ],
                   ),
