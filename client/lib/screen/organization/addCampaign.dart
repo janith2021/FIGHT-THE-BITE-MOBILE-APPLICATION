@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyForm extends StatefulWidget {
-  static String get routename => "/createCampaign";
+  static String get routename => "/addCampaign";
   @override
   _MyFormState createState() => _MyFormState();
 }

@@ -4,6 +4,7 @@ import 'package:client/const/all_imports.dart';
 // import 'package:flutter/widgets.dart';
 // import 'package:flutter_neat_and_clean_calendar/flutter_neat_and_clean_calendar.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'dart:ui';
 // import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class CreateCampaign extends StatelessWidget {
@@ -54,7 +55,7 @@ class CreateCampaign extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, "/createCampaign");
+                  Navigator.pushReplacementNamed(context, "/addCampaign");
                 },
                 child: Container(
                   child: Text("Hello"),
