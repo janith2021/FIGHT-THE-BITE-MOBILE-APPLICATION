@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import 'package:flutter/material.dart';
-
-class CardWithButtonsPage extends StatelessWidget {
-  const CardWithButtonsPage({super.key});
-  static String get routename => "/Ongoing";
-=======
 import 'package:client/const/all_imports.dart';
 
 class MyApp extends StatelessWidget {
@@ -21,34 +14,15 @@ class MyApp extends StatelessWidget {
 
 class CardWithButtonsPage extends StatelessWidget {
   const CardWithButtonsPage({super.key});
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-=======
       resizeToAvoidBottomInset: false,
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
       appBar: AppBar(
         title: const Text('Ongoing Campaigns'),
         backgroundColor: Colors.red,
         centerTitle: true,
-<<<<<<< HEAD
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              child: CustomCard(),
-            ),
-            SizedBox(height: 16.0),
-            ButtonRow(),
-          ],
-        ),
-      ),
-=======
         leading: Container(
           width: 60, // Adjust the width as needed
           height: 60, // Adjust the height as needed
@@ -72,7 +46,6 @@ class CardWithButtonsPage extends StatelessWidget {
           ButtonRow(),
         ],
       ),
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
     );
   }
 }
@@ -91,16 +64,6 @@ class CustomCard extends StatelessWidget {
       shadowColor: Colors.red,
       color: Colors.redAccent[50],
       child: Padding(
-<<<<<<< HEAD
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const SizedBox(height: 10),
-            Text(
-              'Campaign Details',
-              style: TextStyle(
-                fontSize: 20,
-=======
         padding: const EdgeInsets.all(40.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -110,7 +73,6 @@ class CustomCard extends StatelessWidget {
               'Campaign Details',
               style: TextStyle(
                 fontSize: 22,
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                 color: Colors.red[900],
                 fontWeight: FontWeight.w500,
               ),
@@ -177,12 +139,6 @@ class ButtonRow extends StatelessWidget {
           },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.yellow),
-<<<<<<< HEAD
-          ),
-          child: const Text('Update'),
-        ),
-        const SizedBox(width: 25.0),
-=======
             fixedSize: MaterialStateProperty.all(
                 Size(120, 50)), // Adjust width and height as needed
           ),
@@ -194,17 +150,12 @@ class ButtonRow extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 85.0),
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
         ElevatedButton(
           onPressed: () {
             // Handle the second button's onPressed event
           },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.red),
-<<<<<<< HEAD
-          ),
-          child: const Text('Delete'),
-=======
             fixedSize: MaterialStateProperty.all(Size(120, 50)),
           ),
           child: const Text(
@@ -213,18 +164,8 @@ class ButtonRow extends StatelessWidget {
               fontSize: 20, // Adjust the font size as needed
             ),
           ),
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
         ),
       ],
     );
   }
 }
-<<<<<<< HEAD
-
-void main() {
-  runApp(MaterialApp(
-    home: CardWithButtonsPage(),
-  ));
-}
-=======
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16

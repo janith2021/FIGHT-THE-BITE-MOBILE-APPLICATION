@@ -4,12 +4,8 @@ import 'package:client/const/all_imports.dart';
 // import 'package:flutter/widgets.dart';
 // import 'package:flutter_neat_and_clean_calendar/flutter_neat_and_clean_calendar.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-<<<<<<< HEAD
-import 'dart:ui';
-=======
 
 import '../../widget/custom_card.dart';
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
 // import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class CreateCampaign extends StatelessWidget {
@@ -62,11 +58,7 @@ class CreateCampaign extends StatelessWidget {
               SizedBox(height: AllDimensions.px20,),
               InkWell(
                 onTap: () {
-<<<<<<< HEAD
-                  Navigator.pushReplacementNamed(context, "/addCampaign");
-=======
                   Navigator.pushNamed(context, "/organization/create/form");
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                 },
                 child: CustomCard(
                     boxcolor: AppColors.white,

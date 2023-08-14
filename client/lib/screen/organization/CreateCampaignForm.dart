@@ -7,11 +7,6 @@ import '../../const/all_imports.dart';
 import '../../providers/create_campaign_provider.dart';
 
 class MyApp extends StatelessWidget {
-<<<<<<< HEAD
-  static var routename;
-
-=======
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
   const MyApp({super.key});
 
   @override

@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import 'package:client/widget/custom_card.dart';
-import 'package:client/widget/custom_dialog_box.dart';
-// import 'package:flutter_animated_button/flutter_animated_button.dart';
-
-=======
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:client/widget/custom_card.dart';
 import 'package:client/widget/custom_dialog_box.dart';
@@ -11,7 +5,6 @@ import 'package:flutter_app_rename/context.dart';
 import 'package:icon_badge/icon_badge.dart';
 import 'package:rounded_expansion_tile/rounded_expansion_tile.dart';
 // import 'package:flutter_animated_button/flutter_animated_button.dart'
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
 import '../../const/all_imports.dart';
 
 class UserDashboard extends StatefulWidget {
@@ -175,34 +168,6 @@ class _UserDashboardState extends State<UserDashboard> {
                                 blurRadius: AllDimensions.px10,
                                 color: AppColors.red)
                           ]),
-<<<<<<< HEAD
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(AllDimensions.px8),
-                      child: Container(
-                        height: AllDimensions.px168,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius:
-                                BorderRadius.circular(AllDimensions.px10),
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: AllDimensions.px10,
-                                  color: AppColors.red)
-                            ]),
-                        child: Stack(
-                          children: [
-                            Image.asset(
-                                "Assets/villagers/dashboard/affectedratebackground.png"),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Center(
-                                      child: Text(
-                                    AllStrings.affectedrate,
-=======
                       child: Stack(
                         children: [
                           Image.asset(
@@ -224,7 +189,6 @@ class _UserDashboardState extends State<UserDashboard> {
                                 children: [
                                   Text(
                                     '123',
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                                     style: GoogleFonts.poppins(
                                         fontSize: AllDimensions.px60,
                                         color: AppColors.red,
@@ -287,54 +251,16 @@ class _UserDashboardState extends State<UserDashboard> {
                               Image.asset(
                                   "Assets/villagers/dashboard/competition.png")
                             ],
-<<<<<<< HEAD
-                            borderRadius:
-                                BorderRadius.circular(AllDimensions.px10)),
-                        child: Row(
-                          children: [
-                            Stack(
-                              children: [
-                                Image.asset(
-                                    "Assets/villagers/dashboard/medalclothes.png"),
-                                Image.asset(
-                                    "Assets/villagers/dashboard/competition.png")
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(AllDimensions.px15),
-                              child: Column(
-=======
                           ),
                           SizeBox().sizedBox10,
                           Column(
                             children: [
                               Stack(
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                                 children: [
                                   Image.asset(
                                       "Assets/villagers/dashboard/coin.png"),
                                   Column(
                                     children: [
-<<<<<<< HEAD
-                                      Image.asset(
-                                          "Assets/villagers/dashboard/coin.png"),
-                                      Column(
-                                        children: [
-                                          Text(
-                                            AllStrings.yourrank,
-                                            style: GoogleFonts.poppins(
-                                                fontSize: AllDimensions.px25,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                            "278",
-                                            style: GoogleFonts.poppins(
-                                                fontSize: AllDimensions.px40,
-                                                fontWeight: FontWeight.bold,
-                                                color: AppColors.grey),
-                                          )
-                                        ],
-=======
                                       Text(
                                         AllStrings.yourrank,
                                         style: GoogleFonts.poppins(
@@ -347,7 +273,6 @@ class _UserDashboardState extends State<UserDashboard> {
                                             fontSize: AllDimensions.px40,
                                             fontWeight: FontWeight.bold,
                                             color: AppColors.grey),
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                                       )
                                     ],
                                   )
@@ -449,16 +374,6 @@ class _UserDashboardState extends State<UserDashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-<<<<<<< HEAD
-                        CustomCard(
-                            imageicon: "Assets/villagers/dashboard/labicon.png",
-                            cardname: AllStrings.labreports,
-                            textalign: TextAlign.center,
-                            maxline: 2,
-                            textstyle: GoogleFonts.poppins(
-                                fontSize: AllDimensions.px15),
-                            blurradius: AllDimensions.px10),
-=======
                         GestureDetector(
                           onTap: () {
                             Navigator.pushNamed(
@@ -475,7 +390,6 @@ class _UserDashboardState extends State<UserDashboard> {
                               blurradius: AllDimensions.px10,
                               boxcolor: AppColors.white),
                         ),
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                         CustomCard(
                           imageicon:
                               "Assets/villagers/dashboard/channeldoctoricon.png",
@@ -485,10 +399,7 @@ class _UserDashboardState extends State<UserDashboard> {
                           textstyle:
                               GoogleFonts.poppins(fontSize: AllDimensions.px15),
                           blurradius: AllDimensions.px10,
-<<<<<<< HEAD
-=======
                           boxcolor: AppColors.white,
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                         )
                       ],
                     ),
@@ -508,10 +419,7 @@ class _UserDashboardState extends State<UserDashboard> {
                           textstyle:
                               GoogleFonts.poppins(fontSize: AllDimensions.px15),
                           blurradius: AllDimensions.px10,
-<<<<<<< HEAD
-=======
                           boxcolor: AppColors.white,
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                         ),
                         InkWell(
                           onTap: () {
@@ -534,17 +442,6 @@ class _UserDashboardState extends State<UserDashboard> {
                                     ));
                           },
                           child: CustomCard(
-<<<<<<< HEAD
-                              imageicon:
-                                  "Assets/villagers/dashboard/emergencyvehicleicon.png",
-                              cardname: AllStrings.emergency,
-                              textalign: TextAlign.center,
-                              maxline: 2,
-                              textstyle: GoogleFonts.poppins(
-                                fontSize: AllDimensions.px15,
-                              ),
-                              blurradius: AllDimensions.px10),
-=======
                             imageicon:
                                 "Assets/villagers/dashboard/patientdetails.png",
                             cardname: AllStrings.patientdetails,
@@ -556,7 +453,6 @@ class _UserDashboardState extends State<UserDashboard> {
                             blurradius: AllDimensions.px10,
                             boxcolor: AppColors.white,
                           ),
->>>>>>> 29500b2f744550f49be6099e39e7989fc8394b16
                         )
                       ],
                     ),
