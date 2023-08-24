@@ -37,6 +37,7 @@ class LoginProvider extends ChangeNotifier {
         'password': passwordController.text
       };
       var fullurl = '${AllStrings.baseurl}/login';
+      // var fullurl = "http://localhost:5000/api/register";
       debugPrint(fullurl);
       setHeaders() =>
           {'Content-Type': 'application/json', 'Accept': 'application/json'};
