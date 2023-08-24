@@ -1,9 +1,6 @@
-import 'dart:convert';
-
-import 'package:art_sweetalert/art_sweetalert.dart';
-import 'package:cloudinary/cloudinary.dart';
-import 'package:hive/hive.dart';
-
+// import 'dart:html';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:shortid/shortid.dart';
 import '../const/all_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -58,8 +55,9 @@ class SignupProvider extends ChangeNotifier {
         _passworderror == "" &&
         _confirmpassworderror == "" &&
         _mobileerror == "") {
-      var body = await signup();
-      debugPrint(body);
+      // ignore: use_build_context_synchronously
+      var body = await signup(context);
+      // debugPrint(body.toString());
       if (body == 'error') {
         // ignore: use_build_context_synchronously
         ArtSweetAlert.show(
@@ -70,7 +68,7 @@ class SignupProvider extends ChangeNotifier {
                 text: snackbarmessage));
         _snackbarmessage = "";
         // return false;
-      } else {
+      } else if (body == 'success') {
         // ignore: use_build_context_synchronously
         Navigator.pushReplacementNamed(context, "/login");
         // ignore: use_build_context_synchronously
@@ -88,12 +86,18 @@ class SignupProvider extends ChangeNotifier {
         controllerconfirmpassword.text = "";
         _snackbarmessage = "";
         // return true;
+      } else {
+        // ignore: use_build_context_synchronously
+        ArtSweetAlert.show(context: context, artDialogArgs: ArtDialogArgs(
+          type: ArtSweetAlertType.danger,
+          title: "Registration Failed",
+        ));
       }
     }
     notifyListeners();
   }
 
-  signup() async {
+  signup(BuildContext context) async {
     setHeaders() =>
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
     // const cloud = "dbmtgupsy";
@@ -104,15 +108,16 @@ class SignupProvider extends ChangeNotifier {
       fileBytes: selectedfile!.readAsBytesSync(),
       folder: 'FIGHT_THE_BITE/Users',
       resourceType: CloudinaryResourceType.image,
-      fileName: 'FIGHT${controllername.text}_${controlleremail.text}_FIGHTTHEBITEUSERS',
+      fileName:
+          'FIGHT${controllername.text}_${controlleremail.text}_FIGHTTHEBITEUSERS',
     );
-    debugPrint(response1.secureUrl);
+    // debugPrint(response1.secureUrl);
     var data = {
       'name': controllername.text,
       'email': controlleremail.text,
       'password': controllerpassword.text,
       'mobile': controllermobile.text,
-      'image': response1.secureUrl
+      'image': 'hello',
     };
     var fullurl = '${AllStrings.baseurl}/register';
     var response2 = await http.post(

@@ -1,7 +1,4 @@
-import 'dart:convert';
-
-import 'package:art_sweetalert/art_sweetalert.dart';
-import 'package:hive/hive.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../const/all_imports.dart';
 import 'package:http/http.dart' as http;
@@ -26,10 +23,12 @@ class LoginProvider extends ChangeNotifier {
   }
 
   formvalidation(BuildContext context) async {
-     WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
     final appDocumentDir =
         await path_provider.getApplicationDocumentsDirectory();
     Hive.init(appDocumentDir.path);
+
+    final SharedPreferences prefer = await SharedPreferences.getInstance();
     _emailError = ValidationHelper.validateEmail(emailController.text);
     _passwordError = ValidationHelper.validatePassword(passwordController.text);
     if (_passwordError == "" && _emailError == "") {
@@ -44,8 +43,47 @@ class LoginProvider extends ChangeNotifier {
       var response = await http.post(Uri.parse(fullurl),
           body: jsonEncode(data), headers: setHeaders());
       var body = await jsonDecode(response.body);
+      print(body);
       if (body['type'] == 'success') {
-        if (body['role'] == 'user') {
+        print(body['role']);
+        if (body['role'] == 'Villager') {
+          // ignore: use_build_context_synchronously
+          Navigator.pushNamed(context, "/user/dashboard");
+          // ignore: use_build_context_synchronously
+          ArtSweetAlert.show(
+              context: context,
+              artDialogArgs: ArtDialogArgs(
+                  type: ArtSweetAlertType.success,
+                  title: "Success",
+                  text: body['message']));
+          // var box1 = await Hive.openBox('users');
+          // await box1.put('user', emailController.text);
+          // debugPrint('hi');
+          // await shared.setString('email', emailController.text);
+          emailController.text = "";
+          passwordController.text = "";
+
+          notifyListeners();
+        } else if (body['role'] == 'Organization') {
+          // ignore: use_build_context_synchronously
+          Navigator.pushReplacementNamed(context, "/organization/dashboard");
+          // ignore: use_build_context_synchronously
+          ArtSweetAlert.show(
+              context: context,
+              artDialogArgs: ArtDialogArgs(
+                  type: ArtSweetAlertType.success,
+                  title: "Success",
+                  text: body['message']));
+          // var box1 = await Hive.openBox('users');
+          // await box1.put('user', emailController.text);
+          await prefer.setString('user', emailController.text);
+          // debugPrint('hi');
+          // await shared.setString('email', emailController.text);
+          emailController.text = "";
+          passwordController.text = "";
+
+          // notifyListeners();
+        } else {
           // ignore: use_build_context_synchronously
           Navigator.pushNamed(context, "/user/dashboard");
           // ignore: use_build_context_synchronously
@@ -62,46 +100,9 @@ class LoginProvider extends ChangeNotifier {
           emailController.text = "";
           passwordController.text = "";
 
-          notifyListeners();
-        } else if (body['role'] == 'Grama Niladhari') {
-          // ignore: use_build_context_synchronously
-          Navigator.pushNamed(context, "/officer/gramaniladhari/dashboard");
-          // ignore: use_build_context_synchronously
-          ArtSweetAlert.show(
-              context: context,
-              artDialogArgs: ArtDialogArgs(
-                  type: ArtSweetAlertType.success,
-                  title: "Success",
-                  text: body['message']));
-          var box1 = await Hive.openBox('users');
-          await box1.put('user', emailController.text);
-          // debugPrint('hi');
-          // await shared.setString('email', emailController.text);
-          emailController.text = "";
-          passwordController.text = "";
-
-          notifyListeners();
-        } else {
-          // ignore: use_build_context_synchronously
-          Navigator.pushNamed(context, "/officer/phi/dashboard");
-          // ignore: use_build_context_synchronously
-          ArtSweetAlert.show(
-              context: context,
-              artDialogArgs: ArtDialogArgs(
-                  type: ArtSweetAlertType.success,
-                  title: "Success",
-                  text: body['message']));
-          var box1 = await Hive.openBox('users');
-          await box1.put('user', emailController.text);
-          // debugPrint('hi');
-          // await shared.setString('email', emailController.text);
-          emailController.text = "";
-          passwordController.text = "";
-
-          notifyListeners();
+          // notifyListeners();
         }
         // ignore: use_build_context_synchronously
-        
       } else {
         // ignore: use_build_context_synchronously
         ArtSweetAlert.show(

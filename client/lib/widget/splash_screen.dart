@@ -1,12 +1,4 @@
-import 'dart:convert';
-
-import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
-import 'package:client/screen/officer/PHI/phi_dashboard.dart';
-import 'package:client/screen/user/user_dashboard.dart';
-import 'package:hive/hive.dart';
-
 import '../const/all_imports.dart';
-import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:http/http.dart' as http;
 
@@ -23,7 +15,7 @@ class _SplashState extends State<Splash> {
   String? _user;
   @override
   void initState() {
-    // TODO: implement initState
+   
     super.initState();
     setState(() {
       openBox();
@@ -65,12 +57,13 @@ class _SplashState extends State<Splash> {
       // Navigator.pushReplacementNamed(context, "/login");
     }
   }
-
+  @override
   Widget build(BuildContext context) {
     return FlutterSplashScreen.fadeIn(
       backgroundColor: Colors.amber,
       duration: const Duration(seconds: 10),
-      animationDuration: const Duration(seconds: 5),
+      animationDuration: const Duration(seconds: 2),
+      animationCurve: Curves.bounceInOut,
       childWidget: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

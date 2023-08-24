@@ -90,23 +90,28 @@ class _SignUpState extends State<SignUp> {
                     onTap: () {
                       if (provider.validateSignUp(context)) {
                         Navigator.pushNamed(context, "/login");
-                      } 
+                      }
                     },
                     child: CustomButton(
-                        bordercolor: Colors.black,
-                        borderradius: AllDimensions.px40,
-                        boxcolor: AppColors.red,
+                        bordercolor: AppColors.lightred,
+                        borderradius: AllDimensions.px50,
+                        boxcolor: AppColors.lightred,
                         borderwidth: 3,
-                        fontcolor: AppColors.white,
-                        fontsize: AllDimensions.px30,
-                        text: AllStrings.signUp),
+                        btnWidth: MediaQuery.of(context).size.width * 0.9,
+                        btnheight: AllDimensions.px39,
+                        styles: GoogleFonts.lato(
+                          color: AppColors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: AllDimensions.px20,
+                        ),
+                        text: AllStrings.register,shadow: AllDimensions.px10),
                   ),
                   SizeBox().sizedBox10,
                   InkWell(
                     onTap: () {
                       // Navigator.pushReplacementNamed(context, "/login");
                       // if (provider.validateSignUp(context)) {
-                        Navigator.pushReplacementNamed(context, "/login");
+                      Navigator.pushReplacementNamed(context, "/login");
                       // }
                     },
                     child: RichText(
