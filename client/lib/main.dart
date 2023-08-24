@@ -75,7 +75,7 @@ class Myapp extends StatelessWidget {
           Affectivity.routename: (_) => const Affectivity(),
           LeaderBoard.routename: (_) => const LeaderBoard(),
           // MyForm.routename: (_) => MyForm(),
-          // SelectionScreen.routename : (_) => const SelectionScreen(),
+          SelectionScreen.routename : (_) => const SelectionScreen(),
           SymptomCheckScreen.routename : (_) => SymptomCheckScreen(),
           ViewOngoingCampign.routname : (_) => const ViewOngoingCampign(),
           ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
