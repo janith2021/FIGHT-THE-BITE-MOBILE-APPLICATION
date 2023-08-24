@@ -26,9 +26,9 @@ class AllStrings {
   static String confirmpasswordvalidate = "Confirm Password is Required";
   static String passwordnotmatched =
       "Password and Confirm Password does not match";
-  // static String get baseurl =>
-  //     "https://nodeapplication-8611eb651b54.herokuapp.com/api";
-  static String get baseurl => "http://192.168.8.100:5000/api";
+  static String get baseurl =>
+      "https://nodeapplication-8611eb651b54.herokuapp.com/api";
+  // static String get baseurl => "http://192.168.8.102:5000/api";
   static String otpsent =
       "We have sent an OTP to Your Email and Your Registered Mobile Number";
   static String verifyotp = "Verify";
@@ -71,4 +71,5 @@ class AllStrings {
   static String totalaffectedvillagers = "Total Number of Affected Villagers";
   static String numberofdeaths = "Number of Deaths";
   static String growinggraph = "Number of patients growing monthly";
+  static String viewcampaignhistory = "View Campaign Hitory";
 }

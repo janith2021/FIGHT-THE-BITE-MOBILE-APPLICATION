@@ -2,13 +2,15 @@ import 'package:client/providers/change_password_provider.dart';
 import 'package:client/providers/create_campaign_provider.dart';
 import 'package:client/providers/laboratorybooking_provider.dart';
 import 'package:client/providers/otp_provider.dart';
+import 'package:client/providers/view_campaign_provider.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
 import 'package:client/screen/organization/addCampaign.dart';
 import 'package:client/screen/organization/createCampaign.dart';
-
+import 'package:client/screen/organization/viewCampaignHistory.dart';
+import 'package:client/screen/organization/viewOngoingCampaign.dart';
 import 'package:client/screen/user/affected1.dart';
 import 'package:client/screen/user/affected2.dart';
 import 'package:client/screen/user/affectivity.dart';
@@ -16,6 +18,7 @@ import 'package:client/screen/user/laboratoryReport.dart';
 import 'package:client/screen/user/laboratorybooking.dart';
 import 'package:client/screen/user/leaderboard.dart';
 import 'package:client/screen/user/notification.dart';
+import 'package:client/screen/user/viewCampaignHistory.dart';
 // import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
 // import 'package:client/screen/officer/PHI/phi_dashboard.dart';
 // import 'package:client/screen/user/user_dashboard.dart';
@@ -45,6 +48,7 @@ class Myapp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ChangePasswordProvider()),
           ChangeNotifierProvider(create: (_) => LaboratoryBookingProvider()),
           ChangeNotifierProvider(create: (_) => CreateCampaignProvider()),
+          ChangeNotifierProvider(create: (_) =>  ViewCampaignProvider()),
         ],
         child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -70,11 +74,14 @@ class Myapp extends StatelessWidget {
           NotificationPage.routename: (_) => const NotificationPage(),
           Affectivity.routename: (_) => const Affectivity(),
           LeaderBoard.routename: (_) => const LeaderBoard(),
-          Affect.routename:(_) => Affect(),
-          AffectPerson.routename:(_) => AffectPerson(),
-          Add.routename:(_) => Add(),
-          MyApp.routename:(_) => const MyApp()
-         
+          // MyForm.routename: (_) => MyForm(),
+          // SelectionScreen.routename : (_) => const SelectionScreen(),
+          SymptomCheckScreen.routename : (_) => SymptomCheckScreen(),
+          ViewOngoingCampign.routname : (_) => const ViewOngoingCampign(),
+          ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
+          UserCampaign.routename : (_) => const UserCampaign(),
+          // SelectionScreen.routename: (_) => const SelectionScreen(),
+          // AffectPerson.routename : (_) => AffectPerson(),
         },
         home: SplashView(
           gradient:

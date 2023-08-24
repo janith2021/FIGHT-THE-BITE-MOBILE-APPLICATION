@@ -234,8 +234,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(
-                              context, "/organization/inform/ongoing");
+                          Navigator.pushNamed(context, "campaign/viewongoing");
                         },
                         child: CustomCard(
                           imageicon:

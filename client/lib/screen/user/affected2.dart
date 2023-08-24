@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// class AffectPerson extends StatelessWidget {
 
-
-class AffectPerson extends StatelessWidget {
-  static String get routename => "/villager/inform/affected2";
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SymptomCheckScreen(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: SymptomCheckScreen(),
+//     );
+//   }
+// }
 
 class SymptomCheckScreen extends StatefulWidget {
+  static String get routename => "/villager/inform/affected2";
   @override
   _SymptomCheckScreenState createState() => _SymptomCheckScreenState();
 }
@@ -101,7 +100,7 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
                 // Add your logic here for the 'Next' button
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.red,
+                backgroundColor: Colors.red,
                 padding: EdgeInsets.symmetric(horizontal: 110, vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -148,12 +147,15 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
                     if (value == true) {
                       setState(() {
                         selectedSymptoms.add(symptom);
+                        value = false;
                       });
                     } else {
                       setState(() {
                         selectedSymptoms.remove(symptom);
+                        value = true;
                       });
                     }
+                    
                     personSymptoms[affectedPersons[personIndex]] =
                         selectedSymptoms;
                   });
@@ -172,7 +174,7 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
                 Navigator.pop(dialogContext);
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.red,
+                backgroundColor: Colors.red,
               ),
               child: Text(
                 'Done',
