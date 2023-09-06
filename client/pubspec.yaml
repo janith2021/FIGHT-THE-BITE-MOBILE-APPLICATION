@@ -74,6 +74,10 @@ dependencies:
   profile_photo: ^1.0.3
   date_only_field: ^0.0.14
   intl: ^0.18.1
+  flutter_keyboard_size: ^1.0.1
+  time_picker_sheet: ^0.0.2+1
+  flutter_linkify: ^6.0.0
+  url_launcher: ^6.1.14
 
   # flutter_tawk: ^0.1.0
 
@@ -174,6 +178,7 @@ flutter:
     - Assets/villagers/affectedpage/
     - Assets/organization/createcampaign/
     - Assets/villagers/inform/
+    - Assets/Nic_Validate/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

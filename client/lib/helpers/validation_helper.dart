@@ -11,4 +11,17 @@ class ValidationHelper {
       value.isEmpty ? "Mobile Number is Required" : "";
   static String validateotp(int value) =>
       value < 10 ? "OTP must contain 4 letters" : "";
+  static String valiategsdivision(String value, String type) =>
+      value.isEmpty ? "$type Division Name is Required" : "";
+  static String validategsdivisionnumber(String value, String type) =>
+      value.isEmpty ? "$type Division Number is Required" : "";
+  static String validateaddress(String value, String type) =>
+      value.isEmpty ? "$type Address is Required" : "";
+  static String validatenic(String value) =>
+      value.isEmpty ? "NIC Number is Required" : (value.length == 10 || value.length == 12 ? "":"Invalid NIC Number");
+  static String validateniccharacters(String value) =>
+      value.length == 10 || value.length == 12 ? "" : "Invalid NIC Number";
+  static String validatecontact(String value) =>
+      value.length == 10 ? "" : "Contact Number must contains 10 characters";
+  // static String validate  
 }
