@@ -1,9 +1,13 @@
 import 'package:client/providers/change_password_provider.dart';
 import 'package:client/providers/create_campaign_provider.dart';
+import 'package:client/providers/guestregistration.dart';
 import 'package:client/providers/laboratorybooking_provider.dart';
+import 'package:client/providers/nic_validation_provider.dart';
 import 'package:client/providers/otp_provider.dart';
 import 'package:client/providers/view_campaign_provider.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
+// import 'package:client/screen/authentication/guestvillager.dart';
+import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
@@ -49,6 +53,9 @@ class Myapp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => LaboratoryBookingProvider()),
           ChangeNotifierProvider(create: (_) => CreateCampaignProvider()),
           ChangeNotifierProvider(create: (_) =>  ViewCampaignProvider()),
+          ChangeNotifierProvider(create: (_) => NICValidateProvider()),
+          ChangeNotifierProvider(create: (_) => GusetRegistrationProvider())
+          // ChangeNotifierProvider(create: (_) => )
         ],
         child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -59,7 +66,7 @@ class Myapp extends StatelessWidget {
 
           Splash.routename: (_) => const Splash(),
           Login.routeName: (_) => const Login(),
-          SignUp.routename: (_) => const SignUp(),
+          GuestSignUp.routename: (_) => const GuestSignUp(),
           ResetPassword.routeName: (_) => const ResetPassword(),
           OtpScreen.routename: (_) => const OtpScreen(),
           ChangePassword.routename: (_) => const ChangePassword(),
@@ -80,6 +87,8 @@ class Myapp extends StatelessWidget {
           ViewOngoingCampign.routname : (_) => const ViewOngoingCampign(),
           ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
           UserCampaign.routename : (_) => const UserCampaign(),
+          NICValidate.routename : (_) => const NICValidate(),
+          // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
           // SelectionScreen.routename: (_) => const SelectionScreen(),
           // AffectPerson.routename : (_) => AffectPerson(),
         },

@@ -61,9 +61,10 @@ class CreateCampaignProvider extends ChangeNotifier {
       'name': campaignnamecontroller.text,
       'date': campaigndatecontroller.text,
       'location': campaignlocationcontroller.text,
-      'organizationid': prefs.getString('id'),
+      'organizationid': prefs.getString('userid'),
       'campaigntime': campaigntimecontroller.text
     };
+    debugPrint(body.toString());
     var fullurl = '${AllStrings.baseurl}/organization/campaign/create';
     setHeaders() =>
         {'Content-Type': "application/json", 'Accept': "application/json"};

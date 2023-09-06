@@ -33,7 +33,7 @@ class LoginProvider extends ChangeNotifier {
     _passwordError = ValidationHelper.validatePassword(passwordController.text);
     if (_passwordError == "" && _emailError == "") {
       var data = {
-        'email': emailController.text,
+        'username': emailController.text,
         'password': passwordController.text
       };
       var fullurl = '${AllStrings.baseurl}/login';
@@ -45,6 +45,7 @@ class LoginProvider extends ChangeNotifier {
           body: jsonEncode(data), headers: setHeaders());
       var body = await jsonDecode(response.body);
       print(body);
+      print(body['role']);
       if (body['type'] == 'success') {
         print(body['role']);
         if (body['role'] == 'Villager') {
@@ -65,9 +66,9 @@ class LoginProvider extends ChangeNotifier {
           passwordController.text = "";
 
           notifyListeners();
-        } else if (body['role'] == 'Organization') {
+        } else if (body['role'] == 'ORG') {
           // ignore: use_build_context_synchronously
-          Navigator.pushReplacementNamed(context, "/organization/dashboard");
+          Navigator.pushNamed(context, "/organization/dashboard");
           // ignore: use_build_context_synchronously
           ArtSweetAlert.show(
               context: context,
@@ -111,7 +112,7 @@ class LoginProvider extends ChangeNotifier {
             artDialogArgs: ArtDialogArgs(
                 type: ArtSweetAlertType.danger,
                 title: "Error",
-                text: body['message']));
+                text: body['error']));
       }
     }
     notifyListeners();

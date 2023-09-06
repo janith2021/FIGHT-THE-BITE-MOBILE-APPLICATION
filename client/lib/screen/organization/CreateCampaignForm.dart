@@ -98,7 +98,7 @@ class _MyFormState extends State<MyForm> {
                       return null;
                     },
                     decoration: InputDecoration(
-                      labelText: 'Campaign Name',
+                      labelText: 'Campaign Title',
                       labelStyle: GoogleFonts.poppins(),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -121,7 +121,7 @@ class _MyFormState extends State<MyForm> {
                     },
                     decoration: InputDecoration(
                       // icon: const Icon(Icons.calendar_today),
-                      labelText: 'Campaign Date',
+                      labelText: 'Date',
                       labelStyle: GoogleFonts.poppins(),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -162,7 +162,7 @@ class _MyFormState extends State<MyForm> {
                       return null;
                     },
                     decoration: InputDecoration(
-                      labelText: 'Campaign Time',
+                      labelText: 'Start Time',
                       labelStyle: GoogleFonts.poppins(),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -185,7 +185,7 @@ class _MyFormState extends State<MyForm> {
                       return null;
                     },
                     decoration: InputDecoration(
-                      labelText: 'Location',
+                      labelText: 'Venue',
                       labelStyle: GoogleFonts.poppins(),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -198,26 +198,26 @@ class _MyFormState extends State<MyForm> {
                     ),
                   ),
 
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: _agreedToGuidelines,
-                        onChanged: (value) {
-                          setState(() {
-                            _agreedToGuidelines = value!;
-                          });
-                        },
-                        activeColor: Colors.red,
-                      ),
-                      SizedBox(height: AllDimensions.px100,),
-                      Expanded(
-                        child: Text(
-                          'I have read and agree to the guidelines',
-                          style: GoogleFonts.poppins(fontSize: 17),
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                    // children: [
+                    //   Checkbox(
+                    //     value: _agreedToGuidelines,
+                    //     onChanged: (value) {
+                    //       setState(() {
+                    //         _agreedToGuidelines = value!;
+                    //       });
+                    //     },
+                    //     activeColor: Colors.red,
+                    //   ),
+                    //   SizedBox(height: AllDimensions.px100,),
+                    //   // Expanded(
+                    //   //   child: Text(
+                    //   //     'I have read and agree to the guidelines',
+                    //   //     style: GoogleFonts.poppins(fontSize: 17),
+                    //   //   ),
+                    //   // ),
+                    // ],
+                  // ),
                   const SizedBox(height: 32),
                   Center(
                     // Center the button

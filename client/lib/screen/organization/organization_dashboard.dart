@@ -25,7 +25,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
     SharedPreferences prefer = await SharedPreferences.getInstance();
     final String? email = prefer.getString('user');
     debugPrint(email);
-    var url = '${AllStrings.baseurl}/organization/view';
+    var url = '${AllStrings.baseurl}/getUser/$email';
     var data = {
       "email": email,
     };
@@ -33,11 +33,12 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         };
-    var res = await http.post(Uri.parse(url),
-        body: jsonEncode(data), headers: setHeaders());
+    // var res = await http.post(Uri.parse(url),
+    //     body: jsonEncode(data), headers: setHeaders());
+    var res = await http.get(Uri.parse(url));
     Map users = await jsonDecode(res.body);
-    debugPrint(users.toString());
-    prefer.setString("userid", users["user"]["_id"]);
+    debugPrint(users["_id"].toString());
+    prefer.setString("userid", users["_id"]);
     return users;
   }
 
@@ -120,7 +121,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                                   return Text(
                                       "There is an error : ${snapshot.error}");
                                 }
-                                final data = snapshot.data!["user"];
+                                final data = snapshot.data;
                                 print(data);
                                 // print(data);
                                 return Stack(
@@ -139,11 +140,11 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: Text(
-                                            data["name"] ??
-                                                CircularProgressIndicator(
-                                                  color: AppColors.red,
-                                                  strokeWidth: 2,
-                                                ),
+                                            data!["name"].toString() ,
+                                                // CircularProgressIndicator(
+                                                //   color: AppColors.red,
+                                                //   strokeWidth: 2,
+                                                // ),
                                             style: GoogleFonts.aBeeZee(
                                               color: AppColors.white,
                                               fontSize: AllDimensions.px20,
@@ -154,8 +155,8 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                                       ),
                                     ),
                                     CircularProfileAvatar(
-                                      data["image"] ??
-                                          CircularProgressIndicator.adaptive(),
+                                      data["image"].toString(),
+                                          // CircularProgressIndicator.adaptive(),
                                       imageFit: BoxFit.contain,
                                     ),
                                   ],
