@@ -130,8 +130,7 @@ class _MyFormState extends State<MyForm> {
                       ),
                     ),
                     onTap: () async {
-                      // provider.getDivision(context);
-                      // provider.getCampignDate(context);
+                      provider.getDivision(context);
                       DateTime? pickedDate = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
@@ -196,7 +195,6 @@ class _MyFormState extends State<MyForm> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
 
                   Row(
                     children: [
@@ -223,9 +221,6 @@ class _MyFormState extends State<MyForm> {
                     // Center the button
                     child: ElevatedButton(
                       onPressed: () {
-
-                        // provider.getCampignDate(context);
-                        // provider.(context);
                         if(_formKey.currentState!.validate()){
                           provider.submitform(context);
                         }

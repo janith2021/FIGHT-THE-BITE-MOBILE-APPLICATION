@@ -1,3 +1,4 @@
+import 'package:client/const/all_dimensions.dart';
 import 'package:flutter/material.dart';
 
 // class Affect extends StatelessWidget {
@@ -88,15 +89,16 @@ class _SelectionScreenState extends State<SelectionScreen> {
               ),
               SizedBox(height: 50),
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, "/villager/inform/affected2");
                   },
                   style: ElevatedButton.styleFrom(
+                    minimumSize: Size(MediaQuery.of(context).size.width * 0.5, AllDimensions.px20),
                     backgroundColor: Colors.red,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 110, vertical: 12),
+                    // padding:
+                    //     EdgeInsets.symmetric(horizontal: 110, vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),

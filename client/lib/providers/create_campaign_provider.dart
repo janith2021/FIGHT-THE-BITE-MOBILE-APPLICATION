@@ -5,8 +5,6 @@ import '../const/all_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart' as path_provider;
 
-import '../models/campaign.dart';
-
 class CreateCampaignProvider extends ChangeNotifier {
   TextEditingController campaignnamecontroller = TextEditingController();
   TextEditingController campaigndatecontroller = TextEditingController();
@@ -28,7 +26,7 @@ class CreateCampaignProvider extends ChangeNotifier {
 
     // var fullurl = '${AllStrings.baseurl}/organization/view?email=$email';
     var fullurl = '${AllStrings.baseurl}/organization/view';
-    // debugPrint(fullurl);
+    debugPrint(fullurl);
     setHeaders() =>
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
 
@@ -38,71 +36,20 @@ class CreateCampaignProvider extends ChangeNotifier {
       // debugPrint("Hi ${response.toString()}");
       if (response.statusCode == 200) {
         var body = await jsonDecode(response.body);
-        // debugPrint(body.toString());
+        debugPrint(body.toString());
         // print(response.statusCode);
-        var detail = body['user'];
-        // debugPrint(detail['name']);
-        await prefer.setString('id', detail['_id']);
+        var Detail = body['user'];
+        debugPrint(Detail['name']);
+        await prefer.setString('id', Detail['_id']);
 
         // debugPrint(body['user']);
-        // debugPrint(detail['division']);
+        // debugPrint(Detail['division']);
         // return body;
-        return detail['division'];
       }
     } catch (e) {
-      print(e);
+      // print(e);
     }
   }
-
-  // get all campaign date in division
-
-  getCampignDate(BuildContext context) async {
-    var divition = await getDivision(context);
-    List<Campaign> campaigns = [];
-    // debugPrint(divition);
-
-    var fullurl = '${AllStrings.baseurl}/organization/getallcampaigns';
-    debugPrint(fullurl);
-    setHeaders() =>
-        {'Content-Type': 'application/json', 'Accept': 'application/json'};
-
-    var divisionData = {'division': divition};
-
-    try {
-      var response = await http.post(Uri.parse(fullurl),
-          body: jsonEncode(divisionData), headers: setHeaders());
-
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-
-        var allData = data['message'];
-        for (var date in allData) {
-          DateTime Data = DateTime.parse(date['date']);
-
-          DateTime pickdate = DateTime(Data.year, Data.month, Data.day);
-          String formatdate = DateFormat('M/d/y').format(pickdate);
-          debugPrint(formatdate);
-          var name = date['name'];
-          var Campaigndate = formatdate;
-          var time = date['time'];
-          var status = date['status'];
-          var location = date['location'];
-
-          Campaign campaign =
-              Campaign(name, Campaigndate, time, status, location);
-
-          campaigns.add(campaign);
-        }
-        return campaigns;
-
-        // debugPrint(dates['']);
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  // create campaign
 
   submitform(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -148,9 +95,32 @@ class CreateCampaignProvider extends ChangeNotifier {
           artDialogArgs: ArtDialogArgs(
               title: "Error",
               type: ArtSweetAlertType.danger,
-              text: result['message']));
+              text: result['body']['message']));
     }
   }
+
+  // get all campaign date in division
+
+  //  getCampignDate(String divition) async{
+
+  //     var fullurl = '${AllStrings.baseurl}/organization/getallcampaigns';
+  //     debugPrint(fullurl);
+  //     setHeaders() =>
+  //         {'Content-Type': 'application/json', 'Accept': 'application/json'};
+
+  //     try {
+  //       var response = await http.post(Uri.parse(fullurl),
+  //       body: jsonEncode(divition),
+  //       headers: setHeaders());
+
+  //       if (response.statusCode == 200) {
+  //         var data = jsonDecode(response.body);
+
+  //       }
+  //     } catch (e) {
+  //       print(e);
+  //     }
+  //  }
 
   // Future<void> _selectDate(BuildContext context) async {
   //   final DateTime? pickedDate = await showDatePicker(
