@@ -4,15 +4,15 @@
 
 import '../../const/all_imports.dart';
 
-class SignUp extends StatefulWidget {
-  static String get routename => "/register";
-  const SignUp({super.key});
+class GuestSignUp extends StatefulWidget {
+  static String get routename => "/guest/register";
+  const GuestSignUp({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<GuestSignUp> createState() => _GuestSignUpState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _GuestSignUpState extends State<GuestSignUp> {
   @override
   Widget build(BuildContext context) {
     return Consumer<SignupProvider>(builder: (context, provider, _) {

@@ -177,7 +177,7 @@ class _LoginState extends State<Login> {
                   SizeBox().sizedBox20,
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, "/register");
+                      Navigator.pushNamed(context, "/nic/validate");
                     },
                     child: RichText(
                       text: TextSpan(
