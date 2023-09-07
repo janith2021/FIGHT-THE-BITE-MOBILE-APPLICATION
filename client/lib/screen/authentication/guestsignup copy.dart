@@ -35,7 +35,7 @@ class _GuestSignUpState extends State<GuestSignUp> {
                     controller: provider.controllername,
                     hintText: AllStrings.nameHint,
                     iconData: Icons.person_3_rounded,
-                    label: AllStrings.name,
+                    label: AllStrings.addimage,
                     errorText: provider.nameError,
                   ),
                   SizeBox().sizedBox10,
