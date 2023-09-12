@@ -98,6 +98,7 @@ class _LoginState extends State<Login> {
                           }
                           final list = snapshot.data;
                           // debugPrint(list.toString());
+                        
                           final imglist = list!
                               .map((item) => (Container(child: Image.network(item.image,fit: BoxFit.fill,),width: MediaQuery.of(context).size.width,)))
                               .toList();

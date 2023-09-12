@@ -6,6 +6,7 @@ import 'package:client/providers/nic_validation_provider.dart';
 import 'package:client/providers/otp_provider.dart';
 import 'package:client/providers/view_campaign_provider.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
+import 'package:client/screen/authentication/guestsignup.dart';
 // import 'package:client/screen/authentication/guestvillager.dart';
 import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
@@ -21,6 +22,7 @@ import 'package:client/screen/user/laboratoryReport.dart';
 import 'package:client/screen/user/laboratorybooking.dart';
 import 'package:client/screen/user/leaderboard.dart';
 import 'package:client/screen/user/notification.dart';
+import 'package:client/screen/user/profile.dart';
 import 'package:client/screen/user/viewCampaignHistory.dart';
 // import 'package:client/screen/officer/Grama_Niladhari/grama_niladhari_dashboard.dart';
 // import 'package:client/screen/officer/PHI/phi_dashboard.dart';
@@ -33,7 +35,7 @@ import 'package:splash_view/source/presentation/presentation.dart';
 import 'const/all_imports.dart';
 
 Future main() async {
-  await dotenv.load(fileName: ".env");
+  // await dotenv.load(fileName: ".env")
   runApp(const Myapp());
 }
 
@@ -86,6 +88,8 @@ class Myapp extends StatelessWidget {
           ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
           UserCampaign.routename : (_) => const UserCampaign(),
           NICValidate.routename : (_) => const NICValidate(),
+          GuestRegister.routename : (_) => const GuestRegister(),
+          Profile.routename : (_) =>  Profile(),
           // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
           // SelectionScreen.routename: (_) => const SelectionScreen(),
           // AffectPerson.routename : (_) => AffectPerson(),

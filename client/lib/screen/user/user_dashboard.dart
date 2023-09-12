@@ -4,6 +4,7 @@ import 'package:client/widget/custom_dialog_box.dart';
 import 'package:flutter_app_rename/context.dart';
 import 'package:icon_badge/icon_badge.dart';
 import 'package:rounded_expansion_tile/rounded_expansion_tile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flutter_animated_button/flutter_animated_button.dart'
 import '../../const/all_imports.dart';
 
@@ -33,10 +34,20 @@ class _UserDashboardState extends State<UserDashboard> {
     });
   }
 
+  Future<String> userdata() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var data = pref.getString('user');
+    debugPrint(data.toString());
+    return data.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController vehicleNameController = TextEditingController();
-    TextEditingController vehicleNumberController = TextEditingController();
+    TextEditingController controllername = TextEditingController();
+    TextEditingController controllerage = TextEditingController();
+    TextEditingController controllergender = TextEditingController();
+    // TextEditingController controllergender = TextEditingController();
+    // TextEditingController vehicleNumberController = TextEditingController();
     return SafeArea(
       child: Scaffold(
           backgroundColor: AppColors.lightgrey,
@@ -66,19 +77,45 @@ class _UserDashboardState extends State<UserDashboard> {
                                         color: AppColors.red,
                                         borderRadius: BorderRadius.circular(
                                             AllDimensions.px10)),
-                                    child: Center(
-                                        child: Text(
-                                      "Janith",
-                                      style: GoogleFonts.poppins(
-                                          color: AppColors.white,
-                                          fontSize: AllDimensions.px20,
-                                          fontWeight: FontWeight.bold),
-                                    )),
+                                    child: FutureBuilder(
+                                        future: userdata(),
+                                        builder:
+                                            (context, AsyncSnapshot snapshot) {
+                                          return Center(
+                                              child: Text(
+                                            snapshot.data,
+                                            style: GoogleFonts.poppins(
+                                                color: AppColors.white,
+                                                fontSize: AllDimensions.px20,
+                                                fontWeight: FontWeight.bold),
+                                          ));
+                                        }),
                                   ),
                                 ),
-                                CircularProfileAvatar(
-                                  "https://img.icons8.com/?size=512&id=NkdlSUR5LFuw&format=png",
-                                  radius: AllDimensions.px40,
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, "/user/profile");
+                                    // debugPrint("HI");
+                                    // showDialog(
+                                    //     context: context,
+                                    //     builder: (BuildContext context) {
+                                    //       return AlertDialog(
+                                    //         title: Center(child: Text("User Profile",style: GoogleFonts.poppins(fontSize: AllDimensions.px18,fontWeight: FontWeight.bold),)),
+                                    //         content: Column(
+                                    //           mainAxisSize: MainAxisSize.min,
+                                    //           children: [
+                                    //             TextFormField(controller: controllergender,decoration: InputDecoration(label : Text("Name",style: GoogleFonts.poppins(fontSize: AllDimensions.px18,fontWeight: FontWeight.bold),textAlign: TextAlign.center,))),
+                                    //             TextFormField(controller: controllergender,decoration: InputDecoration(label : Text("Email",style: GoogleFonts.poppins(fontSize: AllDimensions.px18,fontWeight: FontWeight.bold),)))
+                                    //           ],
+                                    //         ),
+                                    //       );
+                                    //     });
+                                  },
+                                  child: CircularProfileAvatar(
+                                    "https://img.icons8.com/?size=512&id=NkdlSUR5LFuw&format=png",
+                                    radius: AllDimensions.px40,
+                                  ),
                                 )
                               ],
                             ),

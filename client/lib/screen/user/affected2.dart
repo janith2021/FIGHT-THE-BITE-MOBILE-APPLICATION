@@ -44,18 +44,15 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            // Add your logic here for back button
-          },
-        ),
+        leading: const BackButton(),
         title: Text(
           'Symptom Check',
           style: GoogleFonts.poppins(),
         ),
         centerTitle: true,
-      ),
+          
+        ),
+      
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(

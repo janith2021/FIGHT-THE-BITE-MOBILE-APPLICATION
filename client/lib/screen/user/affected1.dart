@@ -1,4 +1,5 @@
 import 'package:client/const/all_dimensions.dart';
+import 'package:client/const/all_imports.dart';
 import 'package:flutter/material.dart';
 
 // class Affect extends StatelessWidget {
@@ -40,14 +41,11 @@ class _SelectionScreenState extends State<SelectionScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(top: 30.0),
                 child: Text(
                   'Select the person who is affected:',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: GoogleFonts.poppins(fontSize: AllDimensions.px20,fontWeight: FontWeight.bold,),
                 ),
               ),
               const SizedBox(height: 30),
@@ -113,13 +111,20 @@ class _SelectionScreenState extends State<SelectionScreen> {
                 ),
               ),
               SizedBox(height: 40),
+              // Expanded(
+              //   child: Image.asset(
+              //     'Assets/villagers/inform/symptoms.png',
+              //     width: MediaQuery.of(context).size.width, // Set the desired width
+              //     height: 1000,
+              //   ),
+              // ),
               Expanded(
                 child: Image.asset(
-                  'Assets/villagers/inform/symptoms.png',
-                  width: 1500, // Set the desired width
-                  height: 1000,
-                ),
-              ),
+                    'Assets/villagers/inform/symptoms.png',
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height, // Set the desired width
+                    ),
+              )
             ],
           ),
         ),

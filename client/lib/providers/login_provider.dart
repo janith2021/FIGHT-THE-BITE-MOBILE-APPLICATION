@@ -49,6 +49,9 @@ class LoginProvider extends ChangeNotifier {
       if (body['type'] == 'success') {
         print(body['role']);
         if (body['role'] == 'Villager') {
+          await prefer.setString('user', body['name'].toString());
+          await prefer.setString('email', body['username'].toString());
+          debugPrint(body['name'].toString());
           // ignore: use_build_context_synchronously
           Navigator.pushNamed(context, "/user/dashboard");
           // ignore: use_build_context_synchronously
@@ -58,6 +61,8 @@ class LoginProvider extends ChangeNotifier {
                   type: ArtSweetAlertType.success,
                   title: "Success",
                   text: body['message']));
+          debugPrint(body);
+
           // var box1 = await Hive.openBox('users');
           // await box1.put('user', emailController.text);
           // debugPrint('hi');
