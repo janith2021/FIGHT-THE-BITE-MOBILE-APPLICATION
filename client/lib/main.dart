@@ -11,7 +11,9 @@ import 'package:client/screen/authentication/guestsignup.dart';
 import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
+import 'package:client/screen/officer/Nurse/form.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
+import 'package:client/screen/organization/Ongoing.dart';
 import 'package:client/screen/organization/addCampaign.dart';
 import 'package:client/screen/organization/createCampaign.dart';
 import 'package:client/screen/organization/viewCampaignHistory.dart';
@@ -92,6 +94,7 @@ class Myapp extends StatelessWidget {
           NICValidate.routename : (_) => const NICValidate(),
           GuestRegister.routename : (_) => const GuestRegister(),
           Profile.routename : (_) =>  Profile(),
+          NurseCheck.routename : (_) => NurseCheck(),
           // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
           // SelectionScreen.routename: (_) => const SelectionScreen(),
           // AffectPerson.routename : (_) => AffectPerson(),

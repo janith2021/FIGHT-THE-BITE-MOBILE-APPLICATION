@@ -1,3 +1,4 @@
+import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../const/all_imports.dart';
@@ -50,16 +51,18 @@ class Profile extends StatelessWidget {
                       return Padding(
                         padding: EdgeInsets.all(AllDimensions.px10),
                         child: Container(
-                          color: AppColors.lightpink,
+                          color: AppColors.cream,
+                          width: MediaQuery.of(context).size.width,
                           child: Column(
                              children: [
+                              Image.network("https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1694519368~exp=1694519968~hmac=c8eb91b7bed52ade4e6bdc7d5f925824cfe43d1bd6f20181a755daeb56de205f"),
                               // TextField(controller: ,)
-                              // Text(snapshot.data['name'].toString()),
-                              // Text(snapshot.data['nic'].toString()),
-                              // Text(snapshot.data['contact'].toString()),
-                              // Text(snapshot.data['email'].toString()),
-                              // Text(snapshot.data['gsDivision'].toString()),
-                              // Text(snapshot.data['divisionNumber'].toString()),
+                              Text(snapshot.data['name'].toString()),
+                              Text(snapshot.data['nic'].toString()),
+                              Text(snapshot.data['contact'].toString()),
+                              Text(snapshot.data['email'].toString()),
+                              Text(snapshot.data['gsDivision'].toString()),
+                              Text(snapshot.data['divisionNumber'].toString()),
                             ],
                           ),
                         ),

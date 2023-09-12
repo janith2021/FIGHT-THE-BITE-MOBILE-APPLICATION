@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NurseCheck extends StatelessWidget {
+  static String get routename => "/nurse/check";
+  NurseCheck({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
                 height: 200.0,
                 width: 700.0,
                 child: RedRoundedCard(
-                  profileImage: 'assets/profile_picture.png',
+                  profileImage: 'Assets/profile_picture.png',
                   name: 'Chathura Munasinghe',
                   age: '25 Years | Male',
                 ),
