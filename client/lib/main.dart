@@ -12,6 +12,7 @@ import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
+import 'package:client/screen/organization/addCampaign.dart';
 import 'package:client/screen/organization/createCampaign.dart';
 import 'package:client/screen/organization/viewCampaignHistory.dart';
 import 'package:client/screen/organization/viewOngoingCampaign.dart';
@@ -64,6 +65,7 @@ class Myapp extends StatelessWidget {
         // initialRoute: Splash.routename,
         // initialRoute: OtpScreen.routename,
         routes: {
+
           Splash.routename: (_) => const Splash(),
           Login.routeName: (_) => const Login(),
           GuestSignUp.routename: (_) => const GuestSignUp(),
@@ -81,7 +83,7 @@ class Myapp extends StatelessWidget {
           NotificationPage.routename: (_) => const NotificationPage(),
           Affectivity.routename: (_) => const Affectivity(),
           LeaderBoard.routename: (_) => const LeaderBoard(),
-          MyForm.routename: (_) => MyForm(),
+          // MyForm.routename: (_) => MyForm(),
           SelectionScreen.routename : (_) => const SelectionScreen(),
           SymptomCheckScreen.routename : (_) => SymptomCheckScreen(),
           ViewOngoingCampign.routname : (_) => const ViewOngoingCampign(),
@@ -102,5 +104,6 @@ class Myapp extends StatelessWidget {
           logo: Image.asset("Assets/splash_screen/logo.png"),
           done: Done(const Login()),
         )));
+
   }
 }

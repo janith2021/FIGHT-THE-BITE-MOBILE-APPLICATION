@@ -84,6 +84,8 @@ class LoginProvider extends ChangeNotifier {
           // var box1 = await Hive.openBox('users');
           // await box1.put('user', emailController.text);
           await prefer.setString('user', emailController.text);
+          await prefer.setString('password', passwordController.text);
+          // await prefer.getString('user');
           // debugPrint('hi');
           // await shared.setString('email', emailController.text);
           emailController.text = "";
