@@ -53,7 +53,7 @@ class Profile extends StatelessWidget {
                           color: AppColors.lightpink,
                           child: Column(
                              children: [
-                              TextField(controller: ,)
+                              // TextField(controller: ,)
                               // Text(snapshot.data['name'].toString()),
                               // Text(snapshot.data['nic'].toString()),
                               // Text(snapshot.data['contact'].toString()),
