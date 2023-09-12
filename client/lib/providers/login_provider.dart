@@ -85,6 +85,26 @@ class LoginProvider extends ChangeNotifier {
           passwordController.text = "";
 
           // notifyListeners();
+        } else if (body['role'] == 'PHI') {
+          // ignore: use_build_context_synchronously
+          Navigator.pushNamed(context, "/officer/phi/dashboard");
+          // ignore: use_build_context_synchronously
+          ArtSweetAlert.show(
+              context: context,
+              artDialogArgs: ArtDialogArgs(
+                  type: ArtSweetAlertType.success,
+                  title: "Success",
+                  text: body['message']));
+          // var box1 = await Hive.openBox('users');
+          // await box1.put('user', emailController.text);
+          await prefer.setString('user', emailController.text);
+          await prefer.setString('userName', body['name']);
+          // debugPrint('hi');
+          // await shared.setString('email', emailController.text);
+          emailController.text = "";
+          passwordController.text = "";
+
+          // notifyListeners();
         } else {
           // ignore: use_build_context_synchronously
           Navigator.pushNamed(context, "/user/dashboard");

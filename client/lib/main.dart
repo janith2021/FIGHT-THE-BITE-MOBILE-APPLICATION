@@ -10,6 +10,7 @@ import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
+import 'package:client/screen/officer/PHI/notification.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
 import 'package:client/screen/organization/createCampaign.dart';
 import 'package:client/screen/organization/viewCampaignHistory.dart';
@@ -86,6 +87,7 @@ class Myapp extends StatelessWidget {
           ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
           UserCampaign.routename : (_) => const UserCampaign(),
           NICValidate.routename : (_) => const NICValidate(),
+          PhiNotification.routeName : (_) => const PhiNotification(),
           // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
           // SelectionScreen.routename: (_) => const SelectionScreen(),
           // AffectPerson.routename : (_) => AffectPerson(),
