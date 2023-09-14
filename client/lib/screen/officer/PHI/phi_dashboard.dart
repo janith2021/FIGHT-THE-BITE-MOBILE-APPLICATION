@@ -82,124 +82,170 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
   //   var fullurl = '${AllStrings.baseurl}/patient/getPatientcount';
   // }
 
-  Future<int> newlyAddedPatients(var division) async {
-    late int lenght;
+  // Future<int> newlyAddedPatients(var division) async {
+  //   late int lenght;
 
+  //   setHeaders() =>
+  //       {'Content-Type': 'application/json', 'Accept': 'application/json'};
+
+  //   var fullurl = '${AllStrings.baseurl}/patient/getPatient';
+
+  //   List phiDivisions = await getDivitions();
+
+  //   var affectedStatus = {'affectedStatus': 1, 'divisionNumber': division};
+  //   try {
+  //     var response = await http.post(Uri.parse(fullurl),
+  //         body: jsonEncode(affectedStatus), headers: setHeaders());
+
+  //     // debugPrint(response.toString());
+
+  //     if (response.statusCode == 201) {
+  //       var body = jsonDecode(response.body);
+  //       List patients = body['message'];
+  //       // print(patients.toString().length);
+
+  //       lenght = patients.length;
+  //       // print(lenght);
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  //   return lenght;
+  // }
+
+  // Future<int> getAlreadyAddedPatients() async {
+  //   late int lenght;
+  //   var count = 0;
+  //   //  late int totalAlready;
+
+  //   setHeaders() =>
+  //       {'Content-Type': 'application/json', 'Accept': 'application/json'};
+
+  //   var fullurl = '${AllStrings.baseurl}/patient/getPatient';
+
+  //   List phiDivisions = await getDivitions();
+  //   // print(phiDivisions);
+
+  //   phiDivisions.forEach((division) async {
+  //     var affectedStatus = {'affectedStatus': 2, 'divisionNumber': division};
+  //     try {
+  //       // print("Hello");
+  //       var response = await http.post(Uri.parse(fullurl),
+  //           body: jsonEncode(affectedStatus), headers: setHeaders());
+  //       //  print("Hello");
+  //       if (response.statusCode == 201) {
+  //         var body = await jsonDecode(response.body);
+
+  //         List patients = body['message'];
+
+  //         lenght = patients.length.toInt();
+  //         // totalAlready = totalAlready + lenght;
+
+  //         count = count + lenght;
+  //         // print("My Count $count");
+  //         // print(division);
+  //         // print(lenght);
+  //       }
+  //     } catch (e) {
+  //       print(e);
+  //     }
+  //   });
+  //   // print(totalAlready);
+  //   // Future.delayed(const Duration(seconds: 10000000000000000),(){
+  //   //   print(count);
+  //   //   return count;
+  //   // });
+
+  //   return 20;
+  // }
+
+  // Future getPatientCount() async {
+  //   List count = [];
+
+  //   setHeaders() =>
+  //       {'Content-Type': 'application/json', 'Accept': 'application/json'};
+
+  //   var fullurl = '${AllStrings.baseurl}/patient/getPatient';
+
+  //   List phiDivisions = await getDivitions();
+  // print(phiDivisions);
+
+  // get newly added patients
+  // late int newly;
+  // phiDivisions.forEach((division) async {
+  //   // print(division);
+  //   var nCount = 0;
+  //   nCount = await newlyAddedPatients(division);
+  //   newly = newly + nCount;
+  // });
+
+  // // get already added patients
+  // late int already;
+  // phiDivisions.forEach((division) async {
+  //   // print(division);
+  //   var alradyCount = 0;
+  //   alradyCount = await newlyAddedPatients(division);
+  //   already = already + alradyCount;
+  // });
+
+  // int newly = await newlyAddedPatients();
+  // debugPrint(newly.toString());
+  // int already = await getAlreadyAddedPatients();
+  // count.add(newly);
+  // count.add(already);
+
+  // debugPrint(count.toString());
+  //   return count;
+  // }
+
+  Future getNewlyPatientCount() async {
+    late var counts;
     setHeaders() =>
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
 
-    var fullurl = '${AllStrings.baseurl}/patient/getPatient';
+    var fullurl = '${AllStrings.baseurl}/phi/getdivition';
 
-    List phiDivisions = await getDivitions();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String email = await prefs.getString('user').toString();
 
+    var body = {'email': email};
+    var count = await http.post(Uri.parse(fullurl),
+        body: jsonEncode(body), headers: setHeaders());
 
-    var affectedStatus = {'affectedStatus': 1, 'divisionNumber': division};
-    try {
-      var response = await http.post(Uri.parse(fullurl),
-          body: jsonEncode(affectedStatus), headers: setHeaders());
+    if (count.statusCode == 200) {
+      counts = await jsonDecode(count.body);
 
-      // debugPrint(response.toString());
-
-      if (response.statusCode == 201) {
-        var body = jsonDecode(response.body);
-        List patients = body['message'];
-        // print(patients.toString().length);
-
-        lenght = patients.length;
-        // print(lenght);
-      }
-    } catch (e) {
-      print(e);
+      // print(counts['newlyaffected']);
+    } else {
+      // print(0);
     }
-    return lenght;
+
+    return counts['newlyaffected'];
   }
 
-  Future<int> getAlreadyAddedPatients() async {
-    late int lenght;
-    var count = 0;
-  //  late int totalAlready;
-
+  Future getAlredyPatientCount() async {
+    late var counts;
     setHeaders() =>
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
 
-    var fullurl = '${AllStrings.baseurl}/patient/getPatient';
+    var fullurl = '${AllStrings.baseurl}/phi/getdivition';
 
-    List phiDivisions = await getDivitions();
-    // print(phiDivisions);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String email = await prefs.getString('user').toString();
 
-    phiDivisions.forEach((division) async {
-      
-      var affectedStatus = {'affectedStatus': 2, 'divisionNumber': division};
-    try {
-      // print("Hello"); 
-      var response = await http.post(Uri.parse(fullurl),
-          body: jsonEncode(affectedStatus), headers: setHeaders());
-      //  print("Hello");   
-      if (response.statusCode == 201) {
-        var body = await jsonDecode(response.body);
-        
-        List patients = body['message'];
-        
-        lenght = patients.length.toInt();
-        // totalAlready = totalAlready + lenght;  
-        
+    var body = {'email': email};
+    var count = await http.post(Uri.parse(fullurl),
+        body: jsonEncode(body), headers: setHeaders());
 
-        count = count + lenght;
-        // print("My Count $count");
-        // print(division);
-        // print(lenght);
-      }
+    if (count.statusCode == 200) {
+      counts = await jsonDecode(count.body);
 
-    } catch (e) {
-      print(e);
+      // print(counts['already']);
+    } else {
+      // print(0);
     }
-     });
-    // print(totalAlready);
-    // Future.delayed(const Duration(seconds: 10000000000000000),(){
-    //   print(count);
-    //   return count;
-    // });
-    
-    return lenght;
-  }
 
-  Future getPatientCount() async {
-    List count = [];
-
-    setHeaders() =>
-        {'Content-Type': 'application/json', 'Accept': 'application/json'};
-
-    var fullurl = '${AllStrings.baseurl}/patient/getPatient';
-
-    List phiDivisions = await getDivitions();
-    // print(phiDivisions);
-
-    // get newly added patients
-    // late int newly;
-    // phiDivisions.forEach((division) async {
-    //   // print(division);
-    //   var nCount = 0;
-    //   nCount = await newlyAddedPatients(division);
-    //   newly = newly + nCount;
-    // });
-
-    // // get already added patients
-    // late int already;
-    // phiDivisions.forEach((division) async {
-    //   // print(division);
-    //   var alradyCount = 0;
-    //   alradyCount = await newlyAddedPatients(division);
-    //   already = already + alradyCount;
-    // });
-
-    // int newly = await newlyAddedPatients();
-    // debugPrint(newly.toString());
-    // int already = await getAlreadyAddedPatients();
-    // count.add(newly);
-    // count.add(already);
-
-    // debugPrint(count.toString());
-    return count;
+    return counts['already'];
   }
 
   Future getAllPatient() async {
@@ -313,8 +359,8 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                           child: Column(
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(
-                                    top: AllDimensions.px20),
+                                padding:
+                                    EdgeInsets.only(top: AllDimensions.px20),
                                 child: Text("Affected Villagers",
                                     style: GoogleFonts.poppins(
                                         fontSize: AllDimensions.px18,
@@ -324,22 +370,20 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                 child: Stack(
                                   children: [
                                     Padding(
-                                      padding:
-                                          const EdgeInsets.only(top: 20),
+                                      padding: const EdgeInsets.only(top: 20),
                                       child: Container(
                                         width: width * 0.8,
                                         height: height * 0.08,
                                         // color: AppColors.black,
                                         decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(
-                                                    AllDimensions.px10),
+                                            borderRadius: BorderRadius.circular(
+                                                AllDimensions.px10),
                                             color: AppColors.lighorange),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(
-                                          AllDimensions.px3),
+                                      padding:
+                                          EdgeInsets.all(AllDimensions.px3),
                                       child: Padding(
                                         padding: EdgeInsets.only(
                                             top: AllDimensions.px20),
@@ -348,40 +392,51 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                           height: height * 0.071,
                                           // color: AppColors.black,
                                           decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(
-                                                    AllDimensions.px10),
+                                            borderRadius: BorderRadius.circular(
+                                                AllDimensions.px10),
                                             color: Colors.white,
                                           ),
                                           child: Center(
                                               child: Text(
                                             "Newly Affected Patients",
                                             style: GoogleFonts.poppins(
-                                                fontSize:
-                                                    AllDimensions.px14,
-                                                fontWeight:
-                                                    FontWeight.w500),
+                                                fontSize: AllDimensions.px14,
+                                                fontWeight: FontWeight.w500),
                                           )),
                                         ),
                                       ),
                                     ),
                                     FutureBuilder(
-                                      // future: newlyAddedPatients(),
-                                      builder: (context , AsyncSnapshot snapshot) {
-                                        return Positioned(
-                                          left: 260,
-                                          top: 35,
-                                          child: Text(
-                                            snapshot.data[0].toString(),
-                                            style: GoogleFonts.poppins(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: AllDimensions.px25,
-                                                color: Color.fromARGB(
-                                                    255, 244, 241, 241)),
-                                          ),
-                                        );
-                                      }
-                                    )
+                                        future: getNewlyPatientCount(),
+                                        builder:
+                                            (context, AsyncSnapshot snapshot) {
+                                          if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            return const Positioned(
+                                                left: 250,
+                                                top: 35,
+                                                child:
+                                                    CircularProgressIndicator());
+                                          } else if (snapshot.hasError) {
+                                            return Text(
+                                                'Error: ${snapshot.error}');
+                                          } else {
+                                            return Positioned(
+                                              left: 260,
+                                              top: 35,
+                                              child: Text(
+                                                snapshot.data.toString(),
+                                                style: GoogleFonts.poppins(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize:
+                                                        AllDimensions.px25,
+                                                    color: Color.fromARGB(
+                                                        255, 244, 241, 241)),
+                                              ),
+                                            );
+                                          }
+                                          //
+                                        })
                                   ],
                                 ),
                               ),
@@ -389,64 +444,72 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                 child: Stack(
                                   children: [
                                     Padding(
-                                      padding:
-                                          const EdgeInsets.only(top: 25),
+                                      padding: const EdgeInsets.only(top: 25),
                                       child: Container(
                                         width: width * 0.8,
                                         height: height * 0.08,
                                         // color: AppColors.black,
                                         decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(
-                                                    AllDimensions.px10),
+                                            borderRadius: BorderRadius.circular(
+                                                AllDimensions.px10),
                                             color: AppColors.lightred),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(
-                                          AllDimensions.px3),
+                                      padding:
+                                          EdgeInsets.all(AllDimensions.px3),
                                       child: Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 25.5),
+                                        padding: EdgeInsets.only(top: 25.5),
                                         child: Container(
                                           width: width * 0.55,
                                           height: height * 0.071,
                                           // color: AppColors.black,
                                           decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(
-                                                    AllDimensions.px10),
+                                            borderRadius: BorderRadius.circular(
+                                                AllDimensions.px10),
                                             color: Colors.white,
                                           ),
                                           child: Center(
                                               child: Text(
                                             "Already Affected Patients",
                                             style: GoogleFonts.poppins(
-                                                fontSize:
-                                                    AllDimensions.px14,
-                                                fontWeight:
-                                                    FontWeight.w500),
+                                                fontSize: AllDimensions.px14,
+                                                fontWeight: FontWeight.w500),
                                           )),
                                         ),
                                       ),
                                     ),
                                     FutureBuilder(
-                                      future: getAlreadyAddedPatients(),
-                                      builder: (context , AsyncSnapshot snapshot) {
-                                        return Positioned(
-                                          left: 260,
-                                          top: 40,
-                                          child: Text(
-                                            snapshot.toString(),
-                                            style: GoogleFonts.poppins(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: AllDimensions.px25,
-                                                color: Color.fromARGB(
-                                                    255, 244, 241, 241)),
-                                          ),
-                                        );
-                                      }
-                                    )
+                                        future: getAlredyPatientCount(),
+                                        builder:
+                                            (context, AsyncSnapshot snapshot) {
+                                          if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            return const Positioned(
+                                                left: 250,
+                                                top: 40,
+                                                child:
+                                                    CircularProgressIndicator());
+                                          } else if (snapshot.hasError) {
+                                            return Text(
+                                                snapshot.error.toString());
+                                            // return ArtSweetAlert.show(context: context,artDialogArgs: ArtDialogArgs(text: snapshot.error.toString(),title: "Error",type: ArtSweetAlertType.danger));
+                                          } else {
+                                            return Positioned(
+                                              left: 260,
+                                              top: 40,
+                                              child: Text(
+                                                snapshot.data.toString(),
+                                                style: GoogleFonts.poppins(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize:
+                                                        AllDimensions.px25,
+                                                    color: Color.fromARGB(
+                                                        255, 244, 241, 241)),
+                                              ),
+                                            );
+                                          }
+                                        })
                                   ],
                                 ),
                               )
@@ -505,6 +568,63 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                     ),
                   );
                 }),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                // color: AppColors.black,
+                height: height * 0.23,
+                width: width * 0.9,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColors.white,
+                ),
+                child: Stack(
+                  children: [
+                    Image.asset('Assets/phi/phi_dashboard/image2.png'),
+                    Container(
+                      margin:
+                          EdgeInsets.only(top: AllDimensions.px25, left: 170),
+                      child: Image.asset(
+                        'Assets/phi/phi_dashboard/image3.png',
+                        width: width * 0.35,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 60, left: 160),
+                      child: Text(
+                        "Clean & Earn",
+                        style: GoogleFonts.poppins(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      width: width * 0.45,
+                      height: 50,
+                      margin: EdgeInsets.only(top: 115, left: 155),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/phi/judgment");
+                        },
+                        // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.lightred,
+                            elevation: 12.0,
+                            textStyle: const TextStyle(color: Colors.white),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10))),
+                        child: Text(
+                          'Judgements',
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),

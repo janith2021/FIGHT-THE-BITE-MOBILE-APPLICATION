@@ -278,10 +278,10 @@ class _UserDashboardState extends State<UserDashboard> {
                               ],
                             ),
                             InkWell(
-                              // onTap: () {
-                              //   Navigator.pushNamed(
-                              //       context, "villager/leaderboard");
-                              // },
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, "villager/leaderboard");
+                              },
                               child: CustomButton(
                                 bordercolor: AppColors.white,
                                 borderradius: AllDimensions.px50,
@@ -294,6 +294,7 @@ class _UserDashboardState extends State<UserDashboard> {
                                     color: AppColors.white),
                                 btnWidth: AllDimensions.px118,
                                 btnheight: AllDimensions.px34,
+                                
                               ),
                             )
                           ],
