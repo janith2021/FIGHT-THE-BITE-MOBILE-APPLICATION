@@ -91,7 +91,7 @@ class Myapp extends StatelessWidget {
           NICValidate.routename : (_) => const NICValidate(),
           PhiNotification.routeName : (_) => const PhiNotification(),
           Judgments.routename : (_) => const Judgments(),
-          NewlyAffectedPatients.routename : (_) => const NewlyAffectedPatients(),
+          NewlyAffectedPatients.routename : (_) => NewlyAffectedPatients(),
           // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
           // SelectionScreen.routename: (_) => const SelectionScreen(),
           // AffectPerson.routename : (_) => AffectPerson(),
