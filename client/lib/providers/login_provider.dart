@@ -45,7 +45,7 @@ class LoginProvider extends ChangeNotifier {
           body: jsonEncode(data), headers: setHeaders());
       var body = await jsonDecode(response.body);
       print(body);
-      print(body['role']);
+      // print(body['role']);
       if (body['type'] == 'success') {
         print(body['role']);
         if (body['role'] == 'Villager') {
@@ -61,7 +61,9 @@ class LoginProvider extends ChangeNotifier {
           // var box1 = await Hive.openBox('users');
           // await box1.put('user', emailController.text);
           // debugPrint('hi');
-          // await shared.setString('email', emailController.text);
+          await prefer.setString('email', emailController.text);
+          await prefer.setString('id', body['id']);
+
           emailController.text = "";
           passwordController.text = "";
 

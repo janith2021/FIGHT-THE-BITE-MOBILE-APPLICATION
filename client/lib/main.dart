@@ -33,6 +33,7 @@ import 'package:splash_view/source/presentation/presentation.dart';
 
 import 'const/all_imports.dart';
 import 'screen/officer/PHI/judgments.dart';
+import 'screen/officer/PHI/newly_affected_patients.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -90,6 +91,7 @@ class Myapp extends StatelessWidget {
           NICValidate.routename : (_) => const NICValidate(),
           PhiNotification.routeName : (_) => const PhiNotification(),
           Judgments.routename : (_) => const Judgments(),
+          NewlyAffectedPatients.routename : (_) => const NewlyAffectedPatients(),
           // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
           // SelectionScreen.routename: (_) => const SelectionScreen(),
           // AffectPerson.routename : (_) => AffectPerson(),

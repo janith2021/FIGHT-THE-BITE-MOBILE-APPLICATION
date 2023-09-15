@@ -10,54 +10,97 @@ class LeaderBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(child: 
-      Padding(
-        padding: EdgeInsets.all(AllDimensions.px30),
-        child:  Column(
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
+    return SafeArea(
+        child: Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.lightred,
+        toolbarHeight: AllDimensions.px50,
+      ),
+      body: Padding(
+        padding: EdgeInsets.only(
+            top: AllDimensions.px10,
+            bottom: AllDimensions.px10,
+            left: AllDimensions.px20,
+            right: AllDimensions.px20),
+        child: Column(
           children: [
-            // Row(
-            //   children: [
-            //      ProfilePhoto(
-            //       image: const NetworkImage(
-            //           "https://img.freepik.com/free-vector/teenage-boy-with-black-hair-cartoon-character_1308-133556.jpg?w=360&t=st=1691846618~exp=1691847218~hmac=b5a1fdabab14200b3b27b316332aac1c2dcec2280c866e33d7b4f1a4cb4867c5"),
-            //       totalWidth: AllDimensions.px200,
-            //       color: Colors.blue,
-            //       cornerRadius: AllDimensions.px25,
-            //     ),  
-            //   ],
-            // ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(                  
-                  backgroundImage: NetworkImage("https://img.freepik.com/premium-vector/businessman-avatar-cartoon-character-profile_18591-50585.jpg?w=740",),
-                  radius: AllDimensions.px50,
-                ),
-              ],
+            Container(
+              color: AppColors.cream,
+              height: height * 0.78,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CircleAvatar(   
-
-                  backgroundImage: const NetworkImage(
-                    "https://img.freepik.com/free-vector/teenage-boy-with-black-hair-cartoon-character_1308-133556.jpg?w=360&t=st=1691846618~exp=1691847218~hmac=b5a1fdabab14200b3b27b316332aac1c2dcec2280c866e33d7b4f1a4cb4867c5",
-                  ),
-                  radius: AllDimensions.px50,
-                ),
-                CircleAvatar(
-                  backgroundImage: const NetworkImage(
-                    "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-855.jpg?w=740&t=st=1691850330~exp=1691850930~hmac=a2370590d0a0198a3d8922244e6c091e86eaa5f03f345eb69ed1a01e596a4a9b",
-                  ),
-                  radius: AllDimensions.px50,
-                ),
-
-              ],
+            SizedBox(
+              height: AllDimensions.px15,
             ),
+            Container(
+              // color: AppColors.darkred,
+              height: height * 0.1,
+              width: width * 0.9,
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.all(Radius.circular(AllDimensions.px10)),
+                color: const Color.fromARGB(255, 230, 224, 224),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 137, 133, 133),
+                    offset: Offset(
+                      5.0,
+                      5.0,
+                    ),
+                    blurRadius: 10.0,
+                    spreadRadius: 2.0,
+                  ),
+                ],
+              ),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: height * 0.032, left: width * 0.05),
+                    child: Text(
+                      "Uploard the Image",
+                      style: GoogleFonts.poppins(
+                          fontSize: AllDimensions.px20,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.only(top: height * 0.02, left: width * 0.6),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '');
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.lightred),
+                          fixedSize: MaterialStateProperty.all<Size>(
+                            Size(100, 50),
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  10), 
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          "Uploard",
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        )),
+                  )
+                ],
+              ),
+            )
           ],
         ),
-      )),
-    );
+      ),
+    ));
   }
 }

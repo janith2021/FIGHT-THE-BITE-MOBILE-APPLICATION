@@ -343,11 +343,37 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
               children: [
                 // Text(snapshot.data[0].toString()),
                 // Text(snapshot.data[1].toString()),
-                Container(
-                  height: height * 0.35,
-                  // color: AppColors.black,
-                  child: Padding(
-                    padding: EdgeInsets.all(AllDimensions.px20),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20, bottom:10 ),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 164, 188, 176),
+                          offset: Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ), //BoxShadow
+                        // BoxShadow(
+                        //   color: Color.fromARGB(255, 225, 106, 106),
+                        //   offset: Offset(0.0, 0.0),
+                        //   blurRadius: 0.0,
+                        //   spreadRadius: 0.0,
+                        // ), //BoxShadow
+                      ],
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10.0),
+                        topRight: Radius.circular(10.0),
+                        bottomLeft: Radius.circular(10.0),
+                        bottomRight: Radius.circular(10.0),
+                      ),
+                    ),
+
+                    height: height * 0.32,
+                    // color: AppColors.black,
                     child: Stack(
                       children: [
                         Image.asset(
@@ -366,78 +392,84 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                         fontSize: AllDimensions.px18,
                                         fontWeight: FontWeight.bold)),
                               ),
-                              Container(
-                                child: Stack(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 20),
-                                      child: Container(
-                                        width: width * 0.8,
-                                        height: height * 0.08,
-                                        // color: AppColors.black,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                                AllDimensions.px10),
-                                            color: AppColors.lighorange),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.all(AllDimensions.px3),
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            top: AllDimensions.px20),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, "/phi/newlyaffectedpatients");
+                                },
+                                child: Container(
+                                  child: Stack(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 20),
                                         child: Container(
-                                          width: width * 0.55,
-                                          height: height * 0.071,
+                                          width: width * 0.8,
+                                          height: height * 0.08,
                                           // color: AppColors.black,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                                AllDimensions.px10),
-                                            color: Colors.white,
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "Newly Affected Patients",
-                                            style: GoogleFonts.poppins(
-                                                fontSize: AllDimensions.px14,
-                                                fontWeight: FontWeight.w500),
-                                          )),
+                                              borderRadius: BorderRadius.circular(
+                                                  AllDimensions.px10),
+                                              color: AppColors.lighorange),
                                         ),
                                       ),
-                                    ),
-                                    FutureBuilder(
-                                        future: getNewlyPatientCount(),
-                                        builder:
-                                            (context, AsyncSnapshot snapshot) {
-                                          if (snapshot.connectionState ==
-                                              ConnectionState.waiting) {
-                                            return const Positioned(
-                                                left: 250,
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.all(AllDimensions.px3),
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              top: AllDimensions.px20),
+                                          child: Container(
+                                            
+                                            width: width * 0.55,
+                                            height: height * 0.071,
+                                            // color: AppColors.black,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(
+                                                  AllDimensions.px10),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                                child: Text(
+                                              "Newly Affected Patients",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: AllDimensions.px14,
+                                                  fontWeight: FontWeight.w500),
+                                            )),
+                                          ),
+                                        ),
+                                      ),
+                                      FutureBuilder(
+                                          future: getNewlyPatientCount(),
+                                          builder:
+                                              (context, AsyncSnapshot snapshot) {
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.waiting) {
+                                              return const Positioned(
+                                                  left: 250,
+                                                  top: 35,
+                                                  child:
+                                                      CircularProgressIndicator());
+                                            } else if (snapshot.hasError) {
+                                              return Text(
+                                                  'Error: ${snapshot.error}');
+                                            } else {
+                                              return Positioned(
+                                                left: 260,
                                                 top: 35,
-                                                child:
-                                                    CircularProgressIndicator());
-                                          } else if (snapshot.hasError) {
-                                            return Text(
-                                                'Error: ${snapshot.error}');
-                                          } else {
-                                            return Positioned(
-                                              left: 260,
-                                              top: 35,
-                                              child: Text(
-                                                snapshot.data.toString(),
-                                                style: GoogleFonts.poppins(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize:
-                                                        AllDimensions.px25,
-                                                    color: Color.fromARGB(
-                                                        255, 244, 241, 241)),
-                                              ),
-                                            );
-                                          }
-                                          //
-                                        })
-                                  ],
+                                                child: Text(
+                                                  snapshot.data.toString(),
+                                                  style: GoogleFonts.poppins(
+                                                      fontWeight: FontWeight.w600,
+                                                      fontSize:
+                                                          AllDimensions.px25,
+                                                      color: Color.fromARGB(
+                                                          255, 244, 241, 241)),
+                                                ),
+                                              );
+                                            }
+                                            //
+                                          })
+                                    ],
+                                  ),
                                 ),
                               ),
                               Container(

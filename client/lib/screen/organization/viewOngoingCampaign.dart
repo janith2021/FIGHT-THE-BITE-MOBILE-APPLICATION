@@ -132,9 +132,9 @@ class ViewOngoingCampign extends StatelessWidget {
                       itemBuilder: (context, index) {
                         var item = list[index];
                         return Padding(
-                          padding: EdgeInsets.all(AllDimensions.px20),
+                          padding: const EdgeInsets.only(bottom: 1000),
                           child: Container(
-                            padding: EdgeInsets.all(AllDimensions.px20),
+                            padding: EdgeInsets.all(AllDimensions.px40),
                             width: MediaQuery.of(context).size.width * 0.2,
                             decoration: BoxDecoration(
                                 color: AppColors.lightblue,
