@@ -7,25 +7,23 @@ import '../../const/all_imports.dart';
 import '../../providers/create_campaign_provider.dart';
 
 class MyApp extends StatelessWidget {
-  static var routename;
-
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyForm(),
+      home: MyForms(),
     );
   }
 }
 
-class MyForm extends StatefulWidget {
+class MyForms extends StatefulWidget {
   static String get routename => "/organization/create/form";
   @override
   _MyFormState createState() => _MyFormState();
 }
 
-class _MyFormState extends State<MyForm> {
+class _MyFormState extends State<MyForms> {
   final _formKey = GlobalKey<FormState>();
   // TextEditingController _nameController = TextEditingController();
   // TextEditingController _dateController = TextEditingController();

@@ -182,6 +182,7 @@ flutter:
     - Assets/villagers/inform/
     - Assets/Nic_Validate/
     - Assets/Register/Guest Register/
+    - Assets/phi/phi_dashboard/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

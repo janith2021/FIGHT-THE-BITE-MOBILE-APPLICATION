@@ -242,10 +242,8 @@ class _UserDashboardState extends State<UserDashboard> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  // Navigator.pushNamed(
-                                  //     context, "villager/affectivity");
                                   Navigator.pushNamed(
-                                      context, "/nurse/check");
+                                      context, "villager/affectivity");
                                 },
                                 child: CustomButton(
                                   bordercolor: AppColors.white,

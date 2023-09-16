@@ -76,113 +76,116 @@ class ViewCampaignHistory extends StatelessWidget {
                   } else {
                     var list = snapshot.data;
                     return Padding(
-                      padding: EdgeInsets.all(AllDimensions.px20),
+                      padding: EdgeInsets.all(AllDimensions.px30),
                       child: ListView.builder(
                           itemCount: list!.length,
                           itemBuilder: (context, index) {
                             var item = list[index];
-                            return Container(
-                              padding: EdgeInsets.all(AllDimensions.px20),
-                              decoration: BoxDecoration(color: AppColors.lightblue,borderRadius: BorderRadius.circular(AllDimensions.px10),boxShadow: [BoxShadow(blurRadius: AllDimensions.px10)]),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    // crossAxisAlignment: CrossAxisAlignment.stretch,
-                                    children: [
-                                      Text("Campaign Title:  ",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold,),),
-                                      Text(item.name,        
-                                        style: GoogleFonts.poppins(
-                                            fontSize: AllDimensions.px15,
-                                            fontWeight: FontWeight.bold,color: AppColors.white),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: AllDimensions.px10,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text("Campaign Date :  ",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold),),
-                                      Text(item.date,
-                                        style: GoogleFonts.poppins(
-                                            fontSize: AllDimensions.px15,
-                                            fontWeight: FontWeight.bold,color: AppColors.white),
-                                      ),
-                                    ],
-                                  ),
-                                   SizedBox(
-                                    height: AllDimensions.px10,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text("Campaign Location:  ",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: AllDimensions.px15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(item.location,
-                                        style: GoogleFonts.poppins(
-                                            fontSize: AllDimensions.px15,
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.white),
-                                      )
-                                    ],
-                                  ),
-                                   SizedBox(
-                                    height: AllDimensions.px10,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text("Campaign Start Time:  ",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: AllDimensions.px15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(item.time,
-                                        style: GoogleFonts.poppins(
-                                            fontSize: AllDimensions.px15,
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.white),
-                                      )
-                                    ],
-                                  ),
-                                   SizedBox(
-                                    height: AllDimensions.px10,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text("Campaign Status:  ",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: AllDimensions.px15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      if(item.status == "0") Container(padding: EdgeInsets.all(AllDimensions.px5), decoration: BoxDecoration(borderRadius: BorderRadius.circular(AllDimensions.px10),color: AppColors.orange,boxShadow: [BoxShadow(blurRadius: AllDimensions.px10)]),child: Text("Pending",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold,color: AppColors.white),))
-                                      else if(item.status == "1") Container(
-                                            padding: EdgeInsets.all(
-                                                AllDimensions.px5),
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        AllDimensions.px10),
-                                                color: AppColors.green),child: Text("Approved",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold,
-                                                  color: AppColors.white),))
-                                      else Container(
-                                            padding: EdgeInsets.all(
-                                                AllDimensions.px5),
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        AllDimensions.px10),
-                                                color: AppColors.red),
-                                            child: Text("Rejected",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold,
-                                                  color: AppColors.white),))
-                                      
-                                    ],
-                                  ),
-                                ],
+                            return Padding(
+                              padding: EdgeInsets.only(bottom : AllDimensions.px10),
+                              child: Container(
+                                padding: EdgeInsets.all(AllDimensions.px20),
+                                decoration: BoxDecoration(color: AppColors.lightblue,borderRadius: BorderRadius.circular(AllDimensions.px10),boxShadow: [BoxShadow(blurRadius: AllDimensions.px10)]),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      // crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      children: [
+                                        Text("Campaign Title:  ",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold,),),
+                                        Text(item.name,        
+                                          style: GoogleFonts.poppins(
+                                              fontSize: AllDimensions.px15,
+                                              fontWeight: FontWeight.bold,color: AppColors.white),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: AllDimensions.px10,),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Text("Campaign Date :  ",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold),),
+                                        Text(item.date,
+                                          style: GoogleFonts.poppins(
+                                              fontSize: AllDimensions.px15,
+                                              fontWeight: FontWeight.bold,color: AppColors.white),
+                                        ),
+                                      ],
+                                    ),
+                                     SizedBox(
+                                      height: AllDimensions.px10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Text("Campaign Location:  ",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: AllDimensions.px15,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(item.location,
+                                          style: GoogleFonts.poppins(
+                                              fontSize: AllDimensions.px15,
+                                              fontWeight: FontWeight.bold,
+                                              color: AppColors.white),
+                                        )
+                                      ],
+                                    ),
+                                     SizedBox(
+                                      height: AllDimensions.px10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Text("Campaign Start Time:  ",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: AllDimensions.px15,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(item.time,
+                                          style: GoogleFonts.poppins(
+                                              fontSize: AllDimensions.px15,
+                                              fontWeight: FontWeight.bold,
+                                              color: AppColors.white),
+                                        )
+                                      ],
+                                    ),
+                                     SizedBox(
+                                      height: AllDimensions.px10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Text("Campaign Status:  ",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: AllDimensions.px15,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        if(item.status == "0") Container(padding: EdgeInsets.all(AllDimensions.px5), decoration: BoxDecoration(borderRadius: BorderRadius.circular(AllDimensions.px10),color: AppColors.orange,boxShadow: [BoxShadow(blurRadius: AllDimensions.px10)]),child: Text("Pending",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold,color: AppColors.white),))
+                                        else if(item.status == "1") Container(
+                                              padding: EdgeInsets.all(
+                                                  AllDimensions.px5),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          AllDimensions.px10),
+                                                  color: AppColors.green),child: Text("Approved",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold,
+                                                    color: AppColors.white),))
+                                        else Container(
+                                              padding: EdgeInsets.all(
+                                                  AllDimensions.px5),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          AllDimensions.px10),
+                                                  color: AppColors.red),
+                                              child: Text("Rejected",style: GoogleFonts.poppins(fontSize: AllDimensions.px15,fontWeight: FontWeight.bold,
+                                                    color: AppColors.white),))
+                                        
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           }),

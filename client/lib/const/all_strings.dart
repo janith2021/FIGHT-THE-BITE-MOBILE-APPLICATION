@@ -28,7 +28,7 @@ class AllStrings {
       "Password and Confirm Password does not match";
   // static String get baseurl =>
   //     "https://nodeapplication-8611eb651b54.herokuapp.com/api";
-  static String get baseurl => "http://10.22.164.217:4040/api";
+  static String get baseurl => "http://192.168.227.183:4040/api";
   static String otpsent =
       "We have sent an OTP to Your Email and Your Registered Mobile Number";
   static String verifyotp = "Verify";

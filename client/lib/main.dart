@@ -12,9 +12,12 @@ import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
 import 'package:client/screen/officer/Nurse/form.dart';
+import 'package:client/screen/officer/PHI/newly_affected_patients.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
 import 'package:client/screen/organization/Ongoing.dart';
 import 'package:client/screen/organization/addCampaign.dart';
+import 'package:client/screen/officer/PHI/notification.dart';
+import 'package:client/screen/organization/CreateCampaignForm.dart';
 import 'package:client/screen/organization/createCampaign.dart';
 import 'package:client/screen/organization/viewCampaignHistory.dart';
 import 'package:client/screen/organization/viewOngoingCampaign.dart';
@@ -56,57 +59,63 @@ class Myapp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ChangePasswordProvider()),
           ChangeNotifierProvider(create: (_) => LaboratoryBookingProvider()),
           ChangeNotifierProvider(create: (_) => CreateCampaignProvider()),
-          ChangeNotifierProvider(create: (_) =>  ViewCampaignProvider()),
+          ChangeNotifierProvider(create: (_) => ViewCampaignProvider()),
           ChangeNotifierProvider(create: (_) => NICValidateProvider()),
           ChangeNotifierProvider(create: (_) => GusetRegistrationProvider())
           // ChangeNotifierProvider(create: (_) => )
         ],
         child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        scaffoldMessengerKey: Snackbar.scaffoldMessengerKey,
-        // initialRoute: Splash.routename,
-        // initialRoute: OtpScreen.routename,
-        routes: {
-
-          Splash.routename: (_) => const Splash(),
-          Login.routeName: (_) => const Login(),
-          GuestSignUp.routename: (_) => const GuestSignUp(),
-          ResetPassword.routeName: (_) => const ResetPassword(),
-          OtpScreen.routename: (_) => const OtpScreen(),
-          ChangePassword.routename: (_) => const ChangePassword(),
-          UserDashboard.routename: (_) => const UserDashboard(),
-          GramaNiladhariDashBoard.routename: (_) =>
-              const GramaNiladhariDashBoard(),
-          PHIDashBoard.routename: (_) => const PHIDashBoard(),
-          OrganizationDashboard.routename: (_) => const OrganizationDashboard(),
-          CreateCampaign.routename: (_) => const CreateCampaign(),
-          Laboratory.routename: (_) => const Laboratory(),
-          LaboratoryBooking.routename: (_) => const LaboratoryBooking(),
-          NotificationPage.routename: (_) => const NotificationPage(),
-          Affectivity.routename: (_) => const Affectivity(),
-          LeaderBoard.routename: (_) => const LeaderBoard(),
-          // MyForm.routename: (_) => MyForm(),
-          SelectionScreen.routename : (_) => const SelectionScreen(),
-          SymptomCheckScreen.routename : (_) => SymptomCheckScreen(),
-          ViewOngoingCampign.routname : (_) => const ViewOngoingCampign(),
-          ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
-          UserCampaign.routename : (_) => const UserCampaign(),
-          NICValidate.routename : (_) => const NICValidate(),
-          GuestRegister.routename : (_) => const GuestRegister(),
-          Profile.routename : (_) =>  Profile(),
-          NurseCheck.routename : (_) => NurseCheck(),
-          // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
-          // SelectionScreen.routename: (_) => const SelectionScreen(),
-          // AffectPerson.routename : (_) => AffectPerson(),
-        },
-        home: SplashView(
-          gradient:
-              LinearGradient(colors: [AppColors.yellow, AppColors.orange]),
-          loadingIndicator: CircularProgressIndicator(
-              backgroundColor: AppColors.red, color: AppColors.green),
-          logo: Image.asset("Assets/splash_screen/logo.png"),
-          done: Done(const Login()),
-        )));
-
+            debugShowCheckedModeBanner: false,
+            scaffoldMessengerKey: Snackbar.scaffoldMessengerKey,
+            // initialRoute: Splash.routename,
+            // initialRoute: OtpScreen.routename,
+            routes: {
+              NewlyAffectedPatients.routename : (_) => NewlyAffectedPatients(),
+              Splash.routename: (_) => const Splash(),
+              Login.routeName: (_) => const Login(),
+              GuestSignUp.routename: (_) => const GuestSignUp(),
+              ResetPassword.routeName: (_) => const ResetPassword(),
+              OtpScreen.routename: (_) => const OtpScreen(),
+              ChangePassword.routename: (_) => const ChangePassword(),
+              UserDashboard.routename: (_) => const UserDashboard(),
+              GramaNiladhariDashBoard.routename: (_) =>
+                  const GramaNiladhariDashBoard(),
+              PHIDashBoard.routename: (_) => const PHIDashBoard(),
+              OrganizationDashboard.routename: (_) =>
+                  const OrganizationDashboard(),
+              CreateCampaign.routename: (_) => const CreateCampaign(),
+              // CreateCampaign.routename : (_) => CreateCampaign()
+              Laboratory.routename: (_) => const Laboratory(),
+              LaboratoryBooking.routename: (_) => const LaboratoryBooking(),
+              NotificationPage.routename: (_) => const NotificationPage(),
+              Affectivity.routename: (_) => const Affectivity(),
+              LeaderBoard.routename: (_) => const LeaderBoard(),
+              // MyForm.routename: (_) => MyForm(),
+              SelectionScreen.routename: (_) => const SelectionScreen(),
+              SymptomCheckScreen.routename: (_) => SymptomCheckScreen(),
+              ViewOngoingCampign.routname: (_) => const ViewOngoingCampign(),
+              ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
+              UserCampaign.routename: (_) => const UserCampaign(),
+              NICValidate.routename: (_) => const NICValidate(),
+              GuestRegister.routename: (_) => const GuestRegister(),
+              Profile.routename: (_) => Profile(),
+              NurseCheck.routename: (_) => NurseCheck(),
+              PhiNotification.routeName: (_) => const PhiNotification(),
+              // CreateCampaignForm.routename : (_) => CreateCampaignForm(),
+              MyForms.routename: (_) => MyForms(),
+            
+              // CreateCampaign.routename : (_) =>
+              // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
+              // SelectionScreen.routename: (_) => const SelectionScreen(),
+              // AffectPerson.routename : (_) => AffectPerson(),
+            },
+            home: SplashView(
+              gradient:
+                  LinearGradient(colors: [AppColors.yellow, AppColors.orange]),
+              loadingIndicator: CircularProgressIndicator(
+                  backgroundColor: AppColors.red, color: AppColors.green),
+              logo: Image.asset("Assets/splash_screen/logo.png"),
+              done: Done(const Login()),
+            )));
   }
 }
