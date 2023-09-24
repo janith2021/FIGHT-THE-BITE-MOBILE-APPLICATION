@@ -11,6 +11,7 @@ import 'package:client/screen/authentication/guestsignup.dart';
 import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
+import 'package:client/screen/authentication/villagerRegistration.dart';
 import 'package:client/screen/officer/Nurse/form.dart';
 import 'package:client/screen/officer/PHI/newly_affected_patients.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
@@ -103,6 +104,7 @@ class Myapp extends StatelessWidget {
               PhiNotification.routeName: (_) => const PhiNotification(),
               // CreateCampaignForm.routename : (_) => CreateCampaignForm(),
               MyForms.routename: (_) => MyForms(),
+              VillagerRegister.routename : (_) => const VillagerRegister(),
             
               // CreateCampaign.routename : (_) =>
               // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),

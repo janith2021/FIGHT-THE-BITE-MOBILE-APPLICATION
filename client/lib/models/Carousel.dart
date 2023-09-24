@@ -4,5 +4,4 @@ class Carousel {
   final String status;
 
   Carousel(this.image, this.caption, this.status);
-
 }

@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
         var caption = img["caption"];
         var status = img["status"];
         if (img["status"] == "login") {
-          Carousel carousel = Carousel(image, caption, status);
+          Carousel carousel = Carousel(image,caption, status);
           imagelist.add(carousel);
         }
       }
