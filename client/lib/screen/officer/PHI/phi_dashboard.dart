@@ -344,7 +344,8 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                 // Text(snapshot.data[0].toString()),
                 // Text(snapshot.data[1].toString()),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, bottom:10 ),
+                  padding:
+                      const EdgeInsets.only(left: 20, right: 20, bottom: 10),
                   child: Container(
                     decoration: const BoxDecoration(
                       boxShadow: [
@@ -394,7 +395,8 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(context, "/phi/newlyaffectedpatients");
+                                  Navigator.pushNamed(
+                                      context, "/phi/newlyaffectedpatients");
                                 },
                                 child: Container(
                                   child: Stack(
@@ -406,8 +408,9 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                           height: height * 0.08,
                                           // color: AppColors.black,
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(
-                                                  AllDimensions.px10),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      AllDimensions.px10),
                                               color: AppColors.lighorange),
                                         ),
                                       ),
@@ -418,13 +421,13 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                           padding: EdgeInsets.only(
                                               top: AllDimensions.px20),
                                           child: Container(
-                                            
                                             width: width * 0.55,
                                             height: height * 0.071,
                                             // color: AppColors.black,
                                             decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(
-                                                  AllDimensions.px10),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      AllDimensions.px10),
                                               color: Colors.white,
                                             ),
                                             child: Center(
@@ -439,15 +442,27 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                       ),
                                       FutureBuilder(
                                           future: getNewlyPatientCount(),
-                                          builder:
-                                              (context, AsyncSnapshot snapshot) {
+                                          builder: (context,
+                                              AsyncSnapshot snapshot) {
                                             if (snapshot.connectionState ==
                                                 ConnectionState.waiting) {
-                                              return const Positioned(
+                                              return  Positioned(
                                                   left: 250,
                                                   top: 35,
                                                   child:
-                                                      CircularProgressIndicator());
+                                                      CircularProgressIndicator(
+                                                        
+                                                    backgroundColor: Colors
+                                                            .grey[
+                                                        200], // Background color
+                                                    // valueColor:
+                                                    //     AlwaysStoppedAnimation<
+                                                    //             Color>(
+                                                    //         AppColors
+                                                    //             .lightred), // Indicator color
+                                                    strokeWidth:
+                                                        4, // Thickness of the indicator
+                                                  ));
                                             } else if (snapshot.hasError) {
                                               return Text(
                                                   'Error: ${snapshot.error}');
@@ -458,7 +473,8 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                                 child: Text(
                                                   snapshot.data.toString(),
                                                   style: GoogleFonts.poppins(
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize:
                                                           AllDimensions.px25,
                                                       color: Color.fromARGB(
@@ -472,77 +488,86 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                   ),
                                 ),
                               ),
-                              Container(
-                                child: Stack(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 25),
-                                      child: Container(
-                                        width: width * 0.8,
-                                        height: height * 0.08,
-                                        // color: AppColors.black,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                                AllDimensions.px10),
-                                            color: AppColors.lightred),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.all(AllDimensions.px3),
-                                      child: Padding(
-                                        padding: EdgeInsets.only(top: 25.5),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, "/phi/alreadyaffectedpatients");
+                                },
+                                child: Container(
+                                  child: Stack(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 25),
                                         child: Container(
-                                          width: width * 0.55,
-                                          height: height * 0.071,
+                                          width: width * 0.8,
+                                          height: height * 0.08,
                                           // color: AppColors.black,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                                AllDimensions.px10),
-                                            color: Colors.white,
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "Already Affected Patients",
-                                            style: GoogleFonts.poppins(
-                                                fontSize: AllDimensions.px14,
-                                                fontWeight: FontWeight.w500),
-                                          )),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      AllDimensions.px10),
+                                              color: AppColors.lightred),
                                         ),
                                       ),
-                                    ),
-                                    FutureBuilder(
-                                        future: getAlredyPatientCount(),
-                                        builder:
-                                            (context, AsyncSnapshot snapshot) {
-                                          if (snapshot.connectionState ==
-                                              ConnectionState.waiting) {
-                                            return const Positioned(
-                                                left: 250,
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.all(AllDimensions.px3),
+                                        child: Padding(
+                                          padding: EdgeInsets.only(top: 25.5),
+                                          child: Container(
+                                            width: width * 0.55,
+                                            height: height * 0.071,
+                                            // color: AppColors.black,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      AllDimensions.px10),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                                child: Text(
+                                              "Already Affected Patients",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: AllDimensions.px14,
+                                                  fontWeight: FontWeight.w500),
+                                            )),
+                                          ),
+                                        ),
+                                      ),
+                                      FutureBuilder(
+                                          future: getAlredyPatientCount(),
+                                          builder: (context,
+                                              AsyncSnapshot snapshot) {
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.waiting) {
+                                              return const Positioned(
+                                                  left: 250,
+                                                  top: 40,
+                                                  child:
+                                                      CircularProgressIndicator());
+                                            } else if (snapshot.hasError) {
+                                              return Text(
+                                                  snapshot.error.toString());
+                                              // return ArtSweetAlert.show(context: context,artDialogArgs: ArtDialogArgs(text: snapshot.error.toString(),title: "Error",type: ArtSweetAlertType.danger));
+                                            } else {
+                                              return Positioned(
+                                                left: 260,
                                                 top: 40,
-                                                child:
-                                                    CircularProgressIndicator());
-                                          } else if (snapshot.hasError) {
-                                            return Text(
-                                                snapshot.error.toString());
-                                            // return ArtSweetAlert.show(context: context,artDialogArgs: ArtDialogArgs(text: snapshot.error.toString(),title: "Error",type: ArtSweetAlertType.danger));
-                                          } else {
-                                            return Positioned(
-                                              left: 260,
-                                              top: 40,
-                                              child: Text(
-                                                snapshot.data.toString(),
-                                                style: GoogleFonts.poppins(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize:
-                                                        AllDimensions.px25,
-                                                    color: Color.fromARGB(
-                                                        255, 244, 241, 241)),
-                                              ),
-                                            );
-                                          }
-                                        })
-                                  ],
+                                                child: Text(
+                                                  snapshot.data.toString(),
+                                                  style: GoogleFonts.poppins(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize:
+                                                          AllDimensions.px25,
+                                                      color: Color.fromARGB(
+                                                          255, 244, 241, 241)),
+                                                ),
+                                              );
+                                            }
+                                          })
+                                    ],
+                                  ),
                                 ),
                               )
                             ],

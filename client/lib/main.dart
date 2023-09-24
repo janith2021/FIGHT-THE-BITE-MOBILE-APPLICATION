@@ -10,6 +10,7 @@ import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
+import 'package:client/screen/officer/PHI/already_affected_patients.dart';
 import 'package:client/screen/officer/PHI/notification.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
 import 'package:client/screen/organization/createCampaign.dart';
@@ -92,6 +93,7 @@ class Myapp extends StatelessWidget {
           PhiNotification.routeName : (_) => const PhiNotification(),
           Judgments.routename : (_) => const Judgments(),
           NewlyAffectedPatients.routename : (_) => NewlyAffectedPatients(),
+          AlreayAffectedPatient.routename : (_) => AlreayAffectedPatient(),
           // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
           // SelectionScreen.routename: (_) => const SelectionScreen(),
           // AffectPerson.routename : (_) => AffectPerson(),
