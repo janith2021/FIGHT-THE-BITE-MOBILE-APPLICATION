@@ -45,7 +45,7 @@ class LoginProvider extends ChangeNotifier {
           body: jsonEncode(data), headers: setHeaders());
       var body = await jsonDecode(response.body);
       print(body);
-      print(body['role']);
+      // print(body['role']);
       if (body['type'] == 'success') {
         print(body['role']);
         if (body['role'] == 'Villager') {
@@ -61,7 +61,10 @@ class LoginProvider extends ChangeNotifier {
           // var box1 = await Hive.openBox('users');
           // await box1.put('user', emailController.text);
           // debugPrint('hi');
-          // await shared.setString('email', emailController.text);
+          // print(body['message']);
+          await prefer.setString('email', emailController.text);
+          await prefer.setString('id', body['id']);
+
           emailController.text = "";
           passwordController.text = "";
 
@@ -79,6 +82,26 @@ class LoginProvider extends ChangeNotifier {
           // var box1 = await Hive.openBox('users');
           // await box1.put('user', emailController.text);
           await prefer.setString('user', emailController.text);
+          // debugPrint('hi');
+          // await shared.setString('email', emailController.text);
+          emailController.text = "";
+          passwordController.text = "";
+
+          // notifyListeners();
+        } else if (body['role'] == 'PHI') {
+          // ignore: use_build_context_synchronously
+          Navigator.pushNamed(context, "/officer/phi/dashboard");
+          // ignore: use_build_context_synchronously
+          ArtSweetAlert.show(
+              context: context,
+              artDialogArgs: ArtDialogArgs(
+                  type: ArtSweetAlertType.success,
+                  title: "Success",
+                  text: body['message']));
+          // var box1 = await Hive.openBox('users');
+          // await box1.put('user', emailController.text);
+          await prefer.setString('user', emailController.text);
+          await prefer.setString('userName', body['name']);
           // debugPrint('hi');
           // await shared.setString('email', emailController.text);
           emailController.text = "";

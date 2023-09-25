@@ -2,6 +2,8 @@ import 'all_imports.dart';
 
 class AppColors {
   static Color red = _colorFromHex("EF2617");
+  // static Color lightred = _colorFromHex("E74646");
+  
   static Color green = _colorFromHex("197823");
   static Color white = _colorFromHex("FFFFFF");
   static Color purple = _colorFromHex("9D37E6");
@@ -10,6 +12,7 @@ class AppColors {
   static Color black = _colorFromHex("000000");
   static Color yellow = _colorFromHex("f1c40f");
   static Color orange = _colorFromHex("e67e22");
+  static Color lighorange = _colorFromHex("FB7D5B");
   static Color pink = _colorFromHex("F49097");
   static Color lightred = _colorFromHex("E74646");
   static Color lightpink = _colorFromHex("FFECBA");

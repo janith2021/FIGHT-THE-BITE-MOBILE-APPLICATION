@@ -10,6 +10,8 @@ import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
+import 'package:client/screen/officer/PHI/already_affected_patients.dart';
+import 'package:client/screen/officer/PHI/notification.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
 import 'package:client/screen/organization/createCampaign.dart';
 import 'package:client/screen/organization/viewCampaignHistory.dart';
@@ -31,6 +33,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:splash_view/source/presentation/presentation.dart';
 
 import 'const/all_imports.dart';
+import 'screen/officer/PHI/judgments.dart';
+import 'screen/officer/PHI/newly_affected_patients.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -86,6 +90,10 @@ class Myapp extends StatelessWidget {
           ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
           UserCampaign.routename : (_) => const UserCampaign(),
           NICValidate.routename : (_) => const NICValidate(),
+          PhiNotification.routeName : (_) => const PhiNotification(),
+          Judgments.routename : (_) => const Judgments(),
+          NewlyAffectedPatients.routename : (_) => NewlyAffectedPatients(),
+          AlreayAffectedPatient.routename : (_) => AlreayAffectedPatient(),
           // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
           // SelectionScreen.routename: (_) => const SelectionScreen(),
           // AffectPerson.routename : (_) => AffectPerson(),

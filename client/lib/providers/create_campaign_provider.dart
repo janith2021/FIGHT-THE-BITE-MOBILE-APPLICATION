@@ -12,7 +12,7 @@ class CreateCampaignProvider extends ChangeNotifier {
   TextEditingController campaigntimecontroller = TextEditingController();
 // final SharedPreferences prefer = await SharedPreferences.getInstance();
 
-  List<DateTime> ongoingCampaignDates = []; // Replace with actual data
+  List<DateTime> ongoingCampaignDates = []; // Replace with actual data 
   DateTime selectedDate = DateTime.now();
 
   // Get relevant organization division
