@@ -344,7 +344,8 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                 // Text(snapshot.data[0].toString()),
                 // Text(snapshot.data[1].toString()),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, bottom:10 ),
+                  padding:
+                      const EdgeInsets.only(left: 20, right: 20, bottom: 10),
                   child: Container(
                     decoration: const BoxDecoration(
                       boxShadow: [
@@ -394,7 +395,8 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(context, "/phi/newlyaffectedpatients");
+                                  Navigator.pushNamed(
+                                      context, "/phi/newlyaffectedpatients");
                                 },
                                 child: Container(
                                   child: Stack(
@@ -406,8 +408,9 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                           height: height * 0.08,
                                           // color: AppColors.black,
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(
-                                                  AllDimensions.px10),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      AllDimensions.px10),
                                               color: AppColors.lighorange),
                                         ),
                                       ),
@@ -418,13 +421,13 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                           padding: EdgeInsets.only(
                                               top: AllDimensions.px20),
                                           child: Container(
-                                            
                                             width: width * 0.55,
                                             height: height * 0.071,
                                             // color: AppColors.black,
                                             decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(
-                                                  AllDimensions.px10),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      AllDimensions.px10),
                                               color: Colors.white,
                                             ),
                                             child: Center(
@@ -439,15 +442,27 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                       ),
                                       FutureBuilder(
                                           future: getNewlyPatientCount(),
-                                          builder:
-                                              (context, AsyncSnapshot snapshot) {
+                                          builder: (context,
+                                              AsyncSnapshot snapshot) {
                                             if (snapshot.connectionState ==
                                                 ConnectionState.waiting) {
-                                              return const Positioned(
+                                              return  Positioned(
                                                   left: 250,
                                                   top: 35,
                                                   child:
-                                                      CircularProgressIndicator());
+                                                      CircularProgressIndicator(
+                                                        
+                                                    backgroundColor: Colors
+                                                            .grey[
+                                                        200], // Background color
+                                                    // valueColor:
+                                                    //     AlwaysStoppedAnimation<
+                                                    //             Color>(
+                                                    //         AppColors
+                                                    //             .lightred), // Indicator color
+                                                    strokeWidth:
+                                                        4, // Thickness of the indicator
+                                                  ));
                                             } else if (snapshot.hasError) {
                                               return Text(
                                                   'Error: ${snapshot.error}');
@@ -458,7 +473,8 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                                 child: Text(
                                                   snapshot.data.toString(),
                                                   style: GoogleFonts.poppins(
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize:
                                                           AllDimensions.px25,
                                                       color: Color.fromARGB(
@@ -473,8 +489,9 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: (){
-                                  Navigator.pushNamed(context, "/phi/alreadyaffectedpatients");
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, "/phi/alreadyaffectedpatients");
                                 },
                                 child: Container(
                                   child: Stack(
@@ -486,8 +503,9 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                           height: height * 0.08,
                                           // color: AppColors.black,
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(
-                                                  AllDimensions.px10),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      AllDimensions.px10),
                                               color: AppColors.lightred),
                                         ),
                                       ),
@@ -501,8 +519,9 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                             height: height * 0.071,
                                             // color: AppColors.black,
                                             decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(
-                                                  AllDimensions.px10),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      AllDimensions.px10),
                                               color: Colors.white,
                                             ),
                                             child: Center(
@@ -517,8 +536,8 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                       ),
                                       FutureBuilder(
                                           future: getAlredyPatientCount(),
-                                          builder:
-                                              (context, AsyncSnapshot snapshot) {
+                                          builder: (context,
+                                              AsyncSnapshot snapshot) {
                                             if (snapshot.connectionState ==
                                                 ConnectionState.waiting) {
                                               return const Positioned(
@@ -537,7 +556,8 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                                                 child: Text(
                                                   snapshot.data.toString(),
                                                   style: GoogleFonts.poppins(
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize:
                                                           AllDimensions.px25,
                                                       color: Color.fromARGB(
@@ -640,7 +660,7 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                       margin: EdgeInsets.only(top: 115, left: 155),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "/phi/judgment");
+                          Navigator.pushNamed(context,"/phi/judgment");
                         },
                         // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
                         style: ElevatedButton.styleFrom(

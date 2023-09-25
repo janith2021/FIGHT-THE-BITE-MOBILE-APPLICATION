@@ -38,6 +38,7 @@ class LoginProvider extends ChangeNotifier {
       };
       var fullurl = '${AllStrings.baseurl}/login';
       // var fullurl = "http://localhost:5000/api/register";
+      // debugPrint(data.toString());
       debugPrint(fullurl);
       setHeaders() =>
           {'Content-Type': 'application/json', 'Accept': 'application/json'};
@@ -66,7 +67,10 @@ class LoginProvider extends ChangeNotifier {
           // var box1 = await Hive.openBox('users');
           // await box1.put('user', emailController.text);
           // debugPrint('hi');
-          // await shared.setString('email', emailController.text);
+          // print(body['message']);
+          await prefer.setString('email', emailController.text);
+          await prefer.setString('id', body['id']);
+
           emailController.text = "";
           passwordController.text = "";
 

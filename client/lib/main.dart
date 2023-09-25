@@ -11,6 +11,7 @@ import 'package:client/screen/authentication/guestsignup.dart';
 import 'package:client/screen/authentication/nicvalidate.dart';
 import 'package:client/screen/authentication/otp_screen.dart';
 import 'package:client/screen/authentication/password_change.dart';
+import 'package:client/screen/officer/PHI/already_affected_patients.dart';
 import 'package:client/screen/authentication/villagerRegistration.dart';
 import 'package:client/screen/officer/Nurse/form.dart';
 import 'package:client/screen/officer/PHI/newly_affected_patients.dart';
@@ -40,6 +41,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:splash_view/source/presentation/presentation.dart';
 
 import 'const/all_imports.dart';
+import 'screen/officer/PHI/judgments.dart';
+import 'screen/officer/PHI/newly_affected_patients.dart';
 
 Future main() async {
   // await dotenv.load(fileName: ".env")
@@ -102,9 +105,13 @@ class Myapp extends StatelessWidget {
               Profile.routename: (_) => Profile(),
               NurseCheck.routename: (_) => NurseCheck(),
               PhiNotification.routeName: (_) => const PhiNotification(),
+              Judgments.routename : (_) => const Judgments(),
+              NewlyAffectedPatients.routename : (_) => NewlyAffectedPatients(),
+              AlreayAffectedPatient.routename : (_) => AlreayAffectedPatient(),
               // CreateCampaignForm.routename : (_) => CreateCampaignForm(),
               MyForms.routename: (_) => MyForms(),
               VillagerRegister.routename : (_) => const VillagerRegister(),
+              LeaderBoard.routename : (_) => const LeaderBoard(),
             
               // CreateCampaign.routename : (_) =>
               // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),

@@ -80,6 +80,7 @@ dependencies:
   url_launcher: ^6.1.14
   flutter_margin_widget: ^0.0.3
   dropdown_button2: ^2.3.9
+  hotreloader: ^4.0.0
 
   # flutter_tawk: ^0.1.0
 
