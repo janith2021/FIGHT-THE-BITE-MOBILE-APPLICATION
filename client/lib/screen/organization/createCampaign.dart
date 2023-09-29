@@ -21,7 +21,7 @@ class CreateCampaign extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(AllDimensions.px20),
             child: Column(
-              children: [
+              children: [ 
                 Container(
                   decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
