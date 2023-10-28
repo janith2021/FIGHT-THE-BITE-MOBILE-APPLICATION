@@ -20,7 +20,7 @@ export 'package:client/widget/image_picker.dart';
 export '../helpers/validation_helper.dart';
 export 'package:client/providers/reset_password_provider.dart';
 export 'package:client/screen/authentication/reset_password.dart';
-export 'package:client/screen/authentication/guestsignup.dart';
+export 'package:client/screen/authentication/guestsignup1.dart';
 export 'package:hive/hive.dart';
 export 'package:art_sweetalert/art_sweetalert.dart';
 export 'dart:convert';

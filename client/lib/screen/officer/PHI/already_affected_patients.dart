@@ -13,6 +13,7 @@ class AlreayAffectedPatient extends StatelessWidget {
   Future<List<Patient>> getNewlyPatientCount() async {
     SharedPreferences prefer = await SharedPreferences.getInstance();
     var email = prefer.getString("user");
+    // debugPrint(email);
     var body = {"affectedStatus": 2, "email": email};
     var fullurl = "${AllStrings.baseurl}/patient/getpatient";
     setHeaders() =>
@@ -21,10 +22,11 @@ class AlreayAffectedPatient extends StatelessWidget {
         body: jsonEncode(body), headers: setHeaders());
 
     // if(results.statusCode == 200){
-    var result = jsonDecode(results.body);
+    var result = await jsonDecode(results.body);
+    // debugPrint(result.toString());
     // debugPrint(result['patientsList'].toString());
     var data = result['patientsList'];
-
+    // debugPrint(data.toString());
     for (var patient in data) {
       // int lengths = patient.lenght;
       // print(lengths);
@@ -33,15 +35,17 @@ class AlreayAffectedPatient extends StatelessWidget {
         // print(data);
         var id = data['_id'];
         var name = data['name'];
-        // print(name);
+        
         var address = data['address'];
         var wardId = data['wardId'];
         var phase = data['phase'].toString();
-
+        // debugPrint(phase);
         // print(phase);
         var divisionNumber = data['divisionNumber'];
         var houseHoldNo = data['houseHoldNo'];
         var phicomment = data['phicomment'];
+        // debugPrint(phicomment);
+        // print("patients");
         Patient p = Patient(
             id: id,
             address: address,
@@ -51,10 +55,14 @@ class AlreayAffectedPatient extends StatelessWidget {
             divisionNo: divisionNumber,
             houseHoldNo: houseHoldNo,
             phicomment: phicomment);
+        // Patient q = Patient(
+        //     id: id, address: address, wardId: wardId, name: name, phase: phase);
         patients.add(p);
+        // debugPrint(p.toString());
       }
     }
     // }
+    // debugPrint(patients.toString());
     return patients;
   }
 
@@ -79,7 +87,7 @@ class AlreayAffectedPatient extends StatelessWidget {
                   children: [
                     Stack(children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 260,top: 5),
+                        padding: const EdgeInsets.only(left: 260, top: 5),
                         child: IconButton(
                             onPressed: () {
                               Navigator.of(context).pop();
@@ -143,14 +151,16 @@ class AlreayAffectedPatient extends StatelessWidget {
                       ),
                     ),
                     Center(
-                      child: Text("Note", style: GoogleFonts.poppins(
-                        fontSize: AllDimensions.px18,
-                        fontWeight: FontWeight.w600
-                      )),
+                      child: Text("Note",
+                          style: GoogleFonts.poppins(
+                              fontSize: AllDimensions.px18,
+                              fontWeight: FontWeight.w600)),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, bottom: 5,right: 20,top: 5),
-                      child: Text(phicomment!,
+                      padding: const EdgeInsets.only(
+                          left: 20, bottom: 5, right: 20, top: 5),
+                      child: Text(
+                        phicomment!,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(fontSize: 15),
                       ),
@@ -196,6 +206,7 @@ class AlreayAffectedPatient extends StatelessWidget {
                 );
               } else {
                 var list = snapshot.data;
+                // debugPrint(list.toString());
                 // debugPrint(list);
                 return ListView.builder(
                   itemCount: list!.length,
@@ -210,11 +221,18 @@ class AlreayAffectedPatient extends StatelessWidget {
                               fontSize: 17, fontWeight: FontWeight.w600),
                         ),
                         tileColor: Color.fromARGB(255, 233, 226, 204),
-                        leading: Icon(Icons.account_circle,size: 40,),
+                        leading: Icon(
+                          Icons.account_circle,
+                          size: 40,
+                        ),
                         trailing: IconButton(
                             onPressed: () async {
                               late String? Phase;
-                              item.phase == "1" ? Phase = "Febril Phase" : (item.phase == "2" ? Phase="Critical Phase":Phase = "During Shock");
+                              item.phase == "1"
+                                  ? Phase = "Febril Phase"
+                                  : (item.phase == "2"
+                                      ? Phase = "Critical Phase"
+                                      : Phase = "During Shock");
                               // if (item.phase == 1) {
                               //   var Phase = "Febrile Phase Patients";
                               // } else if (item.phase == 2) {
@@ -222,7 +240,7 @@ class AlreayAffectedPatient extends StatelessWidget {
                               // } else {
                               //   var Phase = "During Shock Phase";
                               // }
-                    
+
                               await showPatientDetails(
                                   context,
                                   item.name,
@@ -233,7 +251,10 @@ class AlreayAffectedPatient extends StatelessWidget {
                                   item.houseHoldNo,
                                   item.phicomment);
                             },
-                            icon: Icon(Icons.read_more , size: 30,)),
+                            icon: Icon(
+                              Icons.read_more,
+                              size: 30,
+                            )),
                         subtitle: Text(
                           item.address,
                           style: GoogleFonts.poppins(),

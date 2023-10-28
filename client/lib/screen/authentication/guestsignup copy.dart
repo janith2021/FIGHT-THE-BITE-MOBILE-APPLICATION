@@ -90,7 +90,7 @@ class _GuestSignUpState extends State<GuestSignUp> {
                     onTap: () {
                       if (provider.validateSignUp(context)) {
                         Navigator.pushNamed(context, "/login");
-                      } 
+                      }
                     },
                     child: CustomButton(
                         bordercolor: AppColors.lightred,
@@ -111,7 +111,7 @@ class _GuestSignUpState extends State<GuestSignUp> {
                     onTap: () {
                       // Navigator.pushReplacementNamed(context, "/login");
                       // if (provider.validateSignUp(context)) {
-                        Navigator.pushReplacementNamed(context, "/login");
+                      Navigator.pushReplacementNamed(context, "/login");
                       // }
                     },
                     child: RichText(

@@ -1,5 +1,6 @@
 import 'package:client/models/Carousel.dart';
 import 'package:constrained_scroll_view/constrained_scroll_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../const/all_imports.dart';
 import 'package:http/http.dart' as http;
@@ -94,12 +95,28 @@ class _LoginState extends State<Login> {
                             return CustomCarousel(
                                 autoplay: false,
                                 durationInSeconds: 0,
-                                items: [Center(child: Text("Images Not Found! Please Ensure that You have a valid Internet Connectivity.",style: GoogleFonts.poppins(color: AppColors.red,fontWeight: FontWeight.bold,fontSize: AllDimensions.px20),))]);
+                                items: [
+                                  Center(
+                                      child: Text(
+                                    "Images Not Found! Please Ensure that You have a valid Internet Connectivity.",
+                                    style: GoogleFonts.poppins(
+                                        color: AppColors.red,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: AllDimensions.px20),
+                                  ))
+                                ]);
                           }
                           final list = snapshot.data;
                           // debugPrint(list.toString());
+
                           final imglist = list!
-                              .map((item) => (Container(child: Image.network(item.image,fit: BoxFit.fill,),width: MediaQuery.of(context).size.width,)))
+                              .map((item) => (Container(
+                                    child: Image.network(
+                                      item.image,
+                                      fit: BoxFit.fill,
+                                    ),
+                                    width: MediaQuery.of(context).size.width,
+                                  )))
                               .toList();
                           print(imglist);
                           return CustomCarousel(
@@ -111,7 +128,7 @@ class _LoginState extends State<Login> {
                       }),
                   SizedBox(
                     height: AllDimensions.px80,
-                  ),    
+                  ),
                   CustomTextField(
                     controller: provider.emailController,
                     hintText: AllStrings.emailHint,
@@ -137,12 +154,12 @@ class _LoginState extends State<Login> {
                     errorText: provider.passwordError,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(right:  AllDimensions.px20),
+                    padding: EdgeInsets.only(right: AllDimensions.px20),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                         TextButton(
+                        TextButton(
                             onPressed: () {
                               Navigator.pushNamed(context, "/reset");
                             },
@@ -172,11 +189,16 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.bold,
                           fontSize: AllDimensions.px20,
                         ),
-                        text: AllStrings.login,shadow: AllDimensions.px10),
+                        text: AllStrings.login,
+                        shadow: AllDimensions.px10),
                   ),
                   SizeBox().sizedBox20,
                   InkWell(
-                    onTap: () {
+                    onTap: () async {
+                      SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                      await prefs.clear();
+                      // ignore: use_build_context_synchronously
                       Navigator.pushNamed(context, "/nic/validate");
                     },
                     child: RichText(
@@ -194,7 +216,6 @@ class _LoginState extends State<Login> {
                           ]),
                     ),
                   ),
-                 
                 ],
               ),
             ),

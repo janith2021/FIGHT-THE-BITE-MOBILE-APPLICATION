@@ -18,14 +18,14 @@ class OrganizationDashboard extends StatefulWidget {
 }
 
 class _OrganizationDashboardState extends State<OrganizationDashboard> {
-  Future<Map<dynamic, dynamic>> getuser() async {
+  Future<Map<String,dynamic>> getuser() async {
     // var box = Hive.box('users');
     // var email = box.get('user');
     // print(email);
     SharedPreferences prefer = await SharedPreferences.getInstance();
     final String? email = prefer.getString('user');
     debugPrint(email);
-    var url = '${AllStrings.baseurl}/getUser/$email';
+    var url = '${AllStrings.baseurl}/organization/$email';
     var data = {
       "email": email,
     };
@@ -37,9 +37,10 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
     //     body: jsonEncode(data), headers: setHeaders());
     var res = await http.get(Uri.parse(url));
     Map users = await jsonDecode(res.body);
-    debugPrint(users["_id"].toString());
-    prefer.setString("userid", users["_id"]);
-    return users;
+   
+    
+    //  debugPrint(users['user']['name'].toString());
+    return users['user'];
   }
 
   @override
@@ -112,17 +113,22 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                         FutureBuilder(
                             future: getuser(),
                             builder: (BuildContext context,
-                                AsyncSnapshot<Map<dynamic, dynamic>> snapshot) {
+                                AsyncSnapshot<Map<String,dynamic>> snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
-                                return Container();
+                                return Expanded(child: Container(width: MediaQuery.of(context).size.width,alignment: Alignment.topCenter,child: CircularProgressIndicator(color: Colors.red),));
                               } else {
-                                if (snapshot.hasError) {
-                                  return Text(
-                                      "There is an error : ${snapshot.error}");
-                                }
                                 final data = snapshot.data;
-                                print(data);
+                                //  debugPrint("Hi");
+                                // print(snapshot.data.toString());
+                                if (snapshot.hasError) {
+                                  return Expanded(
+                                    child: Text(
+                                        "There is an error : ${snapshot.error}"),
+                                  );
+                                }
+                                
+                               
                                 // print(data);
                                 return Stack(
                                   alignment: Alignment.centerLeft,
@@ -139,12 +145,11 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                                               AllDimensions.px50)),
                                       child: Padding(
                                         padding: const EdgeInsets.all(5.0),
-                                        child: Text(
-                                            data!["name"].toString() ,
-                                                // CircularProgressIndicator(
-                                                //   color: AppColors.red,
-                                                //   strokeWidth: 2,
-                                                // ),
+                                        child: Text(data!['name'].toString(),
+                                            // CircularProgressIndicator(
+                                            //   color: AppColors.red,
+                                            //   strokeWidth: 2,
+                                            // ),
                                             style: GoogleFonts.aBeeZee(
                                               color: AppColors.white,
                                               fontSize: AllDimensions.px20,
@@ -155,8 +160,8 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                                       ),
                                     ),
                                     CircularProfileAvatar(
-                                      data["image"].toString(),
-                                          // CircularProgressIndicator.adaptive(),
+                                      data['image'].toString(),
+                                      // CircularProgressIndicator.adaptive(),
                                       imageFit: BoxFit.contain,
                                     ),
                                   ],

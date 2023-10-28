@@ -53,6 +53,7 @@ class NewlyAffectedPatients extends StatelessWidget {
             divisionNo: divisionNo,
             houseHoldNo: houseHoldNo);
         patients.add(p);
+        debugPrint(p.toString());
       }
     }
     // }
@@ -77,8 +78,8 @@ class NewlyAffectedPatients extends StatelessWidget {
     };
 
     try {
-      var response =
-          http.post(Uri.parse(fullurl), body: jsonEncode(body), headers: setHeaders());
+      var response = http.post(Uri.parse(fullurl),
+          body: jsonEncode(body), headers: setHeaders());
 
       // if (response.statusCode == 200) {
       //   print('User updated successfully');
@@ -184,19 +185,21 @@ class NewlyAffectedPatients extends StatelessWidget {
                           style: GoogleFonts.poppins(fontSize: 15),
                         ),
                       ),
-                      Padding(
-                          padding: const EdgeInsets.only(bottom: 5, right: 20),
-                          child: TextFormField(
-                            controller: _textEditingController,
-                            validator: (value) {
-                              if (value!.isEmpty || value == null) {
-                                return "Enter the note";
-                              }
-                            },
-                            decoration: InputDecoration(
-                                hintText: 'Enter the Comment',
-                                labelText: 'PHI Comment'),
-                          )),
+                      Expanded(
+                        child: Padding(
+                            padding: const EdgeInsets.only(bottom: 5, right: 20),
+                            child: TextFormField(
+                              controller: _textEditingController,
+                              validator: (value) {
+                                if (value!.isEmpty || value == null) {
+                                  return "Enter the note";
+                                }
+                              },
+                              decoration: InputDecoration(
+                                  hintText: 'Enter the Comment',
+                                  labelText: 'PHI Comment'),
+                            )),
+                      ),
                     ],
                   ),
                 ),

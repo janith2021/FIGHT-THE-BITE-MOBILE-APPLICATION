@@ -345,235 +345,238 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                 // Text(snapshot.data[1].toString()),
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color.fromARGB(255, 164, 188, 176),
-                          offset: Offset(
-                            5.0,
-                            5.0,
-                          ),
-                          blurRadius: 10.0,
-                          spreadRadius: 2.0,
-                        ), //BoxShadow
-                        // BoxShadow(
-                        //   color: Color.fromARGB(255, 225, 106, 106),
-                        //   offset: Offset(0.0, 0.0),
-                        //   blurRadius: 0.0,
-                        //   spreadRadius: 0.0,
-                        // ), //BoxShadow
-                      ],
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0),
-                        bottomLeft: Radius.circular(10.0),
-                        bottomRight: Radius.circular(10.0),
-                      ),
-                    ),
-
-                    height: height * 0.32,
-                    // color: AppColors.black,
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          'Assets/phi/phi_dashboard/image1.png',
-                          height: height * 0.45,
-                          fit: BoxFit.fill,
+                      const EdgeInsets.only(left: 20, right: 5, bottom: 10),
+                  child: Expanded(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: const BoxDecoration(
+                        boxShadow: [
+                          // BoxShadow(
+                          //   color: Color.fromARGB(255, 164, 188, 176),
+                          //   offset: Offset(
+                          //     5.0,
+                          //     5.0,
+                          //   ),
+                          //   blurRadius: 10.0,
+                          //   spreadRadius: 2.0,
+                          // ), //BoxShadow
+                          // BoxShadow(
+                          //   color: Color.fromARGB(255, 225, 106, 106),
+                          //   offset: Offset(0.0, 0.0),
+                          //   blurRadius: 0.0,
+                          //   spreadRadius: 0.0,
+                          // ), //BoxShadow
+                        ],
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          topRight: Radius.circular(10.0),
+                          bottomLeft: Radius.circular(10.0),
+                          bottomRight: Radius.circular(10.0),
                         ),
-                        Center(
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(top: AllDimensions.px20),
-                                child: Text("Affected Villagers",
-                                    style: GoogleFonts.poppins(
-                                        fontSize: AllDimensions.px18,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, "/phi/newlyaffectedpatients");
-                                },
-                                child: Container(
-                                  child: Stack(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 20),
-                                        child: Container(
-                                          width: width * 0.8,
-                                          height: height * 0.08,
-                                          // color: AppColors.black,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      AllDimensions.px10),
-                                              color: AppColors.lighorange),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.all(AllDimensions.px3),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                              top: AllDimensions.px20),
-                                          child: Container(
-                                            width: width * 0.55,
-                                            height: height * 0.071,
-                                            // color: AppColors.black,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      AllDimensions.px10),
-                                              color: Colors.white,
-                                            ),
-                                            child: Center(
-                                                child: Text(
-                                              "Newly Affected Patients",
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: AllDimensions.px14,
-                                                  fontWeight: FontWeight.w500),
-                                            )),
-                                          ),
-                                        ),
-                                      ),
-                                      FutureBuilder(
-                                          future: getNewlyPatientCount(),
-                                          builder: (context,
-                                              AsyncSnapshot snapshot) {
-                                            if (snapshot.connectionState ==
-                                                ConnectionState.waiting) {
-                                              return  Positioned(
-                                                  left: 250,
-                                                  top: 35,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                        
-                                                    backgroundColor: Colors
-                                                            .grey[
-                                                        200], // Background color
-                                                    // valueColor:
-                                                    //     AlwaysStoppedAnimation<
-                                                    //             Color>(
-                                                    //         AppColors
-                                                    //             .lightred), // Indicator color
-                                                    strokeWidth:
-                                                        4, // Thickness of the indicator
-                                                  ));
-                                            } else if (snapshot.hasError) {
-                                              return Text(
-                                                  'Error: ${snapshot.error}');
-                                            } else {
-                                              return Positioned(
-                                                left: 260,
-                                                top: 35,
-                                                child: Text(
-                                                  snapshot.data.toString(),
-                                                  style: GoogleFonts.poppins(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize:
-                                                          AllDimensions.px25,
-                                                      color: Color.fromARGB(
-                                                          255, 244, 241, 241)),
-                                                ),
-                                              );
-                                            }
-                                            //
-                                          })
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, "/phi/alreadyaffectedpatients");
-                                },
-                                child: Container(
-                                  child: Stack(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 25),
-                                        child: Container(
-                                          width: width * 0.8,
-                                          height: height * 0.08,
-                                          // color: AppColors.black,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      AllDimensions.px10),
-                                              color: AppColors.lightred),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.all(AllDimensions.px3),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(top: 25.5),
-                                          child: Container(
-                                            width: width * 0.55,
-                                            height: height * 0.071,
-                                            // color: AppColors.black,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      AllDimensions.px10),
-                                              color: Colors.white,
-                                            ),
-                                            child: Center(
-                                                child: Text(
-                                              "Already Affected Patients",
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: AllDimensions.px14,
-                                                  fontWeight: FontWeight.w500),
-                                            )),
-                                          ),
-                                        ),
-                                      ),
-                                      FutureBuilder(
-                                          future: getAlredyPatientCount(),
-                                          builder: (context,
-                                              AsyncSnapshot snapshot) {
-                                            if (snapshot.connectionState ==
-                                                ConnectionState.waiting) {
-                                              return const Positioned(
-                                                  left: 250,
-                                                  top: 40,
-                                                  child:
-                                                      CircularProgressIndicator());
-                                            } else if (snapshot.hasError) {
-                                              return Text(
-                                                  snapshot.error.toString());
-                                              // return ArtSweetAlert.show(context: context,artDialogArgs: ArtDialogArgs(text: snapshot.error.toString(),title: "Error",type: ArtSweetAlertType.danger));
-                                            } else {
-                                              return Positioned(
-                                                left: 260,
-                                                top: 40,
-                                                child: Text(
-                                                  snapshot.data.toString(),
-                                                  style: GoogleFonts.poppins(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize:
-                                                          AllDimensions.px25,
-                                                      color: Color.fromARGB(
-                                                          255, 244, 241, 241)),
-                                                ),
-                                              );
-                                            }
-                                          })
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
+                      ),
+                  
+                      height: height * 0.32,
+                      // color: AppColors.black,
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            'Assets/phi/phi_dashboard/image1.png',
+                            height: height * 0.45,
+                            fit: BoxFit.fill,
                           ),
-                        )
-                      ],
+                          Center(
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(top: AllDimensions.px20),
+                                  child: Text("Affected Villagers",
+                                      style: GoogleFonts.poppins(
+                                          fontSize: AllDimensions.px18,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, "/phi/newlyaffectedpatients");
+                                  },
+                                  child: Container(
+                                    child: Stack(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 20),
+                                          child: Container(
+                                            width: width * 0.8,
+                                            height: height * 0.08,
+                                            // color: AppColors.black,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AllDimensions.px10),
+                                                color: AppColors.lighorange),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.all(AllDimensions.px3),
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                                top: AllDimensions.px20),
+                                            child: Container(
+                                              width: width * 0.55,
+                                              height: height * 0.071,
+                                              // color: AppColors.black,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AllDimensions.px10),
+                                                color: Colors.white,
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "Newly Affected Patients",
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: AllDimensions.px14,
+                                                    fontWeight: FontWeight.w500),
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+                                        FutureBuilder(
+                                            future: getNewlyPatientCount(),
+                                            builder: (context,
+                                                AsyncSnapshot snapshot) {
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.waiting) {
+                                                return  Positioned(
+                                                    left: 250,
+                                                    top: 35,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                          
+                                                      backgroundColor: Colors
+                                                              .grey[
+                                                          200], // Background color
+                                                      // valueColor:
+                                                      //     AlwaysStoppedAnimation<
+                                                      //             Color>(
+                                                      //         AppColors
+                                                      //             .lightred), // Indicator color
+                                                      strokeWidth:
+                                                          4, // Thickness of the indicator
+                                                    ));
+                                              } else if (snapshot.hasError) {
+                                                return Text(
+                                                    'Error: ${snapshot.error}');
+                                              } else {
+                                                return Positioned(
+                                                  left: 260,
+                                                  top: 35,
+                                                  child: Text(
+                                                    snapshot.data.toString(),
+                                                    style: GoogleFonts.poppins(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize:
+                                                            AllDimensions.px25,
+                                                        color: Color.fromARGB(
+                                                            255, 244, 241, 241)),
+                                                  ),
+                                                );
+                                              }
+                                              //
+                                            })
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, "/phi/alreadyaffectedpatients");
+                                  },
+                                  child: Container(
+                                    child: Stack(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 25),
+                                          child: Container(
+                                            width: width * 0.8,
+                                            height: height * 0.08,
+                                            // color: AppColors.black,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AllDimensions.px10),
+                                                color: AppColors.lightred),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.all(AllDimensions.px3),
+                                          child: Padding(
+                                            padding: EdgeInsets.only(top: 25.5),
+                                            child: Container(
+                                              width: width * 0.55,
+                                              height: height * 0.071,
+                                              // color: AppColors.black,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AllDimensions.px10),
+                                                color: Colors.white,
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "Already Affected Patients",
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: AllDimensions.px14,
+                                                    fontWeight: FontWeight.w500),
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+                                        FutureBuilder(
+                                            future: getAlredyPatientCount(),
+                                            builder: (context,
+                                                AsyncSnapshot snapshot) {
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.waiting) {
+                                                return const Positioned(
+                                                    left: 250,
+                                                    top: 40,
+                                                    child:
+                                                        CircularProgressIndicator());
+                                              } else if (snapshot.hasError) {
+                                                return Text(
+                                                    snapshot.error.toString());
+                                                // return ArtSweetAlert.show(context: context,artDialogArgs: ArtDialogArgs(text: snapshot.error.toString(),title: "Error",type: ArtSweetAlertType.danger));
+                                              } else {
+                                                return Positioned(
+                                                  left: 260,
+                                                  top: 40,
+                                                  child: Text(
+                                                    snapshot.data.toString(),
+                                                    style: GoogleFonts.poppins(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize:
+                                                            AllDimensions.px25,
+                                                        color: Color.fromARGB(
+                                                            255, 244, 241, 241)),
+                                                  ),
+                                                );
+                                              }
+                                            })
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 )
@@ -593,30 +596,32 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Stack(
                         children: [
-                          Container(
-                            width: width * 0.6,
-                            height: height * 0.22,
-                            // color: AppColors.cream,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: AppColors.white,
-                            ),
-                            child: Center(
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        top: AllDimensions.px25),
-                                    child: Text(
-                                      "Affected Rate",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: AllDimensions.px18,
-                                          fontWeight: FontWeight.bold),
+                          Expanded(
+                            child: Container(
+                              width: width * 0.6,
+                              height: height * 0.22,
+                              // color: AppColors.cream,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColors.white,
+                              ),
+                              child: Center(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          top: AllDimensions.px25),
+                                      child: Text(
+                                        "Affected Rate",
+                                        style: GoogleFonts.poppins(
+                                            fontSize: AllDimensions.px18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
-                                  ),
-                                  Text(snapshot.data[0].toString()),
-                                  // Text(snapshot.data[1].toString())
-                                ],
+                                    Text(snapshot.data[0].toString()),
+                                    // Text(snapshot.data[1].toString())
+                                  ],
+                                ),
                               ),
                             ),
                           )
@@ -660,7 +665,7 @@ class _PHIDashBoardState extends State<PHIDashBoard> {
                       margin: EdgeInsets.only(top: 115, left: 155),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "/phi/judgment");
+                          Navigator.pushNamed(context,"/phi/judgment");
                         },
                         // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
                         style: ElevatedButton.styleFrom(

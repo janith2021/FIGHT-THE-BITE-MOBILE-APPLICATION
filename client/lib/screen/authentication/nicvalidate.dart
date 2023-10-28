@@ -38,18 +38,24 @@ class NICValidate extends StatelessWidget {
                     hintText: "Enter NIC Number",
                     iconData: Icons.person,
                     label: "NIC Number",
-                    errorText: "errorText"),
+                    errorText: provider.nicerror),
                 SizedBox(
                   height: AllDimensions.px20,
                 ),
-                CustomButton(
-                    bordercolor: AppColors.lightred,
-                    borderradius: AllDimensions.px100,
-                    boxcolor: AppColors.lightred,
-                    borderwidth: AllDimensions.px10,
-                    text: "Next",
-                    styles: GoogleFonts.poppins(color: AppColors.white),
-                    btnWidth: MediaQuery.of(context).size.width * 0.8),
+                InkWell(
+                  onTap: () {
+                    // debugPrint("Validated");
+                    provider.validatenic(context);
+                  },
+                  child: CustomButton(
+                      bordercolor: AppColors.lightred,
+                      borderradius: AllDimensions.px100,
+                      boxcolor: AppColors.lightred,
+                      borderwidth: AllDimensions.px10,
+                      text: "Next",
+                      styles: GoogleFonts.poppins(color: AppColors.white),
+                      btnWidth: MediaQuery.of(context).size.width * 0.8),
+                ),
                 SizedBox(
                   height: AllDimensions.px20,
                 ),
