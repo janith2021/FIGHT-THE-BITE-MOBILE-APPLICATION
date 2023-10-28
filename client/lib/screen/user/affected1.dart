@@ -35,6 +35,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.cream,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(70.0),
@@ -121,7 +122,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
               Expanded(
                 child: Image.asset(
                     'Assets/villagers/inform/symptoms.png',
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width * 2,
                     height: MediaQuery.of(context).size.height, // Set the desired width
                     ),
               )

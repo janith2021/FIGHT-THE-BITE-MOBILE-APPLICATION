@@ -185,19 +185,21 @@ class NewlyAffectedPatients extends StatelessWidget {
                           style: GoogleFonts.poppins(fontSize: 15),
                         ),
                       ),
-                      Padding(
-                          padding: const EdgeInsets.only(bottom: 5, right: 20),
-                          child: TextFormField(
-                            controller: _textEditingController,
-                            validator: (value) {
-                              if (value!.isEmpty || value == null) {
-                                return "Enter the note";
-                              }
-                            },
-                            decoration: InputDecoration(
-                                hintText: 'Enter the Comment',
-                                labelText: 'PHI Comment'),
-                          )),
+                      Expanded(
+                        child: Padding(
+                            padding: const EdgeInsets.only(bottom: 5, right: 20),
+                            child: TextFormField(
+                              controller: _textEditingController,
+                              validator: (value) {
+                                if (value!.isEmpty || value == null) {
+                                  return "Enter the note";
+                                }
+                              },
+                              decoration: InputDecoration(
+                                  hintText: 'Enter the Comment',
+                                  labelText: 'PHI Comment'),
+                            )),
+                      ),
                     ],
                   ),
                 ),

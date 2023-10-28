@@ -5,6 +5,7 @@ import 'package:client/providers/laboratorybooking_provider.dart';
 import 'package:client/providers/nic_validation_provider.dart';
 import 'package:client/providers/otp_provider.dart';
 import 'package:client/providers/view_campaign_provider.dart';
+import 'package:client/providers/villagerregistration.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
 import 'package:client/screen/authentication/guestsignup.dart';
 // import 'package:client/screen/authentication/guestvillager.dart';
@@ -46,6 +47,7 @@ import 'screen/officer/PHI/newly_affected_patients.dart';
 
 Future main() async {
   // await dotenv.load(fileName: ".env")
+  // Hive.init();
   runApp(const Myapp());
 }
 
@@ -65,7 +67,8 @@ class Myapp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => CreateCampaignProvider()),
           ChangeNotifierProvider(create: (_) => ViewCampaignProvider()),
           ChangeNotifierProvider(create: (_) => NICValidateProvider()),
-          ChangeNotifierProvider(create: (_) => GusetRegistrationProvider())
+          ChangeNotifierProvider(create: (_) => GusetRegistrationProvider()),
+          ChangeNotifierProvider(create: (_)=> VillagerRegistrationProvider())
           // ChangeNotifierProvider(create: (_) => )
         ],
         child: MaterialApp(
@@ -74,7 +77,7 @@ class Myapp extends StatelessWidget {
             // initialRoute: Splash.routename,
             // initialRoute: OtpScreen.routename,
             routes: {
-              NewlyAffectedPatients.routename : (_) => NewlyAffectedPatients(),
+              NewlyAffectedPatients.routename: (_) => NewlyAffectedPatients(),
               Splash.routename: (_) => const Splash(),
               Login.routeName: (_) => const Login(),
               GuestSignUp.routename: (_) => const GuestSignUp(),
@@ -105,14 +108,14 @@ class Myapp extends StatelessWidget {
               Profile.routename: (_) => Profile(),
               NurseCheck.routename: (_) => NurseCheck(),
               PhiNotification.routeName: (_) => const PhiNotification(),
-              Judgments.routename : (_) => const Judgments(),
-              NewlyAffectedPatients.routename : (_) => NewlyAffectedPatients(),
-              AlreayAffectedPatient.routename : (_) => AlreayAffectedPatient(),
+              Judgments.routename: (_) => const Judgments(),
+              NewlyAffectedPatients.routename: (_) => NewlyAffectedPatients(),
+              AlreayAffectedPatient.routename: (_) => AlreayAffectedPatient(),
               // CreateCampaignForm.routename : (_) => CreateCampaignForm(),
               MyForms.routename: (_) => MyForms(),
-              VillagerRegister.routename : (_) => const VillagerRegister(),
-              LeaderBoard.routename : (_) => const LeaderBoard(),
-            
+              VillagerRegister.routename: (_) =>  VillagerRegister(),
+              LeaderBoard.routename: (_) => const LeaderBoard(),
+
               // CreateCampaign.routename : (_) =>
               // GuestVillagerForm.routename : (_) => const GuestVillagerForm(),
               // SelectionScreen.routename: (_) => const SelectionScreen(),

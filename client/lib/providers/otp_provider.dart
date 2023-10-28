@@ -68,11 +68,13 @@ class OtpProvider extends ChangeNotifier {
     }
     if (villager != null) {
       var jwttoken = prefs.getString('token');
-      debugPrint(jwttoken);
+      debugPrint(Otp);
+      // debugPrint(jwttoken);
       var OTP = {
         'nic': villager,
         'otp': Otp,
       };
+      // debugPrint(OTP.toString());
       // debugPrint("Hello"+villager.toString());
       setHeaders() => {
             'Content-Type': 'application/json',
@@ -80,6 +82,7 @@ class OtpProvider extends ChangeNotifier {
             'Authorization': 'Bearer $jwttoken'
           };
       var fullurl = '${AllStrings.baseurl}/verifyotpmobile';
+      debugPrint(fullurl);
       // var fullurl = 'http://192.168.141.183:5000/api/verifyotp';
       var res = await http.post(Uri.parse(fullurl),
           body: jsonEncode(OTP), headers: setHeaders());
