@@ -49,8 +49,11 @@ class LoginProvider extends ChangeNotifier {
       // print(body['role']);
       if (body['type'].toString() == 'success') {
         // print(body['role']);
+        debugPrint(body.toString());
         if (body['role'] == 'Villager') {
           await prefer.setString('user', body['name'].toString());
+          await prefer.setString(
+              'householdno', body['user']['houseHoldNo'].toString());
           await prefer.setString('email', body['username'].toString());
           // debugPrint(body['name'].toString());
           // ignore: use_build_context_synchronously

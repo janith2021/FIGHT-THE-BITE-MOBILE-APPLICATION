@@ -73,4 +73,5 @@ class AllStrings {
   static String growinggraph = "Number of patients growing monthly";
   static String viewcampaignhistory = "View Campaign Hitory";
   static String nicvalidate = "Please Enter Your NIC Number";
+  static String informaffect = "Inform Affectivity";
 }
