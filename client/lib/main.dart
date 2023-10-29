@@ -4,6 +4,7 @@ import 'package:client/providers/guestregistration.dart';
 import 'package:client/providers/laboratorybooking_provider.dart';
 import 'package:client/providers/nic_validation_provider.dart';
 import 'package:client/providers/otp_provider.dart';
+import 'package:client/providers/symptomsinform.dart';
 import 'package:client/providers/view_campaign_provider.dart';
 import 'package:client/providers/villagerregistration.dart';
 import 'package:client/screen/Organization/organization_dashboard.dart';
@@ -68,7 +69,8 @@ class Myapp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ViewCampaignProvider()),
           ChangeNotifierProvider(create: (_) => NICValidateProvider()),
           ChangeNotifierProvider(create: (_) => GusetRegistrationProvider()),
-          ChangeNotifierProvider(create: (_)=> VillagerRegistrationProvider())
+          ChangeNotifierProvider(create: (_)=> VillagerRegistrationProvider()),
+          ChangeNotifierProvider(create: (_)=> SymptomsinformProvider()),
           // ChangeNotifierProvider(create: (_) => )
         ],
         child: MaterialApp(
