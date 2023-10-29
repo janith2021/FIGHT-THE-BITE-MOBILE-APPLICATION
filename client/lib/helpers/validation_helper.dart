@@ -26,5 +26,7 @@ class ValidationHelper {
       value.length == 10 ? "" : "Contact Number must contains 10 characters";
   static String validateage(String value) =>
       value.isEmpty ? "Age is Requird" : "";
+  static String validatesymptoms(List<dynamic> value) =>
+      value.isEmpty ? "Symptoms are required" : "";
   // static String validate
 }

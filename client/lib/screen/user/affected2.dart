@@ -5,6 +5,7 @@ import 'package:client/widget/custom_dialog_box.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // class AffectPerson extends StatelessWidget {
@@ -112,7 +113,9 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
                           ),
                           trailing: InkWell(
                               onTap: () {
+                                
                                 dialogbox(data);
+                                
                               },
                               child: CustomButton(
                                 bordercolor: Colors.red,
@@ -139,20 +142,97 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
         context: context,
         builder: (BuildContext context) {
           return Consumer<SymptomsinformProvider>(
-            builder: (context,provider,_) {
-              return AlertDialog(
-                title: Text("Symptoms Check",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: Colors.cyan,decoration: TextDecoration.underline),textAlign: TextAlign.center),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text("${data.name}, Please Mark Your Symptoms below.",style: GoogleFonts.poppins(fontWeight: FontWeight.bold),),
-                    SizedBox(height: AllDimensions.px10,),
-                    CustomTextField(controller: provider.controllercomments, hintText: "Additional Comments", iconData: Icons.comment, label: "Additional Comments", errorText: "Error")
-                  ],
-                ),
-              );
-            }
-          );
+              builder: (context, provider, _) {
+            return AlertDialog(
+              title: Text("Symptoms Check",
+                  style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.cyan,
+                      decoration: TextDecoration.underline),
+                  textAlign: TextAlign.center),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Text("${data.name}, Please Mark Your Symptoms below.",style: GoogleFonts.poppins(fontWeight: FontWeight.bold),),
+                  MultiSelectFormField(
+                    autovalidate: AutovalidateMode.disabled,
+                    chipBackGroundColor: AppColors.red,
+                    chipLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+                    dialogTextStyle: TextStyle(fontWeight: FontWeight.bold),
+                    checkBoxActiveColor: Colors.red,
+                    checkBoxCheckColor: AppColors.bgwhite,
+                    dialogShapeBorder: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12.0))),
+                    title: Text(
+                      "Select Symptoms",
+                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                    dataSource: [
+                      {'display': 'Fever', 'value': 'Fever'},
+                      {'display': 'Headache', 'value': 'Headache'},
+                      {'display': 'Pain in Eyes', 'value': 'Pain in Eyes'},
+                      {'display': 'Muscle Pain', 'value': 'Muscle Pain'},
+                      {'display': 'Bone Pain', 'value': 'Bone Pain'},
+                      {'display': 'Red Spots', 'value': 'Red Spots'},
+                    ],
+                    textField: 'display',
+                    valueField: 'value',
+                    okButtonLabel: 'OK',
+                    cancelButtonLabel: 'CANCEL',
+                    hintWidget: Text(
+                      "Please Select one or more Symptoms",
+                      style: GoogleFonts.poppins(color: AppColors.red),
+                    ),
+                    // initialValue: _myActivities,
+                    // onSaved: (value) {
+                    //   if (value == null) return;
+                    //   setState(() {
+                    //     _myActivities = value;
+                    //   });
+                    // },
+                    onSaved: (newValue) {
+                      // debugPrint(newValue.toString());
+                      provider.symptoms = newValue;
+                      // setState(() {
+                        
+                      // });
+                    },
+                  ),
+                  Text(provider.symptomerror,style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: AppColors.red),),
+                  SizedBox(
+                    height: AllDimensions.px10,
+                  ),
+                  CustomTextField(
+                      controller: provider.controllercomments,
+                      hintText: "Additional Comments",
+                      iconData: Icons.comment,
+                      label: "Additional Comments",
+                      errorText: ""),
+
+                  SizedBox(
+                    height: AllDimensions.px20,
+                  ),
+                  InkWell(
+                      onTap: () {
+                        provider.symptomsinform();
+                        // setState(() {
+                          
+                        // });
+                      },
+                      child: CustomButton(
+                          bordercolor: AppColors.red,
+                          borderradius: AllDimensions.px10,
+                          boxcolor: AppColors.red,
+                          borderwidth: AllDimensions.px10,
+                          text: "Inform",
+                          styles:
+                              GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                          btnWidth: MediaQuery.of(context).size.width))
+                ],
+              ),
+            );
+          });
         });
   }
 }
