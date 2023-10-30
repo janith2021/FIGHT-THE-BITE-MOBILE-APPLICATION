@@ -72,60 +72,19 @@ class _LoginState extends State<Login> {
                   top: AllDimensions.px40),
               child: Column(
                 children: [
-                  FutureBuilder(
-                      future: CarouselImages(),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<List<Carousel>> snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: CustomCarousel(
-                                autoplay: false,
-                                durationInSeconds: 0,
-                                items: [
-                                  Center(
-                                      child: CircularProgressIndicator(
-                                    color: AppColors.red,
-                                  ))
-                                ]),
-                          );
-                        } else {
-                          if (snapshot.hasError) {
-                            return CustomCarousel(
-                                autoplay: false,
-                                durationInSeconds: 0,
-                                items: [
-                                  Center(
-                                      child: Text(
-                                    "Images Not Found! Please Ensure that You have a valid Internet Connectivity.",
-                                    style: GoogleFonts.poppins(
-                                        color: AppColors.red,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: AllDimensions.px20),
-                                  ))
-                                ]);
-                          }
-                          final list = snapshot.data;
-                          // debugPrint(list.toString());
-
-                          final imglist = list!
-                              .map((item) => (Container(
-                                    child: Image.network(
-                                      item.image,
-                                      fit: BoxFit.fill,
-                                    ),
-                                    width: MediaQuery.of(context).size.width,
-                                  )))
-                              .toList();
-                          print(imglist);
-                          return CustomCarousel(
-                              // height: 300,
-                              autoplay: true,
-                              durationInSeconds: 1,
-                              items: imglist);
-                        }
-                      }),
+                  CustomCarousel(autoplay: true, durationInSeconds: 2, items: [
+                    Image.network("https://1.bp.blogspot.com/-ZmU2_PllkxM/WXGIiW5STaI/AAAAAAAABy0/sobPH8_meUE6ofwhbkOnXW-RZ2bBVQyJQCEwYBhgL/s1600/2017_dengue_campaign_03.jpg",fit: BoxFit.cover,width: MediaQuery.of(context).size.width),
+                    Image.network("https://cmb.ac.lk/wp-content/uploads/dengue-free-environment-of-the-uoc-04.jpg",fit: BoxFit.cover,
+                        width: MediaQuery.of(context).size.width),
+                    Image.network("https://www.sjp.ac.lk/wp-content/uploads/2015/11/JapuraMedia-6905.jpg",
+                      fit: BoxFit.cover,
+                        width: MediaQuery.of(context).size.width
+                    ),
+                    Image.network("https://med.pdn.ac.lk/events/2016/june/data1/images/14.jpg",
+                      fit: BoxFit.cover,
+                        width: MediaQuery.of(context).size.width
+                    ),
+                  ]),
                   SizedBox(
                     height: AllDimensions.px80,
                   ),
