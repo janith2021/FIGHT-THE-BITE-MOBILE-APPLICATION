@@ -26,23 +26,6 @@ class SymptomCheckScreen extends StatefulWidget {
 
 class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
   List<User> users = [];
-  // List of affected persons
-  List<String> affectedPersons = [
-    'Nimali Wasana',
-    'Kamali Perera',
-    'Ushani Dilini',
-    'Jagath Perera',
-    'Nayomi Lakshi',
-  ];
-
-  // List of symptoms
-  List<String> symptoms = [
-    'Fever',
-    'Headache',
-    'Joint Pain',
-    'Nausea',
-    'Vomiting',
-  ];
 
   Future<List<User>> getmembers() async {
     users.clear();
@@ -57,15 +40,17 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
     var res = await http.post(Uri.parse(fullUrl),
         body: jsonEncode(body), headers: setHeaders());
     var result = await jsonDecode(res.body);
-    // debugPrint(result['message'].toString());
+    // debugPrint(result.toString());
     for (var dat in result['message']) {
       var name = dat['name'];
       var nic = dat['nic'];
-      // debugPrint(name);
-      User familymember = User(name: name, nic: nic);
+      var contact = dat['contact'];
+      // var divisionNumber = dat['']
+      debugPrint(contact);
+      User familymember = User(name: name, nic: nic, contact: contact);
       users.add(familymember);
     }
-    // debugPrint(users.toString());
+    debugPrint(users.toString());
     return users;
     // debugPrint(result.toString());
   }
@@ -76,6 +61,7 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.red,
         leading: const BackButton(),
@@ -95,6 +81,19 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
                 return Expanded(child: Text(snapshot.error.toString()));
               } else {
                 var item = snapshot.data;
+                if (item!.isEmpty) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.network("https://img.freepik.com/free-vector/no-data-concept-illustration_114360-2506.jpg?w=996&t=st=1698588954~exp=1698589554~hmac=822df2331f98561ff280f677fc197f7cdc5486c9989f160c707ebfd7093a6e62"),
+                      Padding(
+                        padding: EdgeInsets.all(AllDimensions.px10),
+                        child: Text("No Family Members Found",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,fontSize: AllDimensions.px18),textAlign: TextAlign.center,),
+                      )
+                    ],
+                  );
+                }
                 debugPrint(item.toString());
                 return ListView.builder(
                     itemCount: item!.length,
@@ -113,9 +112,7 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
                           ),
                           trailing: InkWell(
                               onTap: () {
-                                
                                 dialogbox(data);
-                                
                               },
                               child: CustomButton(
                                 bordercolor: Colors.red,
@@ -184,30 +181,23 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
                       "Please Select one or more Symptoms",
                       style: GoogleFonts.poppins(color: AppColors.red),
                     ),
-                    // initialValue: _myActivities,
-                    // onSaved: (value) {
-                    //   if (value == null) return;
-                    //   setState(() {
-                    //     _myActivities = value;
-                    //   });
-                    // },
                     onSaved: (newValue) {
-                      // debugPrint(newValue.toString());
                       provider.symptoms = newValue;
-                      // setState(() {
-                        
-                      // });
                     },
                   ),
-                  Text(provider.symptomerror,style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color: AppColors.red),),
+                  Text(
+                    provider.symptomerror,
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold, color: AppColors.red),
+                  ),
                   SizedBox(
                     height: AllDimensions.px10,
                   ),
                   CustomTextField(
                       controller: provider.controllercomments,
-                      hintText: "Additional Comments",
+                      hintText: "Others",
                       iconData: Icons.comment,
-                      label: "Additional Comments",
+                      label: "Other",
                       errorText: ""),
 
                   SizedBox(
@@ -215,9 +205,13 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
                   ),
                   InkWell(
                       onTap: () {
-                        provider.symptomsinform();
+                        provider.symptomsinform(data, context);
+
+                        // if (provider.symptomsinform(data, context)) {
+                        //   getmembers();
+                        // }
                         // setState(() {
-                          
+
                         // });
                       },
                       child: CustomButton(
@@ -225,7 +219,7 @@ class _SymptomCheckScreenState extends State<SymptomCheckScreen> {
                           borderradius: AllDimensions.px10,
                           boxcolor: AppColors.red,
                           borderwidth: AllDimensions.px10,
-                          text: "Inform",
+                          text: "Inform Affectivity",
                           styles:
                               GoogleFonts.poppins(fontWeight: FontWeight.bold),
                           btnWidth: MediaQuery.of(context).size.width))
