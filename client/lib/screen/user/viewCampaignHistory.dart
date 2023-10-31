@@ -1,4 +1,5 @@
 import 'package:client/models/campaign.dart';
+import 'package:date_only_field/date_only_field.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../const/all_imports.dart';
@@ -11,10 +12,11 @@ class UserCampaign extends StatelessWidget {
   Future<List<Campaign>> getcampaigns() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var divisionnumber = prefs.getString('divisionNumber');
+    debugPrint(divisionnumber);
     var fullurl = "${AllStrings.baseurl}//villager/getcampaigns";
     setHeaders() =>
         {'Content-Type': 'application/json', 'Accept': 'application/json'};
-    var data = {'divisionnumber': divisionnumber};
+    var data = {'divisionNumber': divisionnumber};
     var res = await http.post(Uri.parse(fullurl),
         body: jsonEncode(data), headers: setHeaders());
     var results = await jsonDecode(res.body);
@@ -24,10 +26,15 @@ class UserCampaign extends StatelessWidget {
       var time = result['time'].toString();
       var location = result['location'].toString();
       var status = result['status'].toString();
-
-      Campaign campaign = Campaign(name, date, time, status, location);
-      campaigns.add(campaign);
+      debugPrint(date);
+      
+      // Date(year)
+      if (status == "1") {
+        Campaign campaign = Campaign(name, date, time, status, location);
+        campaigns.add(campaign);
+      }
     }
+    // debugPrint(campaigns.toString());
     // debugPrint(divisionnumber);
     return campaigns;
     // var data = await http.post("h");
@@ -54,7 +61,9 @@ class UserCampaign extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CircularProgressIndicator(backgroundColor: Colors.red,strokeWidth: AllDimensions.px5),
+                      CircularProgressIndicator(
+                          backgroundColor: Colors.red,
+                          strokeWidth: AllDimensions.px5),
                     ],
                   ),
                 );
@@ -73,13 +82,55 @@ class UserCampaign extends StatelessWidget {
                         children: [
                           Image.network(
                               "https://img.freepik.com/free-vector/hand-drawn-no-data-illustration_23-2150696452.jpg?w=740&t=st=1698733983~exp=1698734583~hmac=17a95c7317433fe8fa029f1d60420143b1ff2282cda3e2150f20d54ce5d35aa9"),
-                          Text("No Campaigns Found in Your Division",style: GoogleFonts.poppins(fontWeight: FontWeight.bold,fontSize: AllDimensions.px15),),
+                          Text(
+                            "No Campaigns Found in Your Division",
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.bold,
+                                fontSize: AllDimensions.px15),
+                          ),
                         ],
                       ),
                     );
                   }
                   // }));
-                  return Text("campaigns");
+                  else {
+                    return ListView.builder(
+                        itemCount: data.length,
+                        itemBuilder: (context, index) {
+                          var item = data[index];
+                          return Padding(
+                            padding: EdgeInsets.all(AllDimensions.px20),
+                            child: Container(
+                              padding: EdgeInsets.all(AllDimensions.px10),
+                              decoration: BoxDecoration(color: Colors.amber),
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Text(
+                                    item.name,
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: AllDimensions.px15),
+                                  ),
+                                  Text(
+                                    item.date,
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: AllDimensions.px15),
+                                  ),
+                                  Text(
+                                    item.location,
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: AllDimensions.px15),
+                                  ),
+                                  // Text(item.),
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                  }
                 }
               }
             }));

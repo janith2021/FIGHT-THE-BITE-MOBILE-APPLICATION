@@ -18,7 +18,7 @@ class OrganizationDashboard extends StatefulWidget {
 }
 
 class _OrganizationDashboardState extends State<OrganizationDashboard> {
-  Future<Map<String,dynamic>> getuser() async {
+  Future<Map<String, dynamic>> getuser() async {
     // var box = Hive.box('users');
     // var email = box.get('user');
     // print(email);
@@ -37,8 +37,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
     //     body: jsonEncode(data), headers: setHeaders());
     var res = await http.get(Uri.parse(url));
     Map users = await jsonDecode(res.body);
-   
-    
+
     //  debugPrint(users['user']['name'].toString());
     return users['user'];
   }
@@ -113,10 +112,16 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                         FutureBuilder(
                             future: getuser(),
                             builder: (BuildContext context,
-                                AsyncSnapshot<Map<String,dynamic>> snapshot) {
+                                AsyncSnapshot<Map<String, dynamic>> snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
-                                return Expanded(child: Container(width: MediaQuery.of(context).size.width,alignment: Alignment.topCenter,child: CircularProgressIndicator(color: Colors.red),));
+                                return Expanded(
+                                    child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  alignment: Alignment.topCenter,
+                                  child: CircularProgressIndicator(
+                                      color: Colors.red),
+                                ));
                               } else {
                                 final data = snapshot.data;
                                 //  debugPrint("Hi");
@@ -127,8 +132,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                                         "There is an error : ${snapshot.error}"),
                                   );
                                 }
-                                
-                               
+
                                 // print(data);
                                 return Stack(
                                   alignment: Alignment.centerLeft,
@@ -167,7 +171,18 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                                   ],
                                 );
                               }
-                            })
+                            }),
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () async {
+                                SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+                                prefs.clear();
+                                // ignore: use_build_context_synchronously
+                                Navigator.pushReplacementNamed(context, "/login");
+                              },
+                              icon: const Icon(Icons.logout)),
+                        )
                       ],
                     ),
                   ),

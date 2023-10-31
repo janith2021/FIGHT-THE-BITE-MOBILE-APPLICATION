@@ -137,7 +137,16 @@ class _UserDashboardState extends State<UserDashboard> {
                                   Navigator.pushNamed(
                                       context, "villager/notification");
                                 },
-                              ))
+                              )),
+                          IconButton(
+                              onPressed: () async {
+                                SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+                                prefs.clear();
+                                // ignore: use_build_context_synchronously
+                                Navigator.pushReplacementNamed(context, "/login");
+                              },
+                              icon: Icon(Icons.logout))
                         ],
                       ),
                     ),

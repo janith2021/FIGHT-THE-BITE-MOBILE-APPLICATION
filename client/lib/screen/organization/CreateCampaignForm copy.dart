@@ -2,7 +2,6 @@ import 'package:date_only_field/date_only_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 
 import '../../const/all_imports.dart';
 import '../../providers/create_campaign_provider.dart';
@@ -132,63 +131,19 @@ class _MyFormState extends State<MyForms> {
                     ),
                     onTap: () async {
                       provider.getDivision(context);
-                      DateTime? dateTime = await showOmniDateTimePicker(
-                        context: context,
-                        initialDate:
-                            DateTime.now().add(const Duration(days: 7)),
-                        firstDate: DateTime.now().add(const Duration(days: 7)),
-                        lastDate: DateTime.now().add(
-                          const Duration(days: 3652),
-                        ),
-                        is24HourMode: true,
-                        isShowSeconds: false,
-                        minutesInterval: 1,
-                        secondsInterval: 1,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(16)),
-                        constraints: const BoxConstraints(
-                          maxWidth: 350,
-                          maxHeight: 650,
-                        ),
-                        transitionBuilder: (context, anim1, anim2, child) {
-                          return FadeTransition(
-                            opacity: anim1.drive(
-                              Tween(
-                                begin: 0,
-                                end: 1,
-                              ),
-                            ),
-                            child: child,
-                          );
-                        },
-                        transitionDuration: const Duration(milliseconds: 200),
-                        barrierDismissible: true,
-                        selectableDayPredicate: (dateTime) {
-                          // Disable 25th Feb 2023
-                          if (dateTime == DateTime(2023, 2, 25)) {
-                            return false;
-                          } else {
-                            return true;
-                          }
-                        },
-                      );
-                      var dattimeconvert = dateTime.toString();
-                      var datetimelist = dattimeconvert.split(" ").toList();
-                      // debugPrint(datetimelist);
-                      if (datetimelist.isNotEmpty && datetimelist[0].toString() != null && datetimelist[1].toString() != null) {
-                        // var pickdate = DateTime(
-                        //     pickedDate.year, pickedDate.month, pickedDate.day);
-                        // String formatdate =
-                        //     DateFormat('M/d/y').format(pickdate);
+                      DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime.timestamp(),
+                          lastDate: DateTime(2100));
+                      if (pickedDate != null) {
+                        var pickdate = DateTime(
+                            pickedDate.year, pickedDate.month, pickedDate.day);
+                        String formatdate =
+                            DateFormat('M/d/y').format(pickdate);
                         // debugPrint(formatdate);
                         setState(() {
-                          provider.campaigndatecontroller.text =
-                              datetimelist[0];
-                          provider.campaigntimecontroller.text = datetimelist[1]
-                              .split(":00.")
-                              .toList()
-                              .elementAt(0);
-                          datetimelist.clear();
+                          provider.campaigndatecontroller.text = formatdate;
                         });
                       }
 
@@ -197,8 +152,6 @@ class _MyFormState extends State<MyForms> {
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
-                    readOnly: true,
-                    // enabled: false,
                     controller: provider.campaigntimecontroller,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -244,33 +197,34 @@ class _MyFormState extends State<MyForms> {
                   ),
 
                   // Row(
-                  // children: [
-                  //   Checkbox(
-                  //     value: _agreedToGuidelines,
-                  //     onChanged: (value) {
-                  //       setState(() {
-                  //         _agreedToGuidelines = value!;
-                  //       });
-                  //     },
-                  //     activeColor: Colors.red,
-                  //   ),
-                  //   SizedBox(height: AllDimensions.px100,),
-                  //   // Expanded(
-                  //   //   child: Text(
-                  //   //     'I have read and agree to the guidelines',
-                  //   //     style: GoogleFonts.poppins(fontSize: 17),
-                  //   //   ),
-                  //   // ),
-                  // ],
+                    // children: [
+                    //   Checkbox(
+                    //     value: _agreedToGuidelines,
+                    //     onChanged: (value) {
+                    //       setState(() {
+                    //         _agreedToGuidelines = value!;
+                    //       });
+                    //     },
+                    //     activeColor: Colors.red,
+                    //   ),
+                    //   SizedBox(height: AllDimensions.px100,),
+                    //   // Expanded(
+                    //   //   child: Text(
+                    //   //     'I have read and agree to the guidelines',
+                    //   //     style: GoogleFonts.poppins(fontSize: 17),
+                    //   //   ),
+                    //   // ),
+                    // ],
                   // ),
                   const SizedBox(height: 32),
                   Center(
                     // Center the button
                     child: ElevatedButton(
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
+                        if(_formKey.currentState!.validate()){
                           provider.submitform(context);
                         }
+                        
                       },
                       style: ButtonStyle(
                         backgroundColor:
