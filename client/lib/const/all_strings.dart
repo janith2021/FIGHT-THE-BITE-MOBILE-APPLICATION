@@ -74,4 +74,5 @@ class AllStrings {
   static String viewcampaignhistory = "View Campaign Hitory";
   static String nicvalidate = "Please Enter Your NIC Number";
   static String informaffect = "Inform Affectivity";
+  static String campaign = "Campaigns";
 }

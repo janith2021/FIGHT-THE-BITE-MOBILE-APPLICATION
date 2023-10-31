@@ -104,7 +104,7 @@ class Myapp extends StatelessWidget {
               SymptomCheckScreen.routename: (_) => SymptomCheckScreen(),
               ViewOngoingCampign.routname: (_) => const ViewOngoingCampign(),
               ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
-              UserCampaign.routename: (_) => const UserCampaign(),
+              UserCampaign.routename: (_) =>  UserCampaign(),
               NICValidate.routename: (_) => const NICValidate(),
               GuestRegister.routename: (_) => const GuestRegister(),
               Profile.routename: (_) => Profile(),
