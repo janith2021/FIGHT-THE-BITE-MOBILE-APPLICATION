@@ -12,7 +12,7 @@ class CreateCampaignProvider extends ChangeNotifier {
   TextEditingController campaigntimecontroller = TextEditingController();
 // final SharedPreferences prefer = await SharedPreferences.getInstance();
 
-  List<DateTime> ongoingCampaignDates = []; // Replace with actual data 
+  List<DateTime> ongoingCampaignDates = []; // Replace with actual data
   DateTime selectedDate = DateTime.now();
 
   // Get relevant organization division
@@ -62,7 +62,9 @@ class CreateCampaignProvider extends ChangeNotifier {
       'date': campaigndatecontroller.text,
       'location': campaignlocationcontroller.text,
       'organizationid': prefs.getString('userid'),
-      'campaigntime': campaigntimecontroller.text
+      'campaigntime': campaigntimecontroller.text,
+      'orgname': prefs.getString('userName'),
+      'contact' : prefs.getString('contact')
     };
     debugPrint(body.toString());
     var fullurl = '${AllStrings.baseurl}/organization/campaign/create';

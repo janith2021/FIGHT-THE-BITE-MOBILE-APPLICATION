@@ -81,7 +81,10 @@ class LoginProvider extends ChangeNotifier {
 
           notifyListeners();
         } else if (body['role'] == 'ORG') {
+          debugPrint(body['user'].toString());
           await prefer.setString("userid", body["id"].toString());
+          await prefer.setString("userName", body['user']['name'].toString());
+          await prefer.setString("contact", body['user']['contact'].toString());
           // ignore: use_build_context_synchronously
           Navigator.pushNamed(context, "/organization/dashboard");
           // ignore: use_build_context_synchronously

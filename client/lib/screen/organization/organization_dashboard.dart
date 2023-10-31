@@ -38,7 +38,7 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
     var res = await http.get(Uri.parse(url));
     Map users = await jsonDecode(res.body);
 
-    //  debugPrint(users['user']['name'].toString());
+    debugPrint(users['user']['name'].toString());
     return users['user'];
   }
 
@@ -175,11 +175,35 @@ class _OrganizationDashboardState extends State<OrganizationDashboard> {
                         Expanded(
                           child: IconButton(
                               onPressed: () async {
-                                SharedPreferences prefs =
-                                    await SharedPreferences.getInstance();
-                                prefs.clear();
-                                // ignore: use_build_context_synchronously
-                                Navigator.pushReplacementNamed(context, "/login");
+                                ArtDialogResponse res = await ArtSweetAlert.show(
+                                    barrierDismissible: false,
+                                    context: context,
+                                    artDialogArgs: ArtDialogArgs(
+                                      confirmButtonText: "Yes",
+                                      denyButtonText: "No",
+                                      title: "Are You Sure You Want To Logout?",
+                                      type: ArtSweetAlertType.danger,
+                                    ));
+                                if (res == null) {
+                                  return;
+                                }
+                                if (res.isTapConfirmButton) {
+                                  SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+                                  prefs.clear();
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.pushReplacementNamed(
+                                      context, "/login");
+                                  // ignore: use_build_context_synchronously
+                                  ArtSweetAlert.show(
+                                      barrierDismissible: false,
+                                      context: context,
+                                      artDialogArgs: ArtDialogArgs(
+                                        title: "Success",
+                                        text: "You have Successfully Logged out",
+                                        type: ArtSweetAlertType.success,
+                                      ));
+                                }
                               },
                               icon: const Icon(Icons.logout)),
                         )
