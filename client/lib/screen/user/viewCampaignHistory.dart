@@ -1,98 +1,138 @@
+import 'package:client/models/campaign.dart';
+import 'package:date_only_field/date_only_field.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../const/all_imports.dart';
 
 class UserCampaign extends StatelessWidget {
+  List<Campaign> campaigns = [];
   static String get routename => "/villager/campaigns";
-  const UserCampaign({super.key});
+  UserCampaign({super.key});
+
+  Future<List<Campaign>> getcampaigns() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var divisionnumber = prefs.getString('divisionNumber');
+    debugPrint(divisionnumber);
+    var fullurl = "${AllStrings.baseurl}//villager/getcampaigns";
+    setHeaders() =>
+        {'Content-Type': 'application/json', 'Accept': 'application/json'};
+    var data = {'divisionNumber': divisionnumber};
+    var res = await http.post(Uri.parse(fullurl),
+        body: jsonEncode(data), headers: setHeaders());
+    var results = await jsonDecode(res.body);
+    for (var result in results['message']) {
+      var name = result['name'].toString();
+      var date = result['date'].toString();
+      var time = result['time'].toString();
+      var location = result['location'].toString();
+      var status = result['status'].toString();
+      debugPrint(date);
+      
+      // Date(year)
+      if (status == "1") {
+        Campaign campaign = Campaign(name, date, time, status, location);
+        campaigns.add(campaign);
+      }
+    }
+    // debugPrint(campaigns.toString());
+    // debugPrint(divisionnumber);
+    return campaigns;
+    // var data = await http.post("h");
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'VIEW CAMPAIGN HISTRY',
-          style: GoogleFonts.poppins(),
-        ),
-        backgroundColor: Colors.red,
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(5),
-                child: Container(
-                  width: 450,
-                  height: 250,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(padding: EdgeInsets.all(10) ,child :Text("Campaign name : Suwasahana Campaign")),
-                      Padding(padding:EdgeInsets.all(10), child :Text("Campaign date : 08/19/2023")),
-                      Padding(child: Text("Campaign location : matara"),padding: EdgeInsets.all(10),),
-                      Padding(child: Text("Campaign time : 8.00 A.M"),padding: EdgeInsets.all(10),),
-                      // Padding(child: Text("Campaign status : Approved"),padding: EdgeInsets.all(10),),
-
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(AllDimensions.px10),
-                      color: Color.fromARGB(255, 244, 242, 236),
-                      boxShadow: [BoxShadow(blurRadius: 0)]),
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.all(5),
-                child: Container(
-                  width: 450,
-                  height: 250,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(padding: EdgeInsets.all(10) ,child :Text("Campaign name : Janashakthi Campaign")),
-                      Padding(padding:EdgeInsets.all(10), child :Text("Campaign date : 08/16/2023")),
-                      Padding(child: Text("Campaign location : matara"),padding: EdgeInsets.all(10),),
-                      Padding(child: Text("Campaign time : 9.00 A.M"),padding: EdgeInsets.all(10),),
-                      // Padding(child: Text("Campaign status : Pending"),padding: EdgeInsets.all(10),),
-
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(AllDimensions.px10),
-                      color: Color.fromARGB(255, 244, 242, 236),
-                      boxShadow: [BoxShadow(blurRadius: 0)]),
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.all(5),
-                child: Container(
-                  width: 450,
-                  height: 250,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(padding: EdgeInsets.all(10) ,child :Text("Campaign name : Shakthi Campaign")),
-                      Padding(padding:EdgeInsets.all(10), child :Text("Campaign date : 08/17/2023")),
-                      Padding(child: Text("Campaign location : Tangalle"),padding: EdgeInsets.all(10),),
-                      Padding(child: Text("Campaign time : 8.30 A.M"),padding: EdgeInsets.all(10),),
-                      // Padding(child: Text("Campaign status : Rejected"),padding: EdgeInsets.all(10),),
-
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(AllDimensions.px10),
-                      color: Color.fromARGB(255, 244, 242, 236),
-                      boxShadow: [BoxShadow(blurRadius: 0)]),
-                ),
-              ),
-            ],
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text(
+            AllStrings.campaign,
+            style: GoogleFonts.poppins(),
           ),
+          backgroundColor: Colors.cyan,
+          centerTitle: true,
         ),
-      ),
-    );
+        body: FutureBuilder(
+            future: getcampaigns(),
+            builder: (context, AsyncSnapshot<List<Campaign>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(
+                          backgroundColor: Colors.red,
+                          strokeWidth: AllDimensions.px5),
+                    ],
+                  ),
+                );
+              } else {
+                if (snapshot.hasError) {
+                  return Text(snapshot.error.toString());
+                } else {
+                  // return ListView.builder(itemCount: ,itemBuilder: ((context, index) {
+                  var data = snapshot.data;
+                  if (data!.isEmpty) {
+                    return Padding(
+                      padding: EdgeInsets.all(AllDimensions.px50),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.network(
+                              "https://img.freepik.com/free-vector/hand-drawn-no-data-illustration_23-2150696452.jpg?w=740&t=st=1698733983~exp=1698734583~hmac=17a95c7317433fe8fa029f1d60420143b1ff2282cda3e2150f20d54ce5d35aa9"),
+                          Text(
+                            "No Campaigns Found in Your Division",
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.bold,
+                                fontSize: AllDimensions.px15),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                  // }));
+                  else {
+                    return ListView.builder(
+                        itemCount: data.length,
+                        itemBuilder: (context, index) {
+                          var item = data[index];
+                          return Padding(
+                            padding: EdgeInsets.all(AllDimensions.px20),
+                            child: Container(
+                              padding: EdgeInsets.all(AllDimensions.px10),
+                              decoration: BoxDecoration(color: Colors.amber),
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Text(
+                                    item.name,
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: AllDimensions.px15),
+                                  ),
+                                  Text(
+                                    item.date,
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: AllDimensions.px15),
+                                  ),
+                                  Text(
+                                    item.location,
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: AllDimensions.px15),
+                                  ),
+                                  // Text(item.),
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                  }
+                }
+              }
+            }));
   }
 }

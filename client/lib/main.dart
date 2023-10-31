@@ -22,7 +22,7 @@ import 'package:client/screen/organization/Ongoing.dart';
 import 'package:client/screen/organization/addCampaign.dart';
 import 'package:client/screen/officer/PHI/notification.dart';
 import 'package:client/screen/organization/CreateCampaignForm.dart';
-import 'package:client/screen/organization/createCampaign.dart';
+import 'package:client/screen/organization/createCampaign%20backup.dart';
 import 'package:client/screen/organization/viewCampaignHistory.dart';
 import 'package:client/screen/organization/viewOngoingCampaign.dart';
 import 'package:client/screen/user/affected1.dart';
@@ -104,7 +104,7 @@ class Myapp extends StatelessWidget {
               SymptomCheckScreen.routename: (_) => SymptomCheckScreen(),
               ViewOngoingCampign.routname: (_) => const ViewOngoingCampign(),
               ViewCampaignHistory.routename: (_) => const ViewCampaignHistory(),
-              UserCampaign.routename: (_) => const UserCampaign(),
+              UserCampaign.routename: (_) =>  UserCampaign(),
               NICValidate.routename: (_) => const NICValidate(),
               GuestRegister.routename: (_) => const GuestRegister(),
               Profile.routename: (_) => Profile(),

@@ -82,6 +82,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   hotreloader: ^4.0.0
   multiselect_formfield: ^0.1.7
+  omni_datetime_picker: ^1.0.9
 
   # flutter_tawk: ^0.1.0
 

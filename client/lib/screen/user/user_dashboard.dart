@@ -137,7 +137,36 @@ class _UserDashboardState extends State<UserDashboard> {
                                   Navigator.pushNamed(
                                       context, "villager/notification");
                                 },
-                              ))
+                              )),
+                          IconButton(
+                              onPressed: () async {
+                                ArtDialogResponse res = await ArtSweetAlert.show(
+                                    barrierDismissible: false,
+                                    context: context,
+                                    artDialogArgs: ArtDialogArgs(
+                                        title:
+                                            "Are You Sure You want to Logout?",
+                                        denyButtonText: "NO",
+                                        confirmButtonText: "Yes",
+                                        type: ArtSweetAlertType.danger));
+                                if (res == null) {
+                                  return;
+                                }
+                                if (res.isTapConfirmButton) {
+                                  SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+                                  prefs.clear();
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.pushReplacementNamed(
+                                      context, "/login");
+                                  // ignore: use_build_context_synchronously
+                                  ArtSweetAlert.show(
+                                      barrierDismissible: false,
+                                      context: context,
+                                      artDialogArgs: ArtDialogArgs(title: "Success",text: "You have Successfully Logged out",type: ArtSweetAlertType.success));
+                                }
+                              },
+                              icon: Icon(Icons.logout))
                         ],
                       ),
                     ),
